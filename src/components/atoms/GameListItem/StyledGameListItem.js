@@ -8,6 +8,9 @@ flex-direction: column;
 margin: 5px;
 padding: 5px;
 text-align: center;
+h4 {
+   color: black;
+}
 `
 
 export default StyledGameListItem;

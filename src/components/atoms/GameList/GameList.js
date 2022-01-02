@@ -18,7 +18,7 @@ const GameList = () => {
         <GameListItem />
         <GameListItem />
         <GameListItem />
-      </div>
+    </div>
     </StyledGameList>
   )
 };
