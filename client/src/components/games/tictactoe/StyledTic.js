@@ -26,6 +26,17 @@ justify-content: center;
     }
   }
 }
+#game-header {
+  h4 {
+    font-size: 36px;
+    padding: 5px;
+  }
+  p {
+    font-size: 22px;
+    padding: 5px;
+  }
+
+}
 .game-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

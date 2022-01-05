@@ -29,8 +29,12 @@ const Tic = () => {
         </div>
       </div>
       }
-      {gamePhase === "play" && <div>
-        <h4>The Game is Afoot!</h4>
+      {gamePhase === "play" && 
+      <div>
+        <div id="game-header">
+          <h4>The Game is Afoot!</h4>
+          <p>It's currently Player {playerTurn}'s turn</p>
+        </div>
         <div className="game-grid">
           {gameBoard}
         </div>
