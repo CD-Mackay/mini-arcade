@@ -5,7 +5,7 @@ import StyledTic from './StyledTic';
 
 const Tic = () => {
 
-  const [gamePhase, setGamePhase] = useState("setup");
+  const [gamePhase, setGamePhase] = useState("play");
   const squares = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const gameBoard =  squares.map((element) => {

@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 const StyledTic = styled.section`
+width: 40vw;
+margin: 0 auto;
+text-align: center;
+display: flex;
+flex-direction: column;
+height: 600px;
+justify-content: center;
 
 #setup-box {
-  width: 40vw;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  height: 600px;
-  justify-content: center;
   h4 {
     padding: 5px;
     font-size: 42px;
@@ -25,10 +25,11 @@ const StyledTic = styled.section`
 
     }
   }
-  .game-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+}
+.game-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 0px;
 }
 `
 
