@@ -12,7 +12,7 @@ const GameListItem = ({game}) => {
     <StyledGameListItem>
       <image src="" alt="game-image" />
       <Link to={`/${game}`}>
-      <h4>I am {game}</h4>
+        <h4>I am {game}</h4>
       </Link>
     </StyledGameListItem>
   )
