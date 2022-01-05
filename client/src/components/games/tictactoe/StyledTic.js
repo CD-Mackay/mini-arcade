@@ -44,6 +44,9 @@ justify-content: center;
   margin-bottom: 20px;
 }
 .game-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   button {
     margin-left: 5px;
     margin-right: 5px;
