@@ -10,7 +10,7 @@ import StyledFooter from './StyledFooter';
 const Footer = () => {
   return (
     <StyledFooter>
-      <h1>I am Footer!</h1>
+      <p>A Practice Application, built by Connor Mackay</p>
     </StyledFooter>
   )
 };

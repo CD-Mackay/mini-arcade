@@ -8,8 +8,12 @@ flex-direction: column;
 margin: 5px;
 padding: 5px;
 text-align: center;
+Link {
+   text-decoration: none;
+}
 h4 {
    color: black;
+   text-decoration: none;
 }
 `
 

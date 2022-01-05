@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 /* Asset Imports */
 import StyledGameListItem from './StyledGameListItem';
 
-const GameListItem = ({game}) => {
+const GameListItem = ({game, name}) => {
   return (
     <StyledGameListItem>
       <image src="" alt="game-image" />
       <Link to={`/${game}`}>
-        <h4>I am {game}</h4>
+        <h4>{name}</h4>
       </Link>
     </StyledGameListItem>
   )
