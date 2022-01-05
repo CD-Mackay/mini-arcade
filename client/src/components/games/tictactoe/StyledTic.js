@@ -41,6 +41,13 @@ justify-content: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 0px;
+  margin-bottom: 20px;
+}
+.game-options {
+  button {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 `
 

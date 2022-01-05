@@ -38,7 +38,12 @@ const Tic = () => {
         <div className="game-grid">
           {gameBoard}
         </div>
-      </div>}
+        <div className="game-options">
+          <button>Reset Game</button>
+          <button>Quit Game</button>
+        </div>
+      </div>
+      }
     </StyledTic>
   )
 };
