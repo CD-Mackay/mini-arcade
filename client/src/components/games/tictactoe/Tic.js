@@ -6,7 +6,13 @@ import StyledTic from './StyledTic';
 const Tic = () => {
 
   const [gamePhase, setGamePhase] = useState("play");
+  const [playerTurn, setPlayerTurn] = useState(0);
   const squares = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  const startGame = () => {
+    setGamePhase("play");
+    setPlayerTurn(1);
+  }
 
   const gameBoard =  squares.map((element) => {
       return <GameSquare index={element} />
@@ -18,8 +24,8 @@ const Tic = () => {
       <div id="setup-box">
         <h4>Select Human or Robotic Opponent</h4>
         <div id="button-wrapper">
-          <button onClick={() => setGamePhase("play")}>human</button>
-          <button>robot</button>
+          <button onClick={startGame}>human</button>
+          <button onClick={startGame}>robot</button>
         </div>
       </div>
       }

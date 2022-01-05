@@ -2,9 +2,9 @@ import React from 'react';
 
 import StyledGameSquare from './StyledGameSquare';
 
-const GameSquare = () => {
+const GameSquare = ({index}) => {
   return (
-    <StyledGameSquare>
+    <StyledGameSquare id={`game-square-${index}`}>
       <p>I am GameSquare</p>
     </StyledGameSquare>
   )
