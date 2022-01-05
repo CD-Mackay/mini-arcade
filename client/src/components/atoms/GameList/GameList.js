@@ -12,9 +12,9 @@ const GameList = () => {
   return (
     <StyledGameList>
       <div className="game-wrapper">
-        <GameListItem />
-        <GameListItem />
-        <GameListItem />
+        <GameListItem game="tictactoe" />
+        <GameListItem game="hangman" />
+        <GameListItem game="rockpaperscissors" />
         <GameListItem />
         <GameListItem />
         <GameListItem />

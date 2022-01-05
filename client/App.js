@@ -15,6 +15,8 @@ import Footer from './src/components/atoms/Footer/Footer.js';
 /* Asset Imports */
 import { GlobalStyle } from './GlobalStyles.js'
 import StyledApp from './StyledApp.js'
+import Hangman from './src/components/games/hangman/Hangman.js';
+import RockPaper from './src/components/games/rockPaperScissors/RockPaper.js';
 
 
 const App = () => {
@@ -29,6 +31,12 @@ const App = () => {
             </Route>
             <Route exact path="/tictactoe">
               <Tic />
+            </Route>
+            <Route exact path="/hangman">
+              <Hangman />
+            </Route>
+            <Route exact path="/rockpaperscissors" >
+              <RockPaper />
             </Route>
           </Switch>
           <Footer />
