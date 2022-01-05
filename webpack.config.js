@@ -2,12 +2,12 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const htmlPlugin = new HtmlWebPackPlugin({
- template: "./src/index.html",
+ template: "./client/src/index.html",
  filename: "./index.html"
 });
 
 module.exports = {
-  entry: "./src",
+  entry: "./client/src",
   output: {
     path: path.resolve(__dirname, "/"),
     filename: "bundle.js",
@@ -29,11 +29,11 @@ module.exports = {
   },
   resolve: {
     alias: {
-      src: path.resolve(__dirname, './src'),
-      elements: path.resolve(__dirname, './src/components/elements'),
-      modules: path.resolve(__dirname, './src/components/modules'),
-      templates: path.resolve(__dirname, './src/components/templates'),
-      pages: path.resolve(__dirname, './src/components/pages')
+      src: path.resolve(__dirname, './client/src'),
+      elements: path.resolve(__dirname, './client/src/components/elements'),
+      modules: path.resolve(__dirname, './client/src/components/modules'),
+      templates: path.resolve(__dirname, './client/src/components/templates'),
+      pages: path.resolve(__dirname, './client/src/components/pages')
     },
     extensions: ["*", ".js", ".jsx", '.scss', '.css'],
   },
