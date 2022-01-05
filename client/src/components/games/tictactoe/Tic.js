@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import GameSquare from './atoms/gameSquare/GameSquare';
+import Button from '../../atoms/Button/Button';
 
 import StyledTic from './StyledTic';
 
 const Tic = () => {
 
-  const [gamePhase, setGamePhase] = useState("play");
+  const [gamePhase, setGamePhase] = useState("setup");
   const [playerTurn, setPlayerTurn] = useState(0);
   const squares = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -24,8 +25,8 @@ const Tic = () => {
       <div id="setup-box">
         <h4>Select Human or Robotic Opponent</h4>
         <div id="button-wrapper">
-          <button onClick={startGame}>human</button>
-          <button onClick={startGame}>robot</button>
+          <Button onClick={startGame} message="Human" />
+          <Button onClick={startGame} message="Robot" />
         </div>
       </div>
       }
@@ -39,8 +40,8 @@ const Tic = () => {
           {gameBoard}
         </div>
         <div className="game-options">
-          <button>Reset Game</button>
-          <button>Quit Game</button>
+          <Button message="Reset Game" />
+          <Button message="Quit Game" />
         </div>
       </div>
       }
