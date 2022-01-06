@@ -17,7 +17,6 @@ const Tic = () => {
 
   const startGame = () => {
     setGamePhase("play");
-    setPlayerTurn(1);
     gameBoard();
     setGame(squares);
   };
