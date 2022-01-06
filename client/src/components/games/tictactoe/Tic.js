@@ -8,15 +8,19 @@ const Tic = () => {
 
   const [gamePhase, setGamePhase] = useState("setup");
   const [playerTurn, setPlayerTurn] = useState(0);
-  const squares = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const squares = ["", "", "", "", "", "", "", "", ""];
 
   const startGame = () => {
     setGamePhase("play");
     setPlayerTurn(1);
+  };
+
+  const handleTurn = (player) => {
+
   }
 
-  const gameBoard =  squares.map((element) => {
-      return <GameSquare index={element} />
+  const gameBoard = squares.map((element, index) => {
+      return <GameSquare index={index} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} />
     });
 
   return (
