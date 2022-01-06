@@ -29,9 +29,39 @@ const Tic = () => {
     setGame(board);
   };
 
+  const checkForWin = (game, playerTurn) => {
+    console.log(game);
+    let victory = false;
+    const winConditions = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ];
+
+    for (let i = 0; i <= 7; i++) {
+      const winCondition = winConditions[i];
+      const a = game[winCondition[0]];
+      const b = game[winCondition[1]];
+      const c = game[winCondition[2]];
+      if (a === "" || b === "" || c === "") {
+        continue;
+      }
+      if (a === b && b === c) {
+        victory = true;
+        console.log("the game is over!", playerTurn, "is victorios")
+        break;
+      }
+    }
+  }
+
   const handleTurn = () => {
-    // updateBoard(squareSelected);
-    // checkForWin(squares, player);
+    updateBoard(squareSelected);
+    checkForWin(game, playerTurn);
   };
 
 
@@ -49,7 +79,7 @@ const Tic = () => {
   };
 
   useEffect(() => {
-    updateBoard(squareSelected);
+    handleTurn();
   }, [playerTurn]);
 
   return (
