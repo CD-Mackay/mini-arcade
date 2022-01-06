@@ -10,17 +10,23 @@ const Tic = () => {
   const [gamePhase, setGamePhase] = useState("setup");
   const [playerTurn, setPlayerTurn] = useState(1);
   const [squareSelected, setSquareSelected] = useState(10);
-  let squares = ["", "", "", "", "", "", "", "", ""];
+  const squares = ["", "", "", "", "", "", "", "", ""];
+  const [game, setGame] = useState([]);
+
+
 
   const startGame = () => {
     setGamePhase("play");
     setPlayerTurn(1);
     gameBoard();
+    setGame(squares);
   };
 
 
   const updateBoard = (index) => {
-    squares[index] = playerTurn;
+    let board = [...game];
+    board[index] = playerTurn;
+    setGame(board);
   };
 
   const handleTurn = () => {
@@ -41,6 +47,10 @@ const Tic = () => {
       setPlayerTurn={setPlayerTurn} />
     });
   };
+
+  useEffect(() => {
+    updateBoard(squareSelected);
+  }, [playerTurn]);
 
   return (
     <StyledTic>
