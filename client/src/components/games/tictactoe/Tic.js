@@ -6,21 +6,28 @@ import StyledTic from './StyledTic';
 
 const Tic = () => {
 
-  const [gamePhase, setGamePhase] = useState("setup");
-  const [playerTurn, setPlayerTurn] = useState(0);
-  const squares = ["", "", "", "", "", "", "", "", ""];
+  const [gamePhase, setGamePhase] = useState("play");
+  const [playerTurn, setPlayerTurn] = useState(1);
+  let squares = ["", "", "", "", "", "", "", "", ""];
 
   const startGame = () => {
     setGamePhase("play");
     setPlayerTurn(1);
   };
 
-  const handleTurn = (player) => {
+  const checkForWin = (squares, player) => {
 
   }
 
+  const handleTurn = () => {
+    checkForWin(squares, player);
+  }
+
+
+
+
   const gameBoard = squares.map((element, index) => {
-      return <GameSquare index={index} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} />
+      return <GameSquare index={index} key={index} playerTurn={playerTurn} setPlayerTurn={setPlayerTurn} />
     });
 
   return (

@@ -21,7 +21,6 @@ const GameSquare = ({index, playerTurn, setPlayerTurn}) => {
   return (
     <StyledGameSquare id={`game-square-${index}`} onClick={handleSquareSelect}>
       {selected && <p>{player == 1 ? "x" : "o"}</p>}
-      
     </StyledGameSquare>
   )
 };
