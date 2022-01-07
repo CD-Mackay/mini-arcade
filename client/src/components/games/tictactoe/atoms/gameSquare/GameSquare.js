@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 
 import StyledGameSquare from './StyledGameSquare';
 
-const GameSquare = ({index}) => {
+const GameSquare = ({index, playerTurn, setPlayerTurn, setSquareSelected}) => {
 
   const [selected, setSelected] = useState(false);
-  const [player, setPlayer] = useState(0);
+
+
+ const handleSquareSelect = () => {
+   setSquareSelected(index);
+   setSelected(playerTurn);
+  };
 
   return (
-    <StyledGameSquare id={`game-square-${index}`}>
-      <p>I am GameSquare</p>
+    <StyledGameSquare id={`game-square-${index}`} onClick={handleSquareSelect}>
+      {selected && <p>{selected == 1 ? "x" : "o"}</p>}
     </StyledGameSquare>
   )
 };
