@@ -8,7 +8,7 @@ import StyledTic from './StyledTic';
 const Tic = () => {
 
   const [gamePhase, setGamePhase] = useState("setup");
-  const [playerTurn, setPlayerTurn] = useState(1);
+  const [playerTurn, setPlayerTurn] = useState(0);
   const [squareSelected, setSquareSelected] = useState(null);
   const squares = ["", "", "", "", "", "", "", "", ""];
   const [game, setGame] = useState([]);
@@ -26,10 +26,11 @@ const Tic = () => {
     let board = [...game];
     board[index] = playerTurn;
     setGame(board);
+    checkForWin(board, playerTurn)
   };
 
   const checkForWin = (game, playerTurn) => {
-    console.log(game);
+    console.log("checkForWin", game);
     let victory = false;
     const winConditions = [
       [0, 1, 2],
@@ -59,8 +60,7 @@ const Tic = () => {
   }
 
   const handleTurn = () => {
-    updateBoard(squareSelected);
-    checkForWin(game, playerTurn);
+      updateBoard(squareSelected);
     playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
   };
 
@@ -69,12 +69,13 @@ const Tic = () => {
 
   const gameBoard = () => {
    return squares.map((element, index) => {
-      return <GameSquare 
+     return <GameSquare 
       index={index} 
       key={index} 
       playerTurn={playerTurn} 
       setSquareSelected={setSquareSelected}
-      setPlayerTurn={setPlayerTurn} />
+      setPlayerTurn={setPlayerTurn} 
+      />
     });
   };
 
