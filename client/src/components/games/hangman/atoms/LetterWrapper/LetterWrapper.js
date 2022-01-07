@@ -4,10 +4,12 @@ import React from 'react';
 // Component Imports
 import StyledLetterWrapper from './StyledLetterWrapper';
 
-const LetterWrapper = () => {
+const LetterWrapper = ({letter}) => {
   return (
     <StyledLetterWrapper>
-      <p>I am LetterWrapper</p>
+      <div>
+       <p> {letter}</p>
+        </div>
     </StyledLetterWrapper>
   )
 };
