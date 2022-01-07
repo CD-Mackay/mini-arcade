@@ -64,11 +64,17 @@ const Tic = () => {
     playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
   };
 
+  const resetGame = () => {
+    console.log("reset");
+    setGamePhase("setup");
+    setVictory(0);
+  };
+
 
 
 
   const gameBoard = () => {
-   return squares.map((element, index) => {
+      return squares.map((element, index) => {
      return <GameSquare 
       index={index} 
       key={index} 
@@ -102,10 +108,10 @@ const Tic = () => {
           {victory !== 0 && <p>Player {victory} is victorious! </p>}
         </div>
         <div className="game-grid">
-          {gameBoard()}
+          {gamePhase === "play" && gameBoard()}
         </div>
         <div className="game-options">
-          <Button message="Reset Game" />
+          <Button message="Reset Game" onClick={() => resetGame()} />
           <Button message="Quit Game" />
         </div>
       </div>

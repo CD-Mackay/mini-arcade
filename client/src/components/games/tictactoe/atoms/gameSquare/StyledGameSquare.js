@@ -8,7 +8,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
   p {
-    font-size: 42px;
+    font-size: 46px;
   }
 :hover {
   background: #8d1b1f;
