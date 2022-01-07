@@ -8,8 +8,10 @@ const GameSquare = ({index, playerTurn, setPlayerTurn, setSquareSelected}) => {
 
 
  const handleSquareSelect = () => {
-   setSquareSelected(index);
-   setSelected(playerTurn);
+   if (!selected) {
+    setSquareSelected(index);
+    setSelected(playerTurn);
+   }
   };
 
   return (

@@ -12,6 +12,7 @@ const Tic = () => {
   const [squareSelected, setSquareSelected] = useState(null);
   const squares = ["", "", "", "", "", "", "", "", ""];
   const [game, setGame] = useState([]);
+  const [victory, setVictory] = useState(0);
 
 
 
@@ -30,8 +31,6 @@ const Tic = () => {
   };
 
   const checkForWin = (game, playerTurn) => {
-    console.log("checkForWin", game);
-    let victory = false;
     const winConditions = [
       [0, 1, 2],
       [3, 4, 5],
@@ -52,8 +51,9 @@ const Tic = () => {
         continue;
       }
       if (a === b && b === c) {
-        victory = true;
-        console.log("the game is over!", playerTurn, "is victorios")
+        if (playerTurn !== 0) {
+          setVictory(playerTurn);
+        }
         break;
       }
     }
@@ -98,7 +98,8 @@ const Tic = () => {
       <div>
         <div id="game-header">
           <h4>The Game is Afoot!</h4>
-          <p>It's currently Player {playerTurn}'s turn</p>
+          {victory == 0 && <p>It's currently Player {playerTurn}'s turn</p>}
+          {victory !== 0 && <p>Player {victory} is victorious! </p>}
         </div>
         <div className="game-grid">
           {gameBoard()}
