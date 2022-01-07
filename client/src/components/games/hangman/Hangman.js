@@ -7,14 +7,14 @@ import StyledHangman from './StyledHangman';
 
 const Hangman = () => {
 
-  const [input, setInput] = useState(null);
+  const [input, setInput] = useState("");
 
 
 
   return (
     <StyledHangman>
       <p>I am Hangman</p>
-      <TextInput setInput={setInput} />
+      <TextInput setInput={setInput} input={input} />
     </StyledHangman>
   )
 };
