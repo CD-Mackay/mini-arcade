@@ -5,13 +5,12 @@ import React, { useState } from 'react';
 import StyledTextInput from './StyledTextInput';
 
 
-const TextInput = () => {
+const TextInput = ({setInput}) => {
 
-  const [input, setInput] = useState(null);
 
   return (
     <StyledTextInput>
-      <input type="text" maxlength="1" onChange={(event) => setInput(event.target.value)} />
+      <input type="text" onChange={(event) => setInput(event.target.value)} />
     </StyledTextInput>
   )
 };
