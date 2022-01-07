@@ -3,11 +3,23 @@ import React from 'react';
 
 // Component Imports
 import StyledWordWrapper from './StyledWordWrapper';
+import LetterWrapper from '../LetterWrapper/LetterWrapper';
 
-const WordWrapper = () => {
+const WordWrapper = ({string}) => {
+
+  const renderString = (string) => {
+    if (string !== "") {
+      return string
+      .split('')
+      .map((element, index) => {
+        return <LetterWrapper key={index} letter={element} />
+      })
+    }
+  };
+
   return (
     <StyledWordWrapper>
-      <p>I am WordWrapper</p>
+      {renderString(string)}
     </StyledWordWrapper>
   )
 };

@@ -8,10 +8,11 @@ import StyledTic from './StyledTic';
 const Tic = () => {
 
   const [gamePhase, setGamePhase] = useState("setup");
-  const [playerTurn, setPlayerTurn] = useState(1);
+  const [playerTurn, setPlayerTurn] = useState(0);
   const [squareSelected, setSquareSelected] = useState(null);
   const squares = ["", "", "", "", "", "", "", "", ""];
   const [game, setGame] = useState([]);
+  const [victory, setVictory] = useState(0);
 
 
 
@@ -26,11 +27,10 @@ const Tic = () => {
     let board = [...game];
     board[index] = playerTurn;
     setGame(board);
+    checkForWin(board, playerTurn)
   };
 
   const checkForWin = (game, playerTurn) => {
-    console.log(game);
-    let victory = false;
     const winConditions = [
       [0, 1, 2],
       [3, 4, 5],
@@ -51,30 +51,37 @@ const Tic = () => {
         continue;
       }
       if (a === b && b === c) {
-        victory = true;
-        console.log("the game is over!", playerTurn, "is victorios")
+        if (playerTurn !== 0) {
+          setVictory(playerTurn);
+        }
         break;
       }
     }
   }
 
   const handleTurn = () => {
-    updateBoard(squareSelected);
-    checkForWin(game, playerTurn);
+      updateBoard(squareSelected);
     playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
+  };
+
+  const resetGame = () => {
+    console.log("reset");
+    setGamePhase("setup");
+    setVictory(0);
   };
 
 
 
 
   const gameBoard = () => {
-   return squares.map((element, index) => {
-      return <GameSquare 
+      return squares.map((element, index) => {
+     return <GameSquare 
       index={index} 
       key={index} 
       playerTurn={playerTurn} 
       setSquareSelected={setSquareSelected}
-      setPlayerTurn={setPlayerTurn} />
+      setPlayerTurn={setPlayerTurn} 
+      />
     });
   };
 
@@ -97,13 +104,14 @@ const Tic = () => {
       <div>
         <div id="game-header">
           <h4>The Game is Afoot!</h4>
-          <p>It's currently Player {playerTurn}'s turn</p>
+          {victory == 0 && <p>It's currently Player {playerTurn}'s turn</p>}
+          {victory !== 0 && <p>Player {victory} is victorious! </p>}
         </div>
         <div className="game-grid">
-          {gameBoard()}
+          {gamePhase === "play" && gameBoard()}
         </div>
         <div className="game-options">
-          <Button message="Reset Game" />
+          <Button message="Reset Game" onClick={() => resetGame()} />
           <Button message="Quit Game" />
         </div>
       </div>
