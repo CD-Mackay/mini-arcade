@@ -1,12 +1,15 @@
 // Library Imports
-import React from 'react';
+import React, { useState } from 'react';
 
 // Component Imports
 import StyledLetterWrapper from './StyledLetterWrapper';
 
 const LetterWrapper = ({letter}) => {
+
+  const [displayLetter, setDisplayLetter] = useState(false);
+
   return (
-    <StyledLetterWrapper>
+    <StyledLetterWrapper display={displayLetter.toString()}>
       <div>
        <p> {letter}</p>
         </div>
