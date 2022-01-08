@@ -27,12 +27,23 @@ const Hangman = () => {
     startGame();
   }, []);
 
+  const handlePickLetter = () => {
+    let string = gameString.split('');
+    for (const element of string) {
+      if (element == input) {
+        console.log("true");
+        return true;
+      }
+    } console.log("false");
+    return false;
+  };
+
 
   return (
     <StyledHangman>
       <p>I am Hangman</p>
       <WordWrapper string={gameString} />
-      <TextInput setInput={setInput} input={input} />
+      <TextInput setInput={setInput} input={input} onSubmit={handlePickLetter} />
     </StyledHangman>
   )
 };
