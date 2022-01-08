@@ -10,9 +10,8 @@ const WordWrapper = ({string}) => {
   const renderString = (string) => {
     if (string !== "") {
       return string
-      .split('')
       .map((element, index) => {
-        return <LetterWrapper key={index} letter={element} />
+        return <LetterWrapper key={index} letter={element.value} selected={element.selected} />
       })
     }
   };
