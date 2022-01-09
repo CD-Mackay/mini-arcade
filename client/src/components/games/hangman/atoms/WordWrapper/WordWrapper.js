@@ -1,5 +1,5 @@
 // Library Imports
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Component Imports
 import StyledWordWrapper from './StyledWordWrapper';
@@ -15,6 +15,7 @@ const WordWrapper = ({string}) => {
       })
     }
   };
+
 
   return (
     <StyledWordWrapper>

@@ -10,8 +10,8 @@ const Hangman = () => {
 
   const strings = ["ubiquitous", "mendacious", "polyglottal", "grapefruit", "donkey", "swamp", "indigenous", "inexpensive"];
 
-  const [gameString, setGameString] = useState("");
-  const [input, setInput] = useState([]);
+  const [gameString, setGameString] = useState([]);
+  const [input, setInput] = useState("");
 
   const pickString = () => {
     const max = Math.floor(strings.length);
@@ -29,18 +29,32 @@ const Hangman = () => {
     pickString();
   };
 
-  useEffect(() => {
-    startGame();
-  }, []);
-
   const validateLetter = () => {
-    let string = gameString.split('');
-    for (const element of string) {
-      if (element == input) {
+    for (const element of gameString) {
+      if (element.value == input) {
         return true;
       }
     }  return false;
   };
+
+  const handleTurn = () => {
+    if (validateLetter()) {
+      let newGameString = [...gameString];
+      for (const letter of newGameString) {
+        if (letter.value == input) {
+          letter.selected = true;
+        }
+      } setGameString(newGameString);
+    } else {
+      console.log("not a letter homeslice");
+      setInput("");
+    }
+  };
+
+
+  useEffect(() => {
+    startGame();
+  }, []);
 
 
   return (

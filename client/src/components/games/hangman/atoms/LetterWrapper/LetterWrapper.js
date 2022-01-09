@@ -6,8 +6,7 @@ import StyledLetterWrapper from './StyledLetterWrapper';
 
 const LetterWrapper = ({letter, selected}) => {
 
-  const [displayLetter, setDisplayLetter] = useState(false);
-  const [letterSelected, setLetterSelected] = useState(selected);
+  const [displayLetter, setDisplayLetter] = useState(selected);
 
   return (
     <StyledLetterWrapper display={displayLetter.toString()}>
