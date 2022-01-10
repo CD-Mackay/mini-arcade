@@ -55,8 +55,10 @@ const Tic = () => {
           setVictory(playerTurn);
         }
         break;
+      } if (!game.includes("")) {
+        setVictory(3);
       }
-    }
+    } 
   }
 
   const handleTurn = () => {
@@ -105,7 +107,8 @@ const Tic = () => {
         <div id="game-header">
           <h4>The Game is Afoot!</h4>
           {victory == 0 && <p>It's currently Player {playerTurn}'s turn</p>}
-          {victory !== 0 && <p>Player {victory} is victorious! </p>}
+          {(victory == 1 || victory == 2) && <p>Player {victory} is victorious! </p>}
+          {victory == 3 && <p>Draw</p>}
         </div>
         <div className="game-grid">
           {gamePhase === "play" && gameBoard()}
