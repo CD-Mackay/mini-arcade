@@ -1,10 +1,11 @@
 // Library Imports
 import React, { useEffect, useState } from 'react';
-import TextInput from './atoms/TextInput/TextInput';
-import WordWrapper from './atoms/WordWrapper/WordWrapper';
 
 // Component Imports
 import StyledHangman from './StyledHangman';
+import Button from '../../atoms/Button/Button';
+import TextInput from './atoms/TextInput/TextInput';
+import WordWrapper from './atoms/WordWrapper/WordWrapper';
 
 const Hangman = () => {
 
@@ -12,6 +13,7 @@ const Hangman = () => {
 
   const [gameString, setGameString] = useState([]);
   const [input, setInput] = useState("");
+  const [gamePhase, setGamePhase] = useState("play");
 
   const pickString = () => {
     const max = Math.floor(strings.length);
@@ -29,6 +31,11 @@ const Hangman = () => {
     pickString();
   };
 
+  const resetGame = () => {
+    setGamePhase("play");
+    startGame();
+  }
+
   const validateLetter = () => {
     for (const element of gameString) {
       if (element.value == input) {
@@ -45,7 +52,8 @@ const Hangman = () => {
         console.log(incrementer, gameString.length)
       } 
     } if (incrementer == gameString.length) {
-      console.log("you have won!")
+      console.log("you have won!");
+      setGamePhase("finished");
       return true;
     } else {
       return false;
@@ -76,8 +84,17 @@ const Hangman = () => {
   return (
     <StyledHangman>
       <p>I am Hangman</p>
-      <WordWrapper string={gameString} />
-      <TextInput setInput={setInput} input={input} onSubmit={handleTurn} />
+      {gamePhase == "play" &&
+        <div>
+          <WordWrapper string={gameString} />
+          <TextInput setInput={setInput} input={input} onSubmit={handleTurn} />
+        </div>
+      }
+      <div id="finished-menu">
+        <Button message="New Game" onClick={resetGame} />
+        <Button message="Back to Home"  />
+      </div>
+      
     </StyledHangman>
   )
 };
