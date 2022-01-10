@@ -13,7 +13,7 @@ const Hangman = () => {
 
   const [gameString, setGameString] = useState([]);
   const [input, setInput] = useState("");
-  const [gameFinish, setGameFinish] = useState(false);
+  const [gamePhase, setGamePhase] = useState("play");
   const [failedGuesses, setFailedGuesses] = useState(0);
 
   const pickString = () => {
@@ -33,7 +33,6 @@ const Hangman = () => {
   };
 
   const resetGame = () => {
-    setGamePhase("play");
     startGame();
   }
 
@@ -54,11 +53,18 @@ const Hangman = () => {
       } 
     } if (incrementer == gameString.length) {
       console.log("you have won!");
-      setGameFinish(true);
+      setGamePhase("win");
       return true;
     } else {
       return false;
     }
+  };
+
+  const checkForLoss = () => {
+    if (failedGuesses > 5) {
+      setGamePhase("loss")
+      return true;
+    } return false;
   }
 
   const handleTurn = () => {
@@ -77,6 +83,7 @@ const Hangman = () => {
       guesses++;
       setFailedGuesses(guesses);
       setInput("");
+      checkForLoss();
     }
   };
 
@@ -90,7 +97,8 @@ const Hangman = () => {
     <StyledHangman>
         <div id="game-wrapper">
           <h4>Welcome to HangMan!</h4>
-          <h5>{gameFinish && "Congratulations!"}</h5>
+          <h5>{gamePhase == "win" && "Congratulations!"}</h5>
+          <h5>{gamePhase == "loss" && "You have been hanged"}</h5>
           <WordWrapper string={gameString} />
           <TextInput setInput={setInput} input={input} onSubmit={handleTurn} />
           <div id="finished-menu">
