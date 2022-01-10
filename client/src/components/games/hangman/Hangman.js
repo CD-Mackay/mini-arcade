@@ -15,7 +15,7 @@ const Hangman = () => {
   const [gameString, setGameString] = useState([]);
   const [input, setInput] = useState("");
   const [gamePhase, setGamePhase] = useState("play");
-  const [failedGuesses, setFailedGuesses] = useState(0);
+  const [failedGuesses, setFailedGuesses] = useState([]);
 
   const pickString = () => {
     const max = Math.floor(strings.length);
@@ -79,9 +79,8 @@ const Hangman = () => {
       setInput("");
       checkForWin();
     } else {
-      let guesses = failedGuesses;
-      console.log(guesses);
-      guesses++;
+      let guesses = [...failedGuesses];
+      guesses.push(input);
       setFailedGuesses(guesses);
       setInput("");
       checkForLoss();
@@ -107,7 +106,7 @@ const Hangman = () => {
             <Button message="Back to Home"  />
           </div>
           <div id="letter-graveyard">
-            <DisplayWrong />
+            <DisplayWrong wrong={failedGuesses} />
           </div>
         </div>
       
