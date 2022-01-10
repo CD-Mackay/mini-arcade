@@ -1,10 +1,17 @@
 import styled from 'styled-components';
 
 const StyledHangman = styled.section`
-#finished-menu {
+width: 80vw;
+margin: 0 auto;
+#game-wrapper {
   display: flex;
-  Button {
-    margin: 5px;
+  flex-direction: column;
+  align-items: center;
+  #finished-menu {
+    display: flex;
+    Button {
+      margin: 5px;
+    }
   }
 }
 `

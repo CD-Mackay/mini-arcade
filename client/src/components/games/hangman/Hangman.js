@@ -83,17 +83,15 @@ const Hangman = () => {
 
   return (
     <StyledHangman>
-      <p>I am Hangman</p>
-      {gamePhase == "play" &&
-        <div>
+        <div id="game-wrapper">
+          <h4>Welcome to HangMan!</h4>
           <WordWrapper string={gameString} />
           <TextInput setInput={setInput} input={input} onSubmit={handleTurn} />
+          <div id="finished-menu">
+            <Button message="New Game" onClick={resetGame} />
+            <Button message="Back to Home"  />
+          </div>
         </div>
-      }
-      <div id="finished-menu">
-        <Button message="New Game" onClick={resetGame} />
-        <Button message="Back to Home"  />
-      </div>
       
     </StyledHangman>
   )

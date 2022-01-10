@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 // Component Imports
 import StyledTextInput from './StyledTextInput';
+import Button from '../../../../atoms/Button/Button';
 
 
 const TextInput = ({setInput, input, onSubmit}) => {
@@ -15,8 +16,8 @@ const TextInput = ({setInput, input, onSubmit}) => {
 
   return (
     <StyledTextInput>
-      <input type="text" value={input} onChange={(event) => handleSetInput(event.target.value)} />
-      <button onClick={onSubmit}>hello</button>
+      <input placeholder="guess a letter" type="text" value={input} onChange={(event) => handleSetInput(event.target.value)} />
+      <Button message="Ready?" onClick={onSubmit} />
     </StyledTextInput>
   )
 };
