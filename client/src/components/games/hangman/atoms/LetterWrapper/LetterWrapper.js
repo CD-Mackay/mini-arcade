@@ -1,13 +1,16 @@
 // Library Imports
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Component Imports
 import StyledLetterWrapper from './StyledLetterWrapper';
 
 const LetterWrapper = ({letter, selected}) => {
 
-  const [displayLetter, setDisplayLetter] = useState(false);
-  const [letterSelected, setLetterSelected] = useState(selected);
+  const [displayLetter, setDisplayLetter] = useState(selected);
+
+  useEffect(() => {
+    setDisplayLetter(selected);
+  }, [selected]);
 
   return (
     <StyledLetterWrapper display={displayLetter.toString()}>
