@@ -6,6 +6,7 @@ import StyledHangman from './StyledHangman';
 import Button from '../../atoms/Button/Button';
 import TextInput from './atoms/TextInput/TextInput';
 import WordWrapper from './atoms/WordWrapper/WordWrapper';
+import DisplayWrong from './atoms/DisplayWrong/DisplayWrong';
 
 const Hangman = () => {
 
@@ -104,6 +105,9 @@ const Hangman = () => {
           <div id="finished-menu">
             <Button message="New Game" onClick={resetGame} />
             <Button message="Back to Home"  />
+          </div>
+          <div id="letter-graveyard">
+            <DisplayWrong />
           </div>
         </div>
       
