@@ -7,6 +7,8 @@ import Button from '../../atoms/Button/Button';
 import TextInput from './atoms/TextInput/TextInput';
 import WordWrapper from './atoms/WordWrapper/WordWrapper';
 import DisplayWrong from './atoms/DisplayWrong/DisplayWrong';
+import { Link } from 'react-router-dom';
+
 
 const Hangman = () => {
 
@@ -103,7 +105,9 @@ const Hangman = () => {
           <TextInput setInput={setInput} input={input} onSubmit={handleTurn} />
           <div id="finished-menu">
             <Button message="New Game" onClick={resetGame} />
-            <Button message="Back to Home"  />
+            <Link to="/">
+              <Button message="Back to Home"  />
+            </Link>
           </div>
           <div id="letter-graveyard">
             <DisplayWrong wrong={failedGuesses} />
