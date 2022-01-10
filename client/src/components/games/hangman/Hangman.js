@@ -14,6 +14,7 @@ const Hangman = () => {
   const [gameString, setGameString] = useState([]);
   const [input, setInput] = useState("");
   const [gamePhase, setGamePhase] = useState("play");
+  const [failedGuesses, setFailedGuesses] = useState(0);
 
   const pickString = () => {
     const max = Math.floor(strings.length);
@@ -71,6 +72,10 @@ const Hangman = () => {
       setInput("");
       checkForWin();
     } else {
+      let guesses = failedGuesses;
+      console.log(guesses);
+      guesses++;
+      setFailedGuesses(guesses);
       setInput("");
     }
   };
