@@ -11,7 +11,7 @@ const TextInput = ({setInput, input, onSubmit}) => {
     const newInput = value.slice(-1);
     setInput("");
     setInput(newInput);
-  }
+  };
 
   return (
     <StyledTextInput>

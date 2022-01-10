@@ -6,7 +6,7 @@ border-bottom: 2px solid #00FFFF;
 div {
   p {
     font-size: 42px;
-    color: ${props => props.display ? "#24282f" : "#00FFFFF"};
+    color: ${props => props.display == "true" ? "#00FFFFF" : "#24282f"};
     margin-bottom: 2px;
     padding: 12px;
   }

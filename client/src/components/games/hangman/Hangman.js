@@ -45,6 +45,7 @@ const Hangman = () => {
           letter.selected = true;
         }
       } setGameString(newGameString);
+      setInput("");
     } else {
       console.log("not a letter homeslice");
       setInput("");
@@ -61,7 +62,7 @@ const Hangman = () => {
     <StyledHangman>
       <p>I am Hangman</p>
       <WordWrapper string={gameString} />
-      <TextInput setInput={setInput} input={input} onSubmit={validateLetter} />
+      <TextInput setInput={setInput} input={input} onSubmit={handleTurn} />
     </StyledHangman>
   )
 };
