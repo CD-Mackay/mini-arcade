@@ -11,10 +11,15 @@ import StyledHeader from './StyledHeader';
 const Header = () => {
   return (
     <StyledHeader>
-      <h1>Behold! The mini Arcade!</h1>
-      <Link to="/">
-        <Button message="Return to Home" />
-      </Link>
+      <div />
+      <div>
+        <h1>Behold! The mini Arcade!</h1>
+      </div>
+      <div id="button-wrapper">
+        <Link to="/">
+          <Button message="Return to Home" />
+        </Link>
+      </div>
     </StyledHeader>
   )
 };
