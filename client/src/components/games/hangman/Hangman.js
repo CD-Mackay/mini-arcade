@@ -37,6 +37,21 @@ const Hangman = () => {
     }  return false;
   };
 
+  const checkForWin = () => {
+    let incrementer = 0;
+    for (const element of gameString) {
+      if (element.selected == true) {
+        incrementer++;
+        console.log(incrementer, gameString.length)
+      } 
+    } if (incrementer == gameString.length) {
+      console.log("you have won!")
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   const handleTurn = () => {
     if (validateLetter()) {
       let newGameString = [...gameString];
@@ -46,8 +61,8 @@ const Hangman = () => {
         }
       } setGameString(newGameString);
       setInput("");
+      checkForWin();
     } else {
-      console.log("not a letter homeslice");
       setInput("");
     }
   };
