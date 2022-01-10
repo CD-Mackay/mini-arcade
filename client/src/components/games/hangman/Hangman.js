@@ -13,7 +13,7 @@ const Hangman = () => {
 
   const [gameString, setGameString] = useState([]);
   const [input, setInput] = useState("");
-  const [gamePhase, setGamePhase] = useState("play");
+  const [gameFinish, setGameFinish] = useState(false);
   const [failedGuesses, setFailedGuesses] = useState(0);
 
   const pickString = () => {
@@ -54,7 +54,7 @@ const Hangman = () => {
       } 
     } if (incrementer == gameString.length) {
       console.log("you have won!");
-      setGamePhase("finished");
+      setGameFinish(true);
       return true;
     } else {
       return false;
@@ -90,6 +90,7 @@ const Hangman = () => {
     <StyledHangman>
         <div id="game-wrapper">
           <h4>Welcome to HangMan!</h4>
+          <h5>{gameFinish && "Congratulations!"}</h5>
           <WordWrapper string={gameString} />
           <TextInput setInput={setInput} input={input} onSubmit={handleTurn} />
           <div id="finished-menu">
