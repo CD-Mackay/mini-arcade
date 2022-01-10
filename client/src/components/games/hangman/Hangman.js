@@ -63,9 +63,10 @@ const Hangman = () => {
     }
   };
 
-  const checkForLoss = () => {
-    if (failedGuesses > 5) {
-      setGamePhase("loss")
+  const checkForLoss = (guesses) => {
+    if (guesses.length > 5) {
+      console.log("you loser")
+      setGamePhase("loss");
       return true;
     } return false;
   }
@@ -85,7 +86,7 @@ const Hangman = () => {
       guesses.push(input);
       setFailedGuesses(guesses);
       setInput("");
-      checkForLoss();
+      checkForLoss(guesses);
     }
   };
 
