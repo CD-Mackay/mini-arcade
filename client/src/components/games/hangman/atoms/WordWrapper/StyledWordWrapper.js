@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 const StyledWordWrapper = styled.div`
-display: flex;
-justify-content: space-between;
-width: 50vw;
+width: 80vw;
 margin-bottom: 10px;
+p {
+  text-align: center;
+}
 `
 
 export default StyledWordWrapper;
