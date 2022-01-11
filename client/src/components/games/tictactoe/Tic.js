@@ -19,7 +19,7 @@ const Tic = () => {
 
   const startGame = () => {
     setGamePhase("play");
-    gameBoard();
+    // gameBoard();
     setGame(squares);
   };
 
@@ -29,11 +29,11 @@ const Tic = () => {
   };
 
   const handleComputerTurn = () => {
+    console.log("computerTurn");
     let activeBoard = [...game];
     for (let i = 0; i <= activeBoard.length; i++) {
       if (activeBoard[i] == "") {
         setSquareSelected(i);
-        updateBoard(i);
       }
     }
   }
@@ -77,12 +77,15 @@ const Tic = () => {
     } 
   }
 
-  const handleTurn = () => {
-    updateBoard(squareSelected);
-    playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
+  const handleTurn = (index) => {
+    updateBoard(index);
     if (computerPlayer && playerTurn == 1) {
-      console.log("computerturn");
+      setPlayerTurn(2);
       handleComputerTurn();
+    } else if (computerPlayer && playerTurn == 2) {
+      setPlayerTurn(1);
+    } else if (!computerPlayer) {
+      playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
     }
   };
 
@@ -91,8 +94,6 @@ const Tic = () => {
     setGamePhase("setup");
     setVictory(0);
   };
-
-
 
 
   const gameBoard = () => {
@@ -109,7 +110,7 @@ const Tic = () => {
   };
 
   useEffect(() => {
-    handleTurn();
+    handleTurn(squareSelected);
   }, [squareSelected]);
 
   return (
@@ -131,7 +132,7 @@ const Tic = () => {
           {(victory == 1 || victory == 2) && <p>Player {victory} is victorious! </p>}
           {victory == 3 && <p>Draw</p>}
         </div>
-        <div className="game-grid">
+        <div className="game-grid" >
           {gamePhase === "play" && gameBoard()}
         </div>
         <div className="game-options">
