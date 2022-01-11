@@ -83,6 +83,7 @@ const Tic = () => {
       setPlayerTurn(2);
       handleComputerTurn();
     } else if (computerPlayer && playerTurn == 2) {
+      console.log("human turn");
       setPlayerTurn(1);
     } else if (!computerPlayer) {
       playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
