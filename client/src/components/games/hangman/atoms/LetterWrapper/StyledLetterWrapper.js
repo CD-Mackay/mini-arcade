@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
 const StyledLetterWrapper = styled.div`
-margin: 2px;
+margin: 5px;
 border-bottom: 2px solid #00FFFF;
-div {
+width: 70px;
+height: 100px;
   p {
     font-size: 42px;
-    color: ${props => props.display == "true" ? "#00FFFFF" : "#24282f"};
+    display: ${props => props.display === "true" ? "block" : "none" };
     margin-bottom: 2px;
     padding: 12px;
   }
-}
 
 `
 
