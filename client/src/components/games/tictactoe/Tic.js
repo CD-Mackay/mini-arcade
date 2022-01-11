@@ -30,9 +30,11 @@ const Tic = () => {
   const handleComputerTurn = () => {
     console.log("computerTurn");
     let activeBoard = [...game];
-    for (let i = 0; i <= activeBoard.length; i++) {
-      if (activeBoard[i] == "") {
+    console.log("activeBoard", activeBoard);
+    for (let i = 0; i < activeBoard.length; i++) {
+      if (activeBoard[i] === "") {
         setSquareSelected(i);
+        return;
       }
     }
   }
@@ -40,9 +42,11 @@ const Tic = () => {
 
   const updateBoard = (index) => {
     let board = [...game];
+    console.log("pre-board", board);
     board[index] = playerTurn;
+    console.log("board", board);
     setGame(board);
-    checkForWin(board, playerTurn)
+    checkForWin(board, playerTurn);
   };
 
   const checkForWin = (game, playerTurn) => {
@@ -75,14 +79,13 @@ const Tic = () => {
         setVictory(3);
       }
     } 
-  }
+  };
 
-  const handleTurn = (index) => {
-    updateBoard(index);
-    if (computerPlayer && playerTurn == 1) {
-      setPlayerTurn(2);
-      handleComputerTurn();
-    } else if (computerPlayer && playerTurn == 2) {
+  const handleTurn = () => {
+    if (computerPlayer && playerTurn === 1) {
+        setPlayerTurn(2);
+        handleComputerTurn();
+    } else if (computerPlayer && playerTurn === 2) {
       console.log("human turn");
       setPlayerTurn(1);
     } else if (!computerPlayer) {
@@ -97,21 +100,27 @@ const Tic = () => {
   };
 
 
-  const gameBoard = game.map((element, index) => {
-     return <GameSquare 
+  const gameBoard = () => {
+    console.log("rendering board");
+     return game.map((element, index) => {
+    return  <GameSquare 
       index={index} 
       key={index} 
       value={element}
       playerTurn={playerTurn} 
       setSquareSelected={setSquareSelected}
-      setPlayerTurn={setPlayerTurn} 
       />
     });
+  }
   ;
 
   useEffect(() => {
-    handleTurn(squareSelected);
+    updateBoard(squareSelected);
   }, [squareSelected]);
+
+  useEffect(() => {
+    handleTurn();
+  }, [game])
 
   return (
     <StyledTic>
@@ -133,7 +142,7 @@ const Tic = () => {
           {victory == 3 && <p>Draw</p>}
         </div>
         <div className="game-grid" >
-          {gameBoard}
+          {gameBoard()}
         </div>
         <div className="game-options">
           <Button message="Reset Game" onClick={() => resetGame()} />

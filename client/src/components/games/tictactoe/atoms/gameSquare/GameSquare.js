@@ -13,7 +13,7 @@ const GameSquare = ({index, setSquareSelected, value}) => {
 
   return (
     <StyledGameSquare id={`game-square-${index}`} onClick={handleSquareSelect}>
-      {value !== "" && <p>{value == 1 ? "x" : "o"}</p>}
+      {value !== "" && <p>{value === 1 ? "x" : "o"}</p>}
     </StyledGameSquare>
   )
 };
