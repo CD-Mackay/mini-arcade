@@ -13,6 +13,7 @@ const Tic = () => {
   const squares = ["", "", "", "", "", "", "", "", ""];
   const [game, setGame] = useState([]);
   const [victory, setVictory] = useState(0);
+  const [computerPlayer, setComputerPlayer] = useState(false);
 
 
 
@@ -21,6 +22,21 @@ const Tic = () => {
     gameBoard();
     setGame(squares);
   };
+
+  const startComputerGame = () => {
+    setComputerPlayer(true);
+    startGame();
+  };
+
+  const handleComputerTurn = () => {
+    let activeBoard = [...game];
+    for (let i = 0; i <= activeBoard.length; i++) {
+      if (activeBoard[i] == "") {
+        setSquareSelected(i);
+        updateBoard(i);
+      }
+    }
+  }
 
 
   const updateBoard = (index) => {
@@ -62,8 +78,12 @@ const Tic = () => {
   }
 
   const handleTurn = () => {
-      updateBoard(squareSelected);
+    updateBoard(squareSelected);
     playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
+    if (computerPlayer && playerTurn == 1) {
+      console.log("computerturn");
+      handleComputerTurn();
+    }
   };
 
   const resetGame = () => {
@@ -80,6 +100,7 @@ const Tic = () => {
      return <GameSquare 
       index={index} 
       key={index} 
+      value={element}
       playerTurn={playerTurn} 
       setSquareSelected={setSquareSelected}
       setPlayerTurn={setPlayerTurn} 
@@ -98,7 +119,7 @@ const Tic = () => {
         <h4>Select Human or Robotic Opponent</h4>
         <div id="button-wrapper">
           <Button onClick={startGame} message="Human" />
-          <Button onClick={startGame} message="Robot" />
+          <Button onClick={startComputerGame} message="Robot" />
         </div>
       </div>
       }

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 import StyledGameSquare from './StyledGameSquare';
 
-const GameSquare = ({index, playerTurn, setPlayerTurn, setSquareSelected}) => {
+const GameSquare = ({index, playerTurn, setPlayerTurn, setSquareSelected, value}) => {
 
   const [selected, setSelected] = useState(false);
+
 
 
  const handleSquareSelect = () => {
