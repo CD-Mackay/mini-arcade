@@ -13,24 +13,44 @@ const Tic = () => {
   const squares = ["", "", "", "", "", "", "", "", ""];
   const [game, setGame] = useState([]);
   const [victory, setVictory] = useState(0);
+  const [computerPlayer, setComputerPlayer] = useState(false);
 
 
 
   const startGame = () => {
     setGamePhase("play");
-    gameBoard();
     setGame(squares);
   };
+
+  const startComputerGame = () => {
+    setComputerPlayer(true);
+    startGame();
+  };
+
+  const handleComputerTurn = () => {
+    console.log("computerTurn");
+    let activeBoard = [...game];
+    console.log("activeBoard", activeBoard);
+    for (let i = 0; i < activeBoard.length; i++) {
+      if (activeBoard[i] === "") {
+        setSquareSelected(i);
+        return;
+      }
+    }
+  }
 
 
   const updateBoard = (index) => {
     let board = [...game];
+    console.log("pre-board", board);
     board[index] = playerTurn;
+    console.log("board", board);
     setGame(board);
-    checkForWin(board, playerTurn)
+    checkForWin(board, playerTurn);
   };
 
   const checkForWin = (game, playerTurn) => {
+    console.log(game);
     const winConditions = [
       [0, 1, 2],
       [3, 4, 5],
@@ -59,11 +79,18 @@ const Tic = () => {
         setVictory(3);
       }
     } 
-  }
+  };
 
   const handleTurn = () => {
-      updateBoard(squareSelected);
-    playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
+    if (computerPlayer && playerTurn === 1) {
+        setPlayerTurn(2);
+        handleComputerTurn();
+    } else if (computerPlayer && playerTurn === 2) {
+      console.log("human turn");
+      setPlayerTurn(1);
+    } else if (!computerPlayer) {
+      playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
+    }
   };
 
   const resetGame = () => {
@@ -73,23 +100,27 @@ const Tic = () => {
   };
 
 
-
-
   const gameBoard = () => {
-      return squares.map((element, index) => {
-     return <GameSquare 
+    console.log("rendering board");
+     return game.map((element, index) => {
+    return  <GameSquare 
       index={index} 
       key={index} 
+      value={element}
       playerTurn={playerTurn} 
       setSquareSelected={setSquareSelected}
-      setPlayerTurn={setPlayerTurn} 
       />
     });
-  };
+  }
+  ;
+
+  useEffect(() => {
+    updateBoard(squareSelected);
+  }, [squareSelected]);
 
   useEffect(() => {
     handleTurn();
-  }, [squareSelected]);
+  }, [game])
 
   return (
     <StyledTic>
@@ -98,7 +129,7 @@ const Tic = () => {
         <h4>Select Human or Robotic Opponent</h4>
         <div id="button-wrapper">
           <Button onClick={startGame} message="Human" />
-          <Button onClick={startGame} message="Robot" />
+          <Button onClick={startComputerGame} message="Robot" />
         </div>
       </div>
       }
@@ -110,8 +141,8 @@ const Tic = () => {
           {(victory == 1 || victory == 2) && <p>Player {victory} is victorious! </p>}
           {victory == 3 && <p>Draw</p>}
         </div>
-        <div className="game-grid">
-          {gamePhase === "play" && gameBoard()}
+        <div className="game-grid" >
+          {gameBoard()}
         </div>
         <div className="game-options">
           <Button message="Reset Game" onClick={() => resetGame()} />

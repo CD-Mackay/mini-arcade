@@ -14,9 +14,9 @@ const LetterWrapper = ({letter, selected}) => {
 
   return (
     <StyledLetterWrapper display={displayLetter.toString()}>
-      <div>
-       <p> {letter}</p>
-        </div>
+      <span>
+        {letter}
+      </span>
     </StyledLetterWrapper>
   )
 };

@@ -19,7 +19,9 @@ const WordWrapper = ({string}) => {
 
   return (
     <StyledWordWrapper>
+      <p>
       {renderString(string)}
+      </p>
     </StyledWordWrapper>
   )
 };
