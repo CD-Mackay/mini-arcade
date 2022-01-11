@@ -19,7 +19,6 @@ const Tic = () => {
 
   const startGame = () => {
     setGamePhase("play");
-    // gameBoard();
     setGame(squares);
   };
 
@@ -47,6 +46,7 @@ const Tic = () => {
   };
 
   const checkForWin = (game, playerTurn) => {
+    console.log(game);
     const winConditions = [
       [0, 1, 2],
       [3, 4, 5],
@@ -97,8 +97,7 @@ const Tic = () => {
   };
 
 
-  const gameBoard = () => {
-      return squares.map((element, index) => {
+  const gameBoard = game.map((element, index) => {
      return <GameSquare 
       index={index} 
       key={index} 
@@ -108,7 +107,7 @@ const Tic = () => {
       setPlayerTurn={setPlayerTurn} 
       />
     });
-  };
+  ;
 
   useEffect(() => {
     handleTurn(squareSelected);
@@ -134,7 +133,7 @@ const Tic = () => {
           {victory == 3 && <p>Draw</p>}
         </div>
         <div className="game-grid" >
-          {gamePhase === "play" && gameBoard()}
+          {gameBoard}
         </div>
         <div className="game-options">
           <Button message="Reset Game" onClick={() => resetGame()} />
