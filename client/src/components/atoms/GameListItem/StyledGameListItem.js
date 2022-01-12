@@ -6,8 +6,7 @@ border-radius: 5px;
 border: 1px solid #00FFFF;
 display: flex;
 flex-direction: column;
-margin: 5px;
-padding: 10px;
+padding: 15px;
 text-align: center;
 a {
    text-decoration: none;
