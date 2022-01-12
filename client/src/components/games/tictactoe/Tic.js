@@ -30,27 +30,6 @@ const Tic = () => {
   const handleComputerTurn = () => {
     console.log("computerTurn");
     let activeBoard = [...game];
-    console.log("activeBoard", activeBoard);
-    for (let i = 0; i < activeBoard.length; i++) {
-      if (activeBoard[i] === "") {
-        setSquareSelected(i);
-        return;
-      }
-    }
-  }
-
-
-  const updateBoard = (index) => {
-    let board = [...game];
-    console.log("pre-board", board);
-    board[index] = playerTurn;
-    console.log("board", board);
-    setGame(board);
-    checkForWin(board, playerTurn);
-  };
-
-  const checkForWin = (game, playerTurn) => {
-    console.log(game);
     const winConditions = [
       [0, 1, 2],
       [3, 4, 5],
@@ -61,6 +40,54 @@ const Tic = () => {
       [0, 4, 8],
       [2, 4, 6]
     ];
+
+    for (let i = 0; i <= 7; i++) {
+      const winCondition = winConditions[i];
+      const a = game[winCondition[0]];
+      const firstNum = winCondition[0];
+      const b = game[winCondition[1]];
+      const secondNum = winCondition[1];
+      const c = game[winCondition[2]];
+      const thirdNum = winCondition[2];
+      let array = [
+        {letter: a, number: firstNum }, {letter: b, number: secondNum}, {letter: c, number: thirdNum}
+      ]; // letter value = selected status of game square, number = index of square
+      console.log("empty winCondition?", a === "" && b === "" && c === "", winCondition);
+      if ((a === 2 || b === 2 || c === 2) && (a !== 1 && b !== 1 && c !== 1)) { // Check if computer has already progressed on winCondition, check for block
+        for (const entry of array) {
+          if (entry.letter === "") { // grab first available square from winCondition
+            setSquareSelected(entry.number);
+            return;
+          }
+        }
+      } else if ((a === "" && b === "" && c === "")) { // check for empty winCondition
+        setSquareSelected(firstNum);
+        return;
+      } else {
+        continue;
+      }
+    } 
+    // Picks first available square, only runs on initial turn
+    for (let i = 0; i < activeBoard.length; i++) {
+      if (activeBoard[i] === "") {
+        setSquareSelected(i);
+        return;
+      }
+    }
+  }
+
+  const checkForWin = (game, playerTurn) => {
+    const winConditions = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6]
+    ];
+    
 
     for (let i = 0; i <= 7; i++) {
       const winCondition = winConditions[i];
@@ -79,6 +106,13 @@ const Tic = () => {
         setVictory(3);
       }
     } 
+  };
+
+  const updateBoard = (index) => {
+    let board = [...game];
+    board[index] = playerTurn;
+    setGame(board);
+    checkForWin(board, playerTurn);
   };
 
   const handleTurn = () => {
