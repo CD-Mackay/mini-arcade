@@ -37,6 +37,7 @@ const Hangman = () => {
   };
 
   const resetGame = () => {
+    setFailedGuesses([]);
     startGame();
   }
 
@@ -55,7 +56,6 @@ const Hangman = () => {
         incrementer++;
       } 
     } if (incrementer == gameString.length) { 
-      console.log("you have won!");
       setGamePhase("win");
       return true;
     } else {
@@ -65,7 +65,6 @@ const Hangman = () => {
 
   const checkForLoss = (guesses) => {
     if (guesses.length > 5) {
-      console.log("you loser")
       setGamePhase("loss");
       return true;
     } return false;
