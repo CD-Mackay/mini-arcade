@@ -5,8 +5,8 @@ import StyledDisplayWrong from './StyledDisplayWrong';
 
 const DisplayWrong = ({wrong}) => {
 
-  const displayLetters = wrong.map((element) => {
-    return <WrongLetter letter={element} />
+  const displayLetters = wrong.map((element, index) => {
+    return <WrongLetter key={index} letter={element} />
   })
   return (
     <StyledDisplayWrong>

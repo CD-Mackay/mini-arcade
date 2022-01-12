@@ -52,7 +52,6 @@ const Hangman = () => {
     for (const element of gameString) {
       if (element.selected == true) {
         incrementer++;
-        console.log(incrementer, gameString.length)
       } 
     } if (incrementer == gameString.length) {
       console.log("you have won!");
