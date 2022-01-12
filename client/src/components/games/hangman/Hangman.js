@@ -53,7 +53,7 @@ const Hangman = () => {
       if (element.selected == true) {
         incrementer++;
       } 
-    } if (incrementer == gameString.length) {
+    } if (incrementer == gameString.length) { 
       console.log("you have won!");
       setGamePhase("win");
       return true;

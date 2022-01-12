@@ -14,6 +14,11 @@ const Tic = () => {
   const [game, setGame] = useState([]);
   const [victory, setVictory] = useState(0);
   const [computerPlayer, setComputerPlayer] = useState(false);
+  const [opponentName, setOpponentName] = useState("");
+
+  const robitNames = [
+    "Bender B. Rodriguez", "BALEX", "SkyNet", "T-1000", "R2D2", "Roy Batty", "Vanessa Powers", "Ultron", "Motoko Kusanagi"
+  ];
 
 
 
@@ -24,6 +29,7 @@ const Tic = () => {
 
   const startComputerGame = () => {
     setComputerPlayer(true);
+    setOpponentName(robitNames[Math.floor(Math.random() * robitNames.length)]);
     startGame();
   };
 
@@ -175,8 +181,9 @@ const Tic = () => {
       <div>
         <div id="game-header">
           <h4>The Game is Afoot!</h4>
-          {victory == 0 && <p>It's currently Player {playerTurn}'s turn</p>}
+          {(victory == 0 && !computerPlayer) && <p>It's currently Player {playerTurn}'s turn</p>}
           {(victory == 1 || victory == 2) && <p>Player {victory} is victorious! </p>}
+          {computerPlayer && <p>Playing against {opponentName}</p>}
           {victory == 3 && <p>Draw</p>}
         </div>
         <div className="game-grid" >
