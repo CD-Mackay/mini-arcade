@@ -7,6 +7,7 @@ import Button from '../../atoms/Button/Button';
 import TextInput from './atoms/TextInput/TextInput';
 import WordWrapper from './atoms/WordWrapper/WordWrapper';
 import DisplayWrong from './atoms/DisplayWrong/DisplayWrong';
+import Gallows from './atoms/Gallows/Gallows';
 import { Link } from 'react-router-dom';
 
 
@@ -101,6 +102,7 @@ const Hangman = () => {
           <h4>Welcome to HangMan!</h4>
           <h5>{gamePhase == "win" && "Congratulations!"}</h5>
           <h5>{gamePhase == "loss" && "You have been hanged"}</h5>
+          <Gallows failed={failedGuesses} />
           <WordWrapper string={gameString} />
           <TextInput setInput={setInput} input={input} onSubmit={handleTurn} />
           <div id="finished-menu">
