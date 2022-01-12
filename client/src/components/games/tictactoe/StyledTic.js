@@ -11,7 +11,7 @@ justify-content: center;
 
 #setup-box {
   h4 {
-    padding: 5px;
+    padding: 10px;
     font-size: 42px;
   }
   #button-wrapper {
@@ -29,7 +29,7 @@ justify-content: center;
 #game-header {
   h4 {
     font-size: 36px;
-    padding: 5px;
+    padding: 10px;
   }
   p {
     font-size: 22px;
