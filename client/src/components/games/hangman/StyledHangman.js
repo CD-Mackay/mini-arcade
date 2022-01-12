@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const StyledHangman = styled.section`
-width: 80vw;
-margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1fr;
 #game-wrapper {
   display: flex;
   flex-direction: column;

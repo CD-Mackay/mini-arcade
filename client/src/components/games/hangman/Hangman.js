@@ -109,10 +109,10 @@ const Hangman = () => {
               <Button message="Back to Home"  />
             </Link>
           </div>
-          <div id="letter-graveyard">
+        </div>
+        <div id="letter-graveyard">
             <DisplayWrong wrong={failedGuesses} />
           </div>
-        </div>
       
     </StyledHangman>
   )

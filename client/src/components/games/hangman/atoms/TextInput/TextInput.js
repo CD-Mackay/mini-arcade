@@ -14,10 +14,17 @@ const TextInput = ({setInput, input, onSubmit}) => {
     setInput(newInput);
   };
 
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    onSubmit();
+  }
+
   return (
     <StyledTextInput>
+      <form onSubmit={(event) => handleFormSubmit(event)}>
       <input placeholder="guess a letter" type="text" value={input} onChange={(event) => handleSetInput(event.target.value)} />
       <Button message="Ready?" onClick={onSubmit} />
+      </form>
     </StyledTextInput>
   )
 };
