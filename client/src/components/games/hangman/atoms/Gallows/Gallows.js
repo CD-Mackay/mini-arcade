@@ -11,6 +11,10 @@ const Gallows = ({failed}) => {
         <div id="right-arm" />
       </div>
       <div id="body" />
+      <div id="legs">
+        <div id="left-leg" />
+        <div id="right-leg" />
+      </div>
     </StyledGallows>
   )
 };

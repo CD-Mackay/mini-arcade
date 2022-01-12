@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 const StyledGallows = styled.div`
-height: 50vh;
+height: 30vh;
 display: flex;
 flex-direction: column;
+padding: 20px;
 #head {
   border: 2px solid #00FFFF;
   width: 50px;
@@ -31,6 +32,20 @@ flex-direction: column;
   border: 1px solid #00FFFF;
   margin: 0 auto;
   opacity: ${props => props.display > 3 ? "1" : "0"};
+}
+#legs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  #left-leg {
+    width: 50px;
+    border: 1px solid #00FFFF;
+    opacity: ${props => props.display > 4 ? "1" : "0"};
+  }
+  #right-leg {
+    width: 50px;
+    border: 1px solid #00FFFF;
+    opacity: ${props => props.display > 5 ? "1" : "0"};
+  }
 }
 `
 
