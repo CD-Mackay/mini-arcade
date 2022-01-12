@@ -12,9 +12,19 @@ const GameList = () => {
   return (
     <StyledGameList>
       <div className="game-wrapper">
-        <GameListItem game="tictactoe" name="Tic-Tac-Toe" />
-        <GameListItem game="hangman" name="Hangman" />
-        <GameListItem game="rockpaperscissors" name="Rock Paper Scissors" />
+        <GameListItem 
+        game="tictactoe" 
+        name="Tic-Tac-Toe"
+        description="Simple, classic, your child can probably beat you. " />
+        <GameListItem 
+        game="hangman" 
+        name="Hangman" 
+        description="Slightly morbid, good for vocabulistics"
+        />
+        <GameListItem 
+        game="rockpaperscissors" 
+        name="Rock Paper Scissors" 
+        description=""/>
         <GameListItem />
         <GameListItem />
         <GameListItem />
