@@ -29,10 +29,12 @@ const RockPaper = () => {
 
   return (
     <StyledRockPaper>
-      <ThrowSelect 
-      input={input} 
-      setInput={setInput} />
-      <Button onClick={handleGame} message="Begin!" />
+      <div>
+        <ThrowSelect 
+        input={input} 
+        setInput={setInput} />
+        <Button onClick={handleGame} message="Begin!" />
+      </div>
       <OpponentThrow />
     </StyledRockPaper>
   )

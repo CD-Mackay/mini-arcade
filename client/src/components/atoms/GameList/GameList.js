@@ -24,7 +24,7 @@ const GameList = () => {
         <GameListItem 
         game="rockpaperscissors" 
         name="Rock Paper Scissors" 
-        description=""/>
+        description="For those who can't do"/>
         <GameListItem />
         <GameListItem />
         <GameListItem />
