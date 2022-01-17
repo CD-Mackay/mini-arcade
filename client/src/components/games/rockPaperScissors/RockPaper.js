@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ThrowSelect from './atoms/ThrowSelect/ThrowSelect';
 
 import StyledRockPaper from './StyledRockPaper';
 
 const RockPaper = () => {
+
+  const [input, setInput] = useState("");
+
   return (
     <StyledRockPaper>
-      <p>I am RockPaperScissors</p>
+      <ThrowSelect />
     </StyledRockPaper>
   )
 };
