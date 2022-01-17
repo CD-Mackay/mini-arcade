@@ -20,6 +20,7 @@ const RockPaper = () => {
        console.log("you win");
        return true;
     } else {
+      console.log("draw!")
       return "draw"
     }
   };
