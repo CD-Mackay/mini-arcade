@@ -2,14 +2,8 @@ import React, { useState } from 'react';
 
 import StyledThrowSelect from './StyledThrowSelect';
 
-const ThrowSelect = () => {
+const ThrowSelect = ({input, setInput}) => {
 
-  const [input, setInput] = useState("");
-
-  const handleSelect = (string) => {
-    console.log(string);
-    setInput(string);
-  }
 
 
   return (
@@ -19,7 +13,7 @@ const ThrowSelect = () => {
         type="radio" 
         name="throw-select" 
         value="rock"
-        onChange={(event) => handleSelect(event.target.value)} 
+        onChange={(event) => setInput(event.target.value)} 
         />
         <label htmlFor="rock">rock</label>
         <input 
