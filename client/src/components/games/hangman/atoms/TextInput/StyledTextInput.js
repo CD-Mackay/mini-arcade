@@ -10,6 +10,7 @@ form {
     padding: 5px;
     border-radius: 5px;
     font-size: 20px;
+    color: #00FFFF;
   }
   Button {
     margin: 5px;
