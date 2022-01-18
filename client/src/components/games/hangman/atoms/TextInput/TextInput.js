@@ -12,34 +12,43 @@ const TextInput = ({setInput, input, onSubmit}) => {
 
   const [error, setError] = useState(false);
 
+
+
   const handleSetInput = (value) => {
     const newInput = value.slice(-1);
     if (regex.test(newInput)) {
-      setInput("");
-      setInput(newInput);
       if (error) {
         setError(false);
       }
+      setInput("");
+      setInput(newInput);
+      return true;
     } else {
       setError(true);
       setTimeout(() => {
         setError(false);
-      }, 2500)
+      }, 2500);
+      return false;
     }
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    onSubmit();
+    console.log(event.target.firstChild.value);
+    if (handleSetInput(event.target.firstChild.value)) {
+      onSubmit();
+    } else {
+      setError(true)
+    }
   };
 
   return (
     <StyledTextInput error={error}>
       <form onSubmit={() => handleFormSubmit(event)}>
-      <input placeholder="guess a letter" type="text" value={input} onChange={(event) => handleSetInput(event.target.value)} />
-      <div>
-        <p id="error">Not a lettter! </p>
-      </div>
+        <input placeholder="guess a letter" type="text" value={input} onChange={(event) => handleSetInput(event.target.value)} />
+        <div>
+          <p id="error">Not a lettter! </p>
+        </div>
       </form>
     </StyledTextInput>
   )
