@@ -17,11 +17,14 @@ const TextInput = ({setInput, input, onSubmit}) => {
     if (regex.test(newInput)) {
       setInput("");
       setInput(newInput);
+      if (error) {
+        setError(false);
+      }
     } else {
       setError(true);
       setTimeout(() => {
         setError(false);
-      }, 3000)
+      }, 2500)
     }
   };
 
@@ -31,9 +34,12 @@ const TextInput = ({setInput, input, onSubmit}) => {
   };
 
   return (
-    <StyledTextInput>
+    <StyledTextInput error={error}>
       <form onSubmit={() => handleFormSubmit(event)}>
       <input placeholder="guess a letter" type="text" value={input} onChange={(event) => handleSetInput(event.target.value)} />
+      <div>
+        <p id="error">Not a lettter! </p>
+      </div>
       </form>
     </StyledTextInput>
   )
