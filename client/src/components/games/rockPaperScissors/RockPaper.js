@@ -8,19 +8,35 @@ import Button from '../../atoms/Button/Button';
 const RockPaper = () => {
 
   const [input, setInput] = useState("");
+  const [countDown, setCountDown] = useState(0);
+  const [winner, setWinner] = useState("");
+
+  const handleRenderGamePlay = () => {
+    setCountDown(3);
+    setTimeout(() => {
+      setCountDown(2);
+    }, 1000);
+    setTimeout(() =>{
+      setCountDown(1);
+    }, 2000);
+    setTimeout(() => {
+      handleGame();
+    }, 3000)
+  };
 
   const handleGame = () => {
-    console.log("game begins!")
     const moves = ["rock", "paper", "scissors"];
     const opponentsMove = moves[Math.floor(Math.random() * moves.length)];
     if ((input === "rock" && opponentsMove === "paper") || (input === "paper" && opponentsMove === "scissors") || (input === "scissors" && opponentsMove === "rock")) {
       console.log("you lose");
+      setWinner("computer")
       return false;
      } else if ((input === "paper" && opponentsMove === "rock") || (input === "scissors" && opponentsMove === "paper") || (input === "rock" && opponentsMove === "scissors")) {
        console.log("you win");
+       setWinner("human")
        return true;
     } else {
-      console.log("draw!")
+      console.log("draw!");
       return "draw"
     }
   };
@@ -33,9 +49,9 @@ const RockPaper = () => {
         <ThrowSelect 
         input={input} 
         setInput={setInput} />
-        <Button onClick={handleGame} message="Begin!" />
+        <Button onClick={handleRenderGamePlay} message="Begin!" />
       </div>
-      <OpponentThrow />
+      <OpponentThrow timer={countDown} winner={winner} />
     </StyledRockPaper>
   )
 };
