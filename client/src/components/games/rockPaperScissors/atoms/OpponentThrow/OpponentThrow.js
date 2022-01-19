@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { GiMailedFist, GiPalm } from 'react-icons/gi';
+import { FaRegHandScissors } from 'react-icons/fa';
 
 import StyledOpponentThrow from './StyledOpponentThrow';
 
-const OpponentThrow = ({timer, winner}) => {
+const OpponentThrow = ({timer, winner, display}) => {
 
   const [opacity, setOpacity] = useState(0);
 
@@ -18,6 +20,9 @@ const OpponentThrow = ({timer, winner}) => {
     <StyledOpponentThrow opacity={opacity} >
       <p>{timer}</p>
       {winner && <h1>{winner} wins!</h1>}
+      {display === "rock" && <GiMailedFist id="rock" />}
+      {display === "paper"  && <GiPalm id="paper" />}
+      {display === "scissors" && <FaRegHandScissors id="scissors" />}
     </StyledOpponentThrow>
   )
 };

@@ -4,12 +4,14 @@ import OpponentThrow from './atoms/OpponentThrow/OpponentThrow';
 
 import StyledRockPaper from './StyledRockPaper';
 import Button from '../../atoms/Button/Button';
+import RenderThrow from './atoms/RenderThrow/RenderThrow';
 
 const RockPaper = () => {
 
   const [input, setInput] = useState("");
   const [countDown, setCountDown] = useState(0);
   const [winner, setWinner] = useState("");
+  const [opponentTurn, setOpponentTurn] = useState("");
 
   const handleRenderGamePlay = () => {
     setCountDown(3);
@@ -27,6 +29,7 @@ const RockPaper = () => {
   const handleGame = () => {
     const moves = ["rock", "paper", "scissors"];
     const opponentsMove = moves[Math.floor(Math.random() * moves.length)];
+    setOpponentTurn(opponentsMove);
     if ((input === "rock" && opponentsMove === "paper") || (input === "paper" && opponentsMove === "scissors") || (input === "scissors" && opponentsMove === "rock")) {
       console.log("you lose");
       setWinner("computer")
@@ -50,8 +53,9 @@ const RockPaper = () => {
         input={input} 
         setInput={setInput} />
         <Button onClick={handleRenderGamePlay} message="Begin!" />
+        <RenderThrow move={input} />
       </div>
-      <OpponentThrow timer={countDown} winner={winner} />
+      <OpponentThrow timer={countDown} winner={winner} display={opponentTurn} />
     </StyledRockPaper>
   )
 };
