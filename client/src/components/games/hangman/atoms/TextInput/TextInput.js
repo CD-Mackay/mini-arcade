@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 
 // Component Imports
 import StyledTextInput from './StyledTextInput';
-import Button from '../../../../atoms/Button/Button';
 
 
 const TextInput = ({setInput, input, onSubmit}) => {
@@ -34,7 +33,6 @@ const TextInput = ({setInput, input, onSubmit}) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.firstChild.value);
     if (handleSetInput(event.target.firstChild.value)) {
       onSubmit();
     } else {
