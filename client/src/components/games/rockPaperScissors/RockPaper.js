@@ -4,6 +4,7 @@ import OpponentThrow from './atoms/OpponentThrow/OpponentThrow';
 
 import StyledRockPaper from './StyledRockPaper';
 import Button from '../../atoms/Button/Button';
+import RenderThrow from './atoms/RenderThrow/RenderThrow';
 
 const RockPaper = () => {
 
@@ -50,6 +51,7 @@ const RockPaper = () => {
         input={input} 
         setInput={setInput} />
         <Button onClick={handleRenderGamePlay} message="Begin!" />
+        <RenderThrow />
       </div>
       <OpponentThrow timer={countDown} winner={winner} />
     </StyledRockPaper>
