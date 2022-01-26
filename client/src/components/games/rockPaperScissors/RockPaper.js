@@ -53,9 +53,11 @@ const RockPaper = () => {
         input={input} 
         setInput={setInput} />
         <Button onClick={handleRenderGamePlay} message="Begin!" />
-        <RenderThrow move={input} />
       </div>
+      <div id="turn-display">
+      <RenderThrow move={input} />
       <OpponentThrow timer={countDown} winner={winner} display={opponentTurn} />
+      </div>
     </StyledRockPaper>
   )
 };
