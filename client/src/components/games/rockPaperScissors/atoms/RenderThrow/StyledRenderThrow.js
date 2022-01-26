@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledRenderThrow = styled.div`
+display: flex;
 transition: opacity 0.3s ease-out;
 #rock {
   opacity: ${props => props.move === "rock" ? 1 : 0};
