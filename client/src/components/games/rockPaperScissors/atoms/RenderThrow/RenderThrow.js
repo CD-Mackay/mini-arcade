@@ -8,12 +8,12 @@ import StyledRenderThrow from './StyledRenderThrow';
 const RenderThrow = ({move}) => {
 
 
-
   return (
     <StyledRenderThrow move={move}>
-      {move === "rock" && <GiMailedFist id="rock" />}
-      {move === "paper"  && <GiPalm id="paper" />}
-      {move === "scissors" && <FaRegHandScissors id="scissors" />}
+      <h1>Your Selection:</h1>
+      {move === "rock" && <GiMailedFist fontSize="36px" id="rock" />}
+      {move === "paper"  && <GiPalm fontSize="36px" id="paper" />}
+      {move === "scissors" && <FaRegHandScissors fontSize="36px" id="scissors" />}
     </StyledRenderThrow>
   )
 };

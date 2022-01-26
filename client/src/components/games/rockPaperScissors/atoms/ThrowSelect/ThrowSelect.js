@@ -19,22 +19,22 @@ const ThrowSelect = ({input, setInput}) => {
           <label htmlFor="rock">rock</label>
         </div>
         <div>
-          <input 
-          type="radio" 
-          name="throw-select" 
-          value="paper" 
-          onChange={(event) => setInput(event.target.value)} 
-          />
-          <label htmlFor="paper">paper</label>
+        <input 
+        type="radio" 
+        name="throw-select" 
+        value="paper" 
+        onChange={(event) => setInput(event.target.value)} 
+        />
+        <label htmlFor="paper">paper</label>
         </div>
         <div>
-          <input 
-          type="radio" 
-          name="throw-select" 
-          value="scissors"
-          onChange={(event) => setInput(event.target.value)} 
-          />
-          <label htmlFor="scissors">scissors</label>
+        <input 
+        type="radio" 
+        name="throw-select" 
+        value="scissors"
+        onChange={(event) => setInput(event.target.value)} 
+         />
+        <label htmlFor="scissors">scissors</label>
         </div>
       </div>
     </StyledThrowSelect>

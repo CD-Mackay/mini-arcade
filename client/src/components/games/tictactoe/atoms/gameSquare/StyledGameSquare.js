@@ -9,6 +9,8 @@ flex-direction: column;
 justify-content: center;
   p {
     font-size: 46px;
+    transition: opacity 0.3s ease-out;
+    opacity: ${props => props.opacity == 0 ? 0 : 1};
   }
 :hover {
   background: #8d1b1f;

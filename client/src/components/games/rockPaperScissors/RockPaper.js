@@ -22,6 +22,7 @@ const RockPaper = () => {
       setCountDown(1);
     }, 2000);
     setTimeout(() => {
+      setCountDown(0);
       handleGame();
     }, 3000)
   };
@@ -53,9 +54,11 @@ const RockPaper = () => {
         input={input} 
         setInput={setInput} />
         <Button onClick={handleRenderGamePlay} message="Begin!" />
-        <RenderThrow move={input} />
       </div>
+      <div id="turn-display">
+      <RenderThrow move={input} />
       <OpponentThrow timer={countDown} winner={winner} display={opponentTurn} />
+      </div>
     </StyledRockPaper>
   )
 };
