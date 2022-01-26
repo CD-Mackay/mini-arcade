@@ -10,10 +10,14 @@ const GameSquare = ({index, setSquareSelected, value}) => {
  const handleSquareSelect = () => {
    if (value === "") {
     setSquareSelected(index);
-    setOpacity(1);
    }
   };
 
+  useEffect(() => {
+    if (value !== "") {
+      setOpacity(1);
+    }
+  }, [value])
   return (
     <StyledGameSquare id={`game-square-${index}`} onClick={handleSquareSelect} opacity={opacity}>
       <p>{value === 1 ? "x" : "o"}</p>
