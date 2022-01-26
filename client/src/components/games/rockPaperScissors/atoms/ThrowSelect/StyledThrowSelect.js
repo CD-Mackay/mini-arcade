@@ -4,7 +4,13 @@ const StyledThrowSelect = styled.div`
 margin-bottom: 10px;
 div {
   div {
-    margin-bottom: 5px;
+    input {
+      transform: scale(1.3);
+    }
+    label {
+      font-size: 22px;
+      margin-left: 5px;
+    }
   }
 }
 `
