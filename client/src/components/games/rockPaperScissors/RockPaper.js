@@ -22,6 +22,7 @@ const RockPaper = () => {
       setCountDown(1);
     }, 2000);
     setTimeout(() => {
+      setCountDown(0);
       handleGame();
     }, 3000)
   };
