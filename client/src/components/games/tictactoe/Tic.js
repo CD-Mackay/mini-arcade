@@ -131,7 +131,9 @@ const Tic = () => {
   const resetGame = () => {
     console.log("reset");
     setGamePhase("setup");
+    setGame(squares);
     setVictory(0);
+    setGamePhase("play");
   };
 
 
@@ -151,7 +153,7 @@ const Tic = () => {
 
   useEffect(() => {
     updateBoard(squareSelected);
-  }, [squareSelected]);
+  }, [squareSelected, gamePhase]);
 
   useEffect(() => {
     if (victory === 0) {
