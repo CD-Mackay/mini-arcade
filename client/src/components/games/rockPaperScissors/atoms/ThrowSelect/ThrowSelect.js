@@ -9,10 +9,16 @@ const ThrowSelect = ({input, setInput}) => {
 
 
   return (
-    <StyledThrowSelect>
-        <Button message="rock" onClick={(event) => setInput(event.target.innerHTML)} />
-        <Button message="paper" onClick={(event) => setInput(event.target.innerHTML)} />
-        <Button message="scissors" onClick={(event) => setInput(event.target.innerHTML)} />
+    <StyledThrowSelect input={input}>
+      <div id="rock">
+        <Button  message="rock" onClick={(event) => setInput(event.target.innerHTML)} />
+      </div>
+      <div id="paper">
+        <Button  message="paper" onClick={(event) => setInput(event.target.innerHTML)} />
+      </div>
+      <div id="scissors">
+        <Button  message="scissors" onClick={(event) => setInput(event.target.innerHTML)} />
+      </div>
     </StyledThrowSelect>
   )
 };
