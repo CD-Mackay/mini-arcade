@@ -2,41 +2,17 @@ import React, { useState } from 'react';
 
 import StyledThrowSelect from './StyledThrowSelect';
 
+import Button from '../../../../atoms/Button/Button';
+
 const ThrowSelect = ({input, setInput}) => {
 
 
 
   return (
     <StyledThrowSelect>
-      <div >
-        <div>
-          <input 
-          type="radio" 
-          name="throw-select" 
-          value="rock"
-          onChange={(event) => setInput(event.target.value)} 
-          />
-          <label htmlFor="rock">rock</label>
-        </div>
-        <div>
-        <input 
-        type="radio" 
-        name="throw-select" 
-        value="paper" 
-        onChange={(event) => setInput(event.target.value)} 
-        />
-        <label htmlFor="paper">paper</label>
-        </div>
-        <div>
-        <input 
-        type="radio" 
-        name="throw-select" 
-        value="scissors"
-        onChange={(event) => setInput(event.target.value)} 
-         />
-        <label htmlFor="scissors">scissors</label>
-        </div>
-      </div>
+        <Button message="rock" onClick={(event) => setInput(event.target.innerHTML)} />
+        <Button message="paper" onClick={(event) => setInput(event.target.innerHTML)} />
+        <Button message="scissors" onClick={(event) => setInput(event.target.innerHTML)} />
     </StyledThrowSelect>
   )
 };
