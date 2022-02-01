@@ -41,6 +41,7 @@ const RockPaper = () => {
        return true;
     } else {
       console.log("draw!");
+      setWinner("draw");
       return "draw"
     }
   };
