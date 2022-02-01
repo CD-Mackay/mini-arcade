@@ -112,6 +112,7 @@ const Tic = () => {
         break;
       } if (!game.includes("")) {
         setVictory(3);
+        handleUpdateRecord("draw");
       }
     } 
   };
