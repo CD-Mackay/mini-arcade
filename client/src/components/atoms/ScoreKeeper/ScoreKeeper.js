@@ -8,10 +8,15 @@ import React from 'react';
 /* Asset Imports */
 import StyledScoreKeeper from './StyledScoreKeeper';
 
-const ScoreKeeper = () => {
+const ScoreKeeper = ({record}) => {
+
+  const displayRecord = record.map((element) => {
+    return <p>{element}</p>
+  })
   return (
     <StyledScoreKeeper>
       <p>I am ScoreKeeper</p>
+      {displayRecord}
     </StyledScoreKeeper>
   )
 };

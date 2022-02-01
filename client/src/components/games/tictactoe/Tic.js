@@ -15,6 +15,7 @@ const Tic = () => {
   const [victory, setVictory] = useState(0);
   const [computerPlayer, setComputerPlayer] = useState(false);
   const [opponentName, setOpponentName] = useState("");
+  const [record, setRecord] = useState([0, 0, 0]);
 
   const robitNames = [
     "Bender B. Rodriguez", "BALEX", "SkyNet", "T-1000", "R2D2", "Roy Batty", "Vanessa Powers", "Ultron", "Motoko Kusanagi"
@@ -189,7 +190,7 @@ const Tic = () => {
           <Button message="Reset Game" onClick={() => resetGame()} />
           <Button message="Quit Game" />
         </div>
-        <ScoreKeeper />
+        <ScoreKeeper record={record} />
       </div>
       }
     </StyledTic>
