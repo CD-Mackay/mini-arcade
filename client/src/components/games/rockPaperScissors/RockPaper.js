@@ -40,17 +40,14 @@ const RockPaper = () => {
     const opponentsMove = moves[Math.floor(Math.random() * moves.length)];
     setOpponentTurn(opponentsMove);
     if ((input === "rock" && opponentsMove === "paper") || (input === "paper" && opponentsMove === "scissors") || (input === "scissors" && opponentsMove === "rock")) {
-      console.log("you lose");
       setWinner("computer");
       handleUpdateRecord("player_two");
       return false;
      } else if ((input === "paper" && opponentsMove === "rock") || (input === "scissors" && opponentsMove === "paper") || (input === "rock" && opponentsMove === "scissors")) {
-       console.log("you win");
        setWinner("human");
        handleUpdateRecord("player_one");
        return true;
     } else {
-      console.log("draw!");
       setWinner("draw");
       handleUpdateRecord("draw");
       return "draw"
