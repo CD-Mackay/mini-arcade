@@ -10,13 +10,22 @@ import StyledScoreKeeper from './StyledScoreKeeper';
 
 const ScoreKeeper = ({record}) => {
 
-  const displayRecord = record.map((element) => {
-    return <p>{element}</p>
-  })
+  const displayRecord = (object) => {
+    console.log("displayRecord");
+    console.log(object);
+    let array = []
+    for (const property in object) {
+      console.log(property, object[property])
+      array.push(<div><p>{property}</p><p>{object[property]}</p></div>);
+    }
+    return (array.map((element, index) => {
+      return <div key={index}>{element}</div>
+    }))
+  };
+
   return (
     <StyledScoreKeeper>
-      <p>I am ScoreKeeper</p>
-      {displayRecord}
+      {displayRecord(record)}
     </StyledScoreKeeper>
   )
 };
