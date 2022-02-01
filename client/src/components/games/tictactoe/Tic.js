@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import GameSquare from './atoms/gameSquare/GameSquare';
 import Button from '../../atoms/Button/Button';
+import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 import ReactDOM from 'react-dom';
 
 import StyledTic from './StyledTic';
@@ -188,6 +189,7 @@ const Tic = () => {
           <Button message="Reset Game" onClick={() => resetGame()} />
           <Button message="Quit Game" />
         </div>
+        <ScoreKeeper />
       </div>
       }
     </StyledTic>
