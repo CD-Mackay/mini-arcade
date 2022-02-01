@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import GameSquare from './atoms/gameSquare/GameSquare';
 import Button from '../../atoms/Button/Button';
+import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 import ReactDOM from 'react-dom';
 
 import StyledTic from './StyledTic';
@@ -14,6 +15,7 @@ const Tic = () => {
   const [victory, setVictory] = useState(0);
   const [computerPlayer, setComputerPlayer] = useState(false);
   const [opponentName, setOpponentName] = useState("");
+  const [record, setRecord] = useState({player_one: 0, player_two: 0, draw: 0});
 
   const robitNames = [
     "Bender B. Rodriguez", "BALEX", "SkyNet", "T-1000", "R2D2", "Roy Batty", "Vanessa Powers", "Ultron", "Motoko Kusanagi"
@@ -43,6 +45,12 @@ const Tic = () => {
     setComputerPlayer(true);
     setOpponentName(robitNames[Math.floor(Math.random() * robitNames.length)]);
     startGame();
+  };
+
+  const handleUpdateRecord = (winner) => {
+    let newRecord = {...record};
+    newRecord[winner]++;
+    setRecord(newRecord);
   };
 
   const handleComputerTurn = () => {
@@ -99,10 +107,12 @@ const Tic = () => {
       if (a === b && b === c) {
         if (playerTurn !== 0) {
           setVictory(playerTurn);
+          playerTurn === 1 ? handleUpdateRecord("player_one") : handleUpdateRecord("player_two")
         }
         break;
       } if (!game.includes("")) {
         setVictory(3);
+        handleUpdateRecord("draw");
       }
     } 
   };
@@ -188,6 +198,7 @@ const Tic = () => {
           <Button message="Reset Game" onClick={() => resetGame()} />
           <Button message="Quit Game" />
         </div>
+        <ScoreKeeper record={record} />
       </div>
       }
     </StyledTic>

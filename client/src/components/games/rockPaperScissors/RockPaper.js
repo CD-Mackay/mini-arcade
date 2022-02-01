@@ -5,6 +5,7 @@ import OpponentThrow from './atoms/OpponentThrow/OpponentThrow';
 import StyledRockPaper from './StyledRockPaper';
 import Button from '../../atoms/Button/Button';
 import RenderThrow from './atoms/RenderThrow/RenderThrow';
+import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 
 const RockPaper = () => {
 
@@ -12,6 +13,7 @@ const RockPaper = () => {
   const [countDown, setCountDown] = useState(0);
   const [winner, setWinner] = useState("");
   const [opponentTurn, setOpponentTurn] = useState("");
+  const [record, setRecord] = useState({player_one: 0, player_two: 0, draw: 0});
 
   const handleRenderGamePlay = () => {
     setCountDown(3);
@@ -27,20 +29,27 @@ const RockPaper = () => {
     }, 3000)
   };
 
+  const handleUpdateRecord = (winner) => {
+    let newRecord = {...record};
+    newRecord[winner]++;
+    setRecord(newRecord);
+  };
+
   const handleGame = () => {
     const moves = ["rock", "paper", "scissors"];
     const opponentsMove = moves[Math.floor(Math.random() * moves.length)];
     setOpponentTurn(opponentsMove);
     if ((input === "rock" && opponentsMove === "paper") || (input === "paper" && opponentsMove === "scissors") || (input === "scissors" && opponentsMove === "rock")) {
-      console.log("you lose");
-      setWinner("computer")
+      setWinner("computer");
+      handleUpdateRecord("player_two");
       return false;
      } else if ((input === "paper" && opponentsMove === "rock") || (input === "scissors" && opponentsMove === "paper") || (input === "rock" && opponentsMove === "scissors")) {
-       console.log("you win");
-       setWinner("human")
+       setWinner("human");
+       handleUpdateRecord("player_one");
        return true;
     } else {
-      console.log("draw!");
+      setWinner("draw");
+      handleUpdateRecord("draw");
       return "draw"
     }
   };
@@ -59,6 +68,7 @@ const RockPaper = () => {
       <RenderThrow move={input} />
       <OpponentThrow timer={countDown} winner={winner} display={opponentTurn} />
       </div>
+      <ScoreKeeper record={record} />
     </StyledRockPaper>
   )
 };

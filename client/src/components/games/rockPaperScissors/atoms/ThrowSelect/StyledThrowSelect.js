@@ -4,7 +4,7 @@ const StyledThrowSelect = styled.div`
 margin-bottom: 10px;
 #rock {
   width: 200px;
-  border: ${props => props.input === "rock" ? "2px solid #43ffff" : "none"};
+  border: ${props => props.input === "rock" ? "2px solid #43ffff" : "2px solid #24282f"};
   border-radius: 10px;
   margin-bottom: 5px;
   Button {
@@ -13,7 +13,7 @@ margin-bottom: 10px;
 }
 #paper {
   width: 200px;
-  border: ${props => props.input === "paper" ? "2px solid #43ffff" : "none"};
+  border: ${props => props.input === "paper" ? "2px solid #43ffff" : "2px solid #24282f"};
   border-radius: 10px;
   margin-bottom: 5px;
   Button {
@@ -22,7 +22,7 @@ margin-bottom: 10px;
 }
 #scissors {
   width: 200px;
-  border: ${props => props.input === "scissors" ? "2px solid #43ffff" : "none"};
+  border: ${props => props.input === "scissors" ? "2px solid #43ffff" : "2px solid #24282f"};
   border-radius: 10px;
   margin-bottom: 5px;
   Button {
