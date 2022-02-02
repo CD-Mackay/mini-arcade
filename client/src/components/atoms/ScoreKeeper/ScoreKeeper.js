@@ -14,10 +14,9 @@ const ScoreKeeper = ({record, name}) => {
     let array = []
     for (const property in object) {
       if (name && property === "player_two" ) {
-        console.log("property", property);
-        array.push(<div><p>{name}</p><p>{object[property]}</p></div>)
+        array.push(<div className="score"><p>{name}:</p><p>{object[property]}</p></div>)
       } else {
-        array.push(<div><p>{property}</p><p>{object[property]}</p></div>);
+        array.push(<div className="score"><p>{property}:</p><p>{object[property]}</p></div>);
       }
     }
     return (array.map((element, index) => {
@@ -27,6 +26,7 @@ const ScoreKeeper = ({record, name}) => {
 
   return (
     <StyledScoreKeeper>
+      <h4>Scoreboard</h4>
       {displayRecord(record)}
     </StyledScoreKeeper>
   )
