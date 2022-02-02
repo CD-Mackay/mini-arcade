@@ -13,7 +13,8 @@ const ScoreKeeper = ({record, name}) => {
   const displayRecord = (object) => {
     let array = []
     for (const property in object) {
-      if (name !== "" && property === "player_two" ) {
+      if (name && property === "player_two" ) {
+        console.log("property", property);
         array.push(<div><p>{name}</p><p>{object[property]}</p></div>)
       } else {
         array.push(<div><p>{property}</p><p>{object[property]}</p></div>);
