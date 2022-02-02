@@ -8,5 +8,8 @@ button {
   color: #00FFFF;
   font-size: 20px;
 }
+button:hover { 
+  background: #323445;
+}
 `
 export default StyledButton;

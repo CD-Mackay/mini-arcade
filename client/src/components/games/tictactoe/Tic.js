@@ -43,9 +43,11 @@ const Tic = () => {
 
   const startComputerGame = () => {
     setComputerPlayer(true);
-    setOpponentName(robitNames[Math.floor(Math.random() * robitNames.length)]);
+    const computerName = robitNames[Math.floor(Math.random() * robitNames.length)]
+    setOpponentName(computerName);
     startGame();
   };
+
 
   const handleUpdateRecord = (winner) => {
     let newRecord = {...record};
@@ -198,7 +200,7 @@ const Tic = () => {
           <Button message="Reset Game" onClick={() => resetGame()} />
           <Button message="Quit Game" />
         </div>
-        <ScoreKeeper record={record} />
+        <ScoreKeeper name={opponentName} record={record} />
       </div>
       }
     </StyledTic>

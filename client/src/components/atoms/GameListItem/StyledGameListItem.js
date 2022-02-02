@@ -21,12 +21,7 @@ p {
    font-size: 24px;
 }
 :hover {
-   h4 {
-      font-size: 33px;
-   }
-   p {
-      font-size: 25px;
-   }
+   background: #323445;
 }
 `
 
