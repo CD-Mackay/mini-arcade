@@ -43,9 +43,20 @@ const Tic = () => {
 
   const startComputerGame = () => {
     setComputerPlayer(true);
-    setOpponentName(robitNames[Math.floor(Math.random() * robitNames.length)]);
+    const computerName = robitNames[Math.floor(Math.random() * robitNames.length)]
+    setOpponentName(computerName);
+    setComputerPlayerName(computerName);
     startGame();
   };
+
+  const setComputerPlayerName = (string) => {
+    let newRecord = {...record};
+    for (let property in newRecord) {
+      if (property == "player_two") {
+        property = string;
+      }
+    } setRecord(newRecord);
+  }
 
   const handleUpdateRecord = (winner) => {
     let newRecord = {...record};

@@ -11,11 +11,8 @@ import StyledScoreKeeper from './StyledScoreKeeper';
 const ScoreKeeper = ({record}) => {
 
   const displayRecord = (object) => {
-    console.log("displayRecord");
-    console.log(object);
     let array = []
     for (const property in object) {
-      console.log(property, object[property])
       array.push(<div><p>{property}</p><p>{object[property]}</p></div>);
     }
     return (array.map((element, index) => {
