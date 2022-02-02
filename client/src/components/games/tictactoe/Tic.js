@@ -45,18 +45,20 @@ const Tic = () => {
     setComputerPlayer(true);
     const computerName = robitNames[Math.floor(Math.random() * robitNames.length)]
     setOpponentName(computerName);
-    setComputerPlayerName(computerName);
     startGame();
   };
 
-  const setComputerPlayerName = (string) => {
-    let newRecord = {...record};
-    for (let property in newRecord) {
-      if (property == "player_two") {
-        property = string;
-      }
-    } setRecord(newRecord);
-  }
+  // const setComputerPlayerName = (string) => {
+  //   let newRecord = {...record};
+  //   for (let property in newRecord) {
+  //     if (property == "player_two") {
+  //       console.log("changing name");
+  //       property = string;
+  //       console.log(property, string, newRecord[property]);
+  //     }
+  //   } console.log("newrecord", newRecord);
+  //   setRecord(newRecord);
+  // }
 
   const handleUpdateRecord = (winner) => {
     let newRecord = {...record};
@@ -209,7 +211,7 @@ const Tic = () => {
           <Button message="Reset Game" onClick={() => resetGame()} />
           <Button message="Quit Game" />
         </div>
-        <ScoreKeeper record={record} />
+        <ScoreKeeper name={opponentName} record={record} />
       </div>
       }
     </StyledTic>
