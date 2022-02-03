@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 const StyledScoreKeeper = styled.div`
 border: 1px solid #00FFFF;
+margin: 10px;
+width: 300px;
 h4 {
   font-size: 28px;
   margin: 5px;
