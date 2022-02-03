@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ThrowSelect from './atoms/ThrowSelect/ThrowSelect';
 import OpponentThrow from './atoms/OpponentThrow/OpponentThrow';
 
@@ -6,6 +6,7 @@ import StyledRockPaper from './StyledRockPaper';
 import Button from '../../atoms/Button/Button';
 import RenderThrow from './atoms/RenderThrow/RenderThrow';
 import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
+import OpponentNames from '../../../utilities/OpponentNames';
 
 const RockPaper = () => {
 
@@ -14,6 +15,13 @@ const RockPaper = () => {
   const [winner, setWinner] = useState("");
   const [opponentTurn, setOpponentTurn] = useState("");
   const [record, setRecord] = useState({player_one: 0, player_two: 0, draw: 0});
+  const [opponentName, setOpponentName] = useState("");
+
+  const { robitNames, pickRobotName } = OpponentNames;
+
+  useEffect(() => {
+    setOpponentName(pickRobotName(robitNames));
+  }, []);
 
   const handleRenderGamePlay = () => {
     setCountDown(3);
@@ -68,7 +76,7 @@ const RockPaper = () => {
       <RenderThrow move={input} />
       <OpponentThrow timer={countDown} winner={winner} display={opponentTurn} />
       </div>
-      <ScoreKeeper record={record} />
+      <ScoreKeeper name={opponentName} record={record} />
     </StyledRockPaper>
   )
 };

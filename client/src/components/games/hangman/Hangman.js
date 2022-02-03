@@ -9,6 +9,7 @@ import WordWrapper from './atoms/WordWrapper/WordWrapper';
 import DisplayWrong from './atoms/DisplayWrong/DisplayWrong';
 import Gallows from './atoms/Gallows/Gallows';
 import { Link } from 'react-router-dom';
+import CustomInput from './atoms/CustomInput/CustomInput';
 
 
 const Hangman = () => {
@@ -17,7 +18,8 @@ const Hangman = () => {
 
   const [gameString, setGameString] = useState([]);
   const [input, setInput] = useState("");
-  const [gamePhase, setGamePhase] = useState("play");
+  const [stringInput, setStringInput] = useState("");
+  const [gamePhase, setGamePhase] = useState("setup");
   const [failedGuesses, setFailedGuesses] = useState([]);
 
   const pickString = () => {
@@ -33,13 +35,24 @@ const Hangman = () => {
   };
 
   const startGame = () => {
+    setGamePhase("play");
     pickString();
+  };
+
+  const startCustomGame = (string) => {
+    const stringObject = string
+    .split('')
+    .map((element) => {
+      return { value: element, selected: false }
+    })
+    setGameString(stringObject);
+    setGamePhase("play");
   };
 
   const resetGame = () => {
     setFailedGuesses([]);
     startGame();
-  }
+  };
 
   const validateLetter = () => {
     for (const element of gameString) {
@@ -90,13 +103,9 @@ const Hangman = () => {
   };
 
 
-  useEffect(() => {
-    startGame();
-  }, []);
-
-
   return (
     <StyledHangman>
+        {gamePhase == "play" && 
         <div id="game-wrapper">
           <h4>Welcome to HangMan!</h4>
           <h5>{gamePhase == "win" && "Congratulations!"}</h5>
@@ -110,10 +119,17 @@ const Hangman = () => {
               <Button message="Back to Home"  />
             </Link>
           </div>
-        </div>
-        <div id="letter-graveyard">
+        </div>}
+        {gamePhase == "play" && 
+          <div id="letter-graveyard">
             <DisplayWrong wrong={failedGuesses} />
-          </div>
+          </div>}
+          {gamePhase == "setup" && 
+          <div id="setup-menu">
+            <Button message="Play Against Robot" onClick={() => setGamePhase("input")} />
+            <Button message="Play Against Human" onClick={() => startGame()} />
+          </div>}
+          {gamePhase == "input" && <CustomInput string={stringInput} onSubmit={() => startCustomGame(stringInput)} setString={setStringInput} />}
       
     </StyledHangman>
   )

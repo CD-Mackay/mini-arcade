@@ -3,6 +3,7 @@ import GameSquare from './atoms/gameSquare/GameSquare';
 import Button from '../../atoms/Button/Button';
 import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 import ReactDOM from 'react-dom';
+import OpponentNames from '../../../utilities/OpponentNames';
 
 import StyledTic from './StyledTic';
 
@@ -17,9 +18,8 @@ const Tic = () => {
   const [opponentName, setOpponentName] = useState("");
   const [record, setRecord] = useState({player_one: 0, player_two: 0, draw: 0});
 
-  const robitNames = [
-    "Bender B. Rodriguez", "BALEX", "SkyNet", "T-1000", "R2D2", "Roy Batty", "Vanessa Powers", "Ultron", "Motoko Kusanagi"
-  ];
+  const { robitNames, pickRobotName } = OpponentNames; 
+
 
   const squares = ["", "", "", "", "", "", "", "", ""];
 
@@ -43,7 +43,7 @@ const Tic = () => {
 
   const startComputerGame = () => {
     setComputerPlayer(true);
-    const computerName = robitNames[Math.floor(Math.random() * robitNames.length)]
+    const computerName = pickRobotName(robitNames);
     setOpponentName(computerName);
     startGame();
   };
@@ -148,6 +148,12 @@ const Tic = () => {
     setGamePhase("play");
   };
 
+  const quitGame = () => {
+    setGamePhase("setup");
+    setGame(squares);
+    setVictory(0);
+  }
+
 
   const gameBoard = () => {
     console.log("rendering board");
@@ -198,7 +204,7 @@ const Tic = () => {
         </div>
         <div className="game-options">
           <Button message="Reset Game" onClick={() => resetGame()} />
-          <Button message="Quit Game" />
+          <Button message="Quit Game" onClick={() => quitGame()}/>
         </div>
         <ScoreKeeper name={opponentName} record={record} />
       </div>
