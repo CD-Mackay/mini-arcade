@@ -148,6 +148,12 @@ const Tic = () => {
     setGamePhase("play");
   };
 
+  const quitGame = () => {
+    setGamePhase("setup");
+    setGame(squares);
+    setVictory(0);
+  }
+
 
   const gameBoard = () => {
     console.log("rendering board");
@@ -198,7 +204,7 @@ const Tic = () => {
         </div>
         <div className="game-options">
           <Button message="Reset Game" onClick={() => resetGame()} />
-          <Button message="Quit Game" />
+          <Button message="Quit Game" onClick={() => quitGame()}/>
         </div>
         <ScoreKeeper name={opponentName} record={record} />
       </div>
