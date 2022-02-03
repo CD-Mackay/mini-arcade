@@ -18,6 +18,7 @@ const Hangman = () => {
 
   const [gameString, setGameString] = useState([]);
   const [input, setInput] = useState("");
+  const [stringInput, setStringInput] = useState("");
   const [gamePhase, setGamePhase] = useState("setup");
   const [failedGuesses, setFailedGuesses] = useState([]);
 
@@ -39,7 +40,12 @@ const Hangman = () => {
   };
 
   const startCustomGame = (string) => {
-    setGameString(string);
+    const stringObject = string
+    .split('')
+    .map((element) => {
+      return { value: element, selected: false }
+    })
+    setGameString(stringObject);
     setGamePhase("play");
   };
 
@@ -123,7 +129,7 @@ const Hangman = () => {
             <Button message="Play Against Robot" onClick={() => setGamePhase("input")} />
             <Button message="Play Against Human" onClick={() => startGame()} />
           </div>}
-          {gamePhase == "input" && <CustomInput />}
+          {gamePhase == "input" && <CustomInput string={stringInput} onSubmit={() => startCustomGame(stringInput)} setString={setStringInput} />}
       
     </StyledHangman>
   )
