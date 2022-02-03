@@ -9,6 +9,7 @@ import WordWrapper from './atoms/WordWrapper/WordWrapper';
 import DisplayWrong from './atoms/DisplayWrong/DisplayWrong';
 import Gallows from './atoms/Gallows/Gallows';
 import { Link } from 'react-router-dom';
+import CustomInput from './atoms/CustomInput/CustomInput';
 
 
 const Hangman = () => {
@@ -119,9 +120,10 @@ const Hangman = () => {
           </div>}
           {gamePhase == "setup" && 
           <div id="setup-menu">
-            <Button message="Play Against Robot" />
+            <Button message="Play Against Robot" onClick={() => setGamePhase("input")} />
             <Button message="Play Against Human" onClick={() => startGame()} />
           </div>}
+          {gamePhase == "input" && <CustomInput />}
       
     </StyledHangman>
   )
