@@ -39,7 +39,7 @@ const App = () => {
             <Route exact path="/rockpaperscissors" >
               <RockPaper />
             </Route>
-            <Route exact path="connectfour">
+            <Route exact path="/connectfour">
               <ConnectFour />
             </Route>
           </Switch>
