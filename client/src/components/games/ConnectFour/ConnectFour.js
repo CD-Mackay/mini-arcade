@@ -20,7 +20,7 @@ const ConnectFour = () => {
       for (let x = 0; x < 8; x ++) {
         let indexArray = [i, x];
         let newIndex = Number(indexArray.join(''));
-        subArray.push({index: newIndex, selected: false});
+        subArray.push({index: newIndex, selected: false, available: false});
       } array.push(subArray);
         subArray = [];
     } 
