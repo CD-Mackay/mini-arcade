@@ -11,6 +11,7 @@ import Home from 'pages/Home/Home';
 import Tic from './src/components/games/tictactoe/Tic.js';
 import Header from './src/components/atoms/Header/Header.js';
 import Footer from './src/components/atoms/Footer/Footer.js';
+import ConnectFour from './src/components/games/ConnectFour/ConnectFour.js';
 
 /* Asset Imports */
 import { GlobalStyle } from './GlobalStyles.js'
@@ -37,6 +38,9 @@ const App = () => {
             </Route>
             <Route exact path="/rockpaperscissors" >
               <RockPaper />
+            </Route>
+            <Route exact path="connectfour">
+              <ConnectFour />
             </Route>
           </Switch>
           <Footer />

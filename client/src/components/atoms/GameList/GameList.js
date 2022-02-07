@@ -25,7 +25,10 @@ const GameList = () => {
         game="rockpaperscissors" 
         name="Rock Paper Scissors" 
         description="For those who can't do"/>
-        <GameListItem />
+        <GameListItem 
+        game="connectfour" 
+        name="Connect Four" 
+        description="Because counting to 5 is hard" />
         <GameListItem />
         <GameListItem />
     </div>
