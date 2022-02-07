@@ -3,14 +3,24 @@ import React from 'react';
 
 
 /* Component Imports */
+import FourSquare from '../FourSquare/FourSquare';
 
 /* Asset Imports */
 import StyledFourBoard from './StyledFourBoard';
 
-const FourBoard = ({makeBoard}) => {
+const FourBoard = ({board}) => {
+
+  const renderBoard = (array) => {
+    return array.map((element) => {
+      return element.map((square) => {
+        return <FourSquare key={square.index} props={square} />
+      })
+    })
+  }
+
   return (
     <StyledFourBoard>
-      {makeBoard()}
+      {renderBoard(board)}
     </StyledFourBoard>
   )
 };

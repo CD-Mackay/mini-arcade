@@ -1,5 +1,5 @@
 /* Library Imports */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 /* Component Imports */
@@ -23,18 +23,16 @@ const ConnectFour = () => {
         subArray.push({index: newIndex, selected: false, available: false});
       } array.push(subArray);
         subArray = [];
-    } 
-    // setBoard(array);
-    return array.map((element) => {
-      return element.map((square) => {
-        return <FourSquare key={square.index} props={square} />
-      })
-    })
+    } setBoard(array);
   };
+
+  useEffect(() =>{
+    makeBoard();
+  }, []);
 
   return (
     <StyledConnectFour>
-      <FourBoard makeBoard={makeBoard} />
+      <FourBoard board={board} />
     </StyledConnectFour>
   )
 };
