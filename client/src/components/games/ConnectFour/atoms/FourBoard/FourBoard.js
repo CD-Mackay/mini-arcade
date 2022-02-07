@@ -13,7 +13,7 @@ const FourBoard = ({board}) => {
   const renderBoard = (array) => {
     return array.map((element) => {
       return element.map((square) => {
-        return <FourSquare key={square.index} props={square} />
+        return <FourSquare key={Number(square.index .join(''))} props={square} />
       })
     })
   }
