@@ -8,6 +8,7 @@ import React from 'react';
 import StyledFourSquare from './StyledFourSquare';
 
 const FourSquare = ({props}) => {
+
   return (
     <StyledFourSquare>
       <p>{props.index}</p>

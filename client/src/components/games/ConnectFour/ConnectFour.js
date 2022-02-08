@@ -19,7 +19,7 @@ const ConnectFour = () => {
     for (let i = 0; i < 6; i++) {
       for (let x = 0; x < 8; x ++) {
         let indexArray = [i, x];
-        subArray.push({index: indexArray, selected: false, available: false});
+        subArray.push({indexArray: indexArray, index:  Number(indexArray.join('')), selected: false, available: false});
       } array.push(subArray);
         subArray = [];
     } setBoard(array);
