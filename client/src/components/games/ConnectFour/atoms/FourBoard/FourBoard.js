@@ -19,27 +19,8 @@ const FourBoard = ({board, onSelect}) => {
     })
   };
 
-  const checkForValidSquares = (array) => {
-    let arrayCopy = [...array];
-      for (let i = arrayCopy.length - 1; i >= 0; i--) {
-        for (let x = arrayCopy[i].length - 1; x >= 0; x--) {
-          if (i > 0) {
-            let bottomSquare = arrayCopy[i][x];
-            let topSquare = arrayCopy[i - 1][x];
-            if (bottomSquare.selected !== 0) {
-              topSquare.available = true;
-            }
-          }
-        }
-    }
-  };
 
 
-
-
-  useEffect(() => {
-      checkForValidSquares(board);
-  }, [board]);
 
   return (
     <StyledFourBoard>

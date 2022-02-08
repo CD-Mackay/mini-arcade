@@ -11,9 +11,8 @@ const FourSquare = ({props, onSelect}) => {
 
   return (
     <StyledFourSquare onClick={() => onSelect(props.indexArray[0], props.indexArray[1])} >
-      <p>{props.index}</p>
-      <p>{props.available ? "O" : "X"}</p>
-      <p>{props.selected}</p>
+      <p>{props.index}{props.selected}</p>
+      <div id="circle"></div>
     </StyledFourSquare>
   )
 };

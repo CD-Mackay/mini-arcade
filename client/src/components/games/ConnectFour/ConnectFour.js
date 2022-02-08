@@ -32,12 +32,39 @@ const ConnectFour = () => {
     let newBoard = [...board];
     newBoard[numOne][numTwo].selected = playerTurn;
     setBoard(newBoard);
-    // setPlayerTurn(playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1));
+    let validatedBoard = checkForValidSquares(board);
+    setBoard(validatedBoard);
+    if (playerTurn === 1) {
+      setPlayerTurn(2);
+    } else {
+      setPlayerTurn(1)
+    }
+  };
+
+  const checkForValidSquares = (array) => {
+    let arrayCopy = [...array];
+      for (let i = arrayCopy.length - 1; i >= 0; i--) {
+        for (let x = arrayCopy[i].length - 1; x >= 0; x--) {
+          if (i > 0) {
+            let bottomSquare = arrayCopy[i][x];
+            let topSquare = arrayCopy[i - 1][x];
+            if (bottomSquare.selected !== 0) {
+              topSquare.available = true;
+            }
+          }
+        }
+    } return arrayCopy;
   };
 
   useEffect(() =>{
     makeBoard();
   }, []);
+
+  useEffect(() => {
+    checkForValidSquares(board);
+}, [board]);
+
+
 
   return (
     <StyledConnectFour>
