@@ -26,7 +26,7 @@ const FourBoard = ({board, onSelect}) => {
           if (i > 0) {
             let bottomSquare = arrayCopy[i][x];
             let topSquare = arrayCopy[i - 1][x];
-            if (bottomSquare.selected) {
+            if (bottomSquare.selected !== 0) {
               topSquare.available = true;
             }
           }
