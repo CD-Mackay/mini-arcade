@@ -33,6 +33,7 @@ const ConnectFour = () => {
     if (newBoard[numOne][numTwo].available == true) {
       newBoard[numOne][numTwo].selected = playerTurn;
       newBoard[numOne][numTwo].available = false;
+      console.log(newBoard[numOne][numTwo])
       setBoard(newBoard);
       let validatedBoard = checkForValidSquares(board);
       setBoard(validatedBoard);
