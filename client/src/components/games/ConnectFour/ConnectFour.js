@@ -30,14 +30,19 @@ const ConnectFour = () => {
 
   const handlePickSquare = (numOne, numTwo) => {
     let newBoard = [...board];
-    newBoard[numOne][numTwo].selected = playerTurn;
-    setBoard(newBoard);
-    let validatedBoard = checkForValidSquares(board);
-    setBoard(validatedBoard);
-    if (playerTurn === 1) {
-      setPlayerTurn(2);
+    if (newBoard[numOne][numTwo].available == true) {
+      newBoard[numOne][numTwo].selected = playerTurn;
+      newBoard[numOne][numTwo].available = false;
+      setBoard(newBoard);
+      let validatedBoard = checkForValidSquares(board);
+      setBoard(validatedBoard);
+      if (playerTurn === 1) {
+        setPlayerTurn(2);
+      } else {
+        setPlayerTurn(1)
+      }  
     } else {
-      setPlayerTurn(1)
+      console.log("not available!")
     }
   };
 
