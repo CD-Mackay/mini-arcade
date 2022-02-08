@@ -19,10 +19,17 @@ const ConnectFour = () => {
     for (let i = 0; i < 6; i++) {
       for (let x = 0; x < 8; x ++) {
         let indexArray = [i, x];
-        subArray.push({indexArray: indexArray, index:  Number(indexArray.join('')), selected: false, available: false});
+        let index = Number(indexArray.join(''));
+        subArray.push({indexArray: indexArray, index: index, selected: false, available: index >= 50 ? true : false });
       } array.push(subArray);
         subArray = [];
     } setBoard(array);
+  };
+
+  const handlePickSquare = (numOne, numTwo) => {
+    let newBoard = [...board];
+    newBoard[numOne][numTwo].selected = true;
+    setBoard(newBoard);
   };
 
   useEffect(() =>{
@@ -31,7 +38,7 @@ const ConnectFour = () => {
 
   return (
     <StyledConnectFour>
-      <FourBoard board={board} />
+      <FourBoard onSelect={handlePickSquare} board={board} />
     </StyledConnectFour>
   )
 };

@@ -8,24 +8,33 @@ import FourSquare from '../FourSquare/FourSquare';
 /* Asset Imports */
 import StyledFourBoard from './StyledFourBoard';
 
-const FourBoard = ({board}) => {
+const FourBoard = ({board, onSelect}) => {
 
 
   const renderBoard = (array) => {
     return array.map((element) => {
       return element.map((square) => {
-        return <FourSquare key={square.index} props={square} />
+        return <FourSquare key={square.index} onSelect={onSelect} props={square} />
       })
     })
   };
 
   const checkForValidSquares = (array) => {
-      for (let i = array.length - 1; i >= 0; i--) {
-        for (let x = array[i].length - 1; x >= 0; x--) {
-          console.log(array[i][x])
+    let arrayCopy = [...array];
+      for (let i = arrayCopy.length - 1; i >= 0; i--) {
+        for (let x = arrayCopy[i].length - 1; x >= 0; x--) {
+          if (i > 0) {
+            let bottomSquare = arrayCopy[i][x];
+            let topSquare = arrayCopy[i - 1][x];
+            if (bottomSquare.selected) {
+              topSquare.available = true;
+            }
+          }
         }
     }
   };
+
+
 
 
   useEffect(() => {
