@@ -70,7 +70,6 @@ const ConnectFour = () => {
           let secondSquare = array[i - 1][x];
           let thirdSquare = array[i - 2][x];
           let fourthSquare = array[i - 3][x];
-          //console.log(firstSquare, secondSquare, thirdSquare, fourthSquare);
           if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
             console.log("winner!")
           }
@@ -87,7 +86,6 @@ const ConnectFour = () => {
           let secondSquare = array[i][x - 1];
           let thirdSquare = array[i][x - 2];
           let fourthSquare = array[i][x - 3];
-          //console.log(firstSquare, secondSquare, thirdSquare, fourthSquare);
           if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
             console.log("winner!")
           }
@@ -121,7 +119,7 @@ const ConnectFour = () => {
     checkForValidSquares(board);
     checkForVerticalWin(board);
     checkForHorizontalWin(board);
-    checkForAscendingWin(board);
+    checkForAscendingWin(board)
 }, [board]);
 
 
