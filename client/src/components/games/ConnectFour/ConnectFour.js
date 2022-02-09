@@ -1,4 +1,5 @@
 /* Library Imports */
+import { set } from 'mongoose';
 import React, { useState, useEffect } from 'react';
 
 
@@ -13,6 +14,7 @@ const ConnectFour = () => {
 
   const [board, setBoard] = useState([]);
   const [playerTurn, setPlayerTurn] = useState(1);
+  const [winner, setWinner] = useState(0);
 
   const makeBoard = () => {
     console.log("making board!")
@@ -71,7 +73,8 @@ const ConnectFour = () => {
           let thirdSquare = array[i - 2][x];
           let fourthSquare = array[i - 3][x];
           if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
-            console.log("winner!")
+            console.log("winner!");
+            setWinner(playerTurn);
           }
         }
       }
@@ -87,7 +90,8 @@ const ConnectFour = () => {
           let thirdSquare = array[i][x - 2];
           let fourthSquare = array[i][x - 3];
           if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
-            console.log("winner!")
+            console.log("winner!");
+            setWinner(playerTurn);
           }
         }
       }
@@ -102,9 +106,9 @@ const ConnectFour = () => {
           let secondSquare = array[i - 1][x - 1];
           let thirdSquare = array[i - 2][x - 2];
           let fourthSquare = array[i - 3][x - 3];
-          //console.log(firstSquare, secondSquare, thirdSquare, fourthSquare);
           if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
-            console.log("winner!")
+            console.log("winner!");
+            setWinner(playerTurn);
           }
         }
       }
@@ -119,9 +123,9 @@ const ConnectFour = () => {
           let secondSquare = array[i - 1][x + 1];
           let thirdSquare = array[i - 2][x + 2];
           let fourthSquare = array[i - 3][x + 3];
-         // console.log(firstSquare, secondSquare, thirdSquare, fourthSquare);
           if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
-            console.log("winner!")
+            console.log("winner!");
+            setWinner(playerTurn);
           }
         }
       }
