@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 
 /* Component Imports */
 import FourBoard from './atoms/FourBoard/FourBoard';
-import FourSquare from './atoms/FourSquare/FourSquare';
+import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 
 /* Asset Imports */
 import StyledConnectFour from './StyledConnectFour';
@@ -15,6 +15,8 @@ const ConnectFour = () => {
   const [board, setBoard] = useState([]);
   const [playerTurn, setPlayerTurn] = useState(1);
   const [winner, setWinner] = useState(0);
+  const [record, setRecord] = useState({player_one: 0, player_two: 0, draw: 0});
+
 
   const makeBoard = () => {
     console.log("making board!")
@@ -149,6 +151,7 @@ const ConnectFour = () => {
   return (
     <StyledConnectFour>
       <FourBoard onSelect={handlePickSquare} board={board} winner={winner}/>
+      <ScoreKeeper record={record} />
     </StyledConnectFour>
   )
 };
