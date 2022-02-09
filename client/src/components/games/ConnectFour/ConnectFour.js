@@ -77,6 +77,23 @@ const ConnectFour = () => {
         }
       }
     }
+  };
+
+ const checkForHorizontalWin = (array) => {
+    for (let i = array.length - 1; i >= 0; i--) {
+      for (let x = array[i].length - 1; x >=0; x--) {
+        if (x - 3 > 0) {
+          let firstSquare = array[i][x];
+          let secondSquare = array[i][x - 1];
+          let thirdSquare = array[i][x - 2];
+          let fourthSquare = array[i][x - 3];
+          //console.log(firstSquare, secondSquare, thirdSquare, fourthSquare);
+          if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
+            console.log("winner!")
+          }
+        }
+      }
+    }
   }
 
   useEffect(() =>{
@@ -86,6 +103,7 @@ const ConnectFour = () => {
   useEffect(() => {
     checkForValidSquares(board);
     checkForVerticalWin(board);
+    checkForHorizontalWin(board);
 }, [board]);
 
 
