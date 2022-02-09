@@ -128,7 +128,13 @@ const ConnectFour = () => {
         }
       }
     }
-  }
+  };
+
+  const handleUpdateRecord = (winner) => {
+    let newRecord = {...record};
+    newRecord[winner]++;
+    setRecord(newRecord);
+  };
 
   useEffect(() =>{
     makeBoard();
@@ -140,6 +146,9 @@ const ConnectFour = () => {
     checkForHorizontalWin(board);
     checkForAscendingWin(board);
     checkForDescendingWin(board);
+    if (winner !== 0) {
+      playerTurn === 1 ? handleUpdateRecord("player_one") : handleUpdateRecord("player_two");
+    }
 }, [board]);
 
 
