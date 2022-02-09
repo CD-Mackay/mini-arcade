@@ -148,7 +148,7 @@ const ConnectFour = () => {
 
   return (
     <StyledConnectFour>
-      <FourBoard onSelect={handlePickSquare} board={board} />
+      <FourBoard onSelect={handlePickSquare} board={board} winner={winner}/>
     </StyledConnectFour>
   )
 };

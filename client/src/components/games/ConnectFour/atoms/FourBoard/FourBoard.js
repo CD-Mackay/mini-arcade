@@ -8,7 +8,7 @@ import FourSquare from '../FourSquare/FourSquare';
 /* Asset Imports */
 import StyledFourBoard from './StyledFourBoard';
 
-const FourBoard = ({board, onSelect}) => {
+const FourBoard = ({board, onSelect, winner}) => {
 
 
   const renderBoard = (array) => {
@@ -25,6 +25,7 @@ const FourBoard = ({board, onSelect}) => {
   return (
     <StyledFourBoard>
       {renderBoard(board)}
+      {winner !== 0 && <p>Player {winner} is victorious!</p>}
     </StyledFourBoard>
   )
 };
