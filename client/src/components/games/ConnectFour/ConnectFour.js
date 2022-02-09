@@ -47,7 +47,7 @@ const ConnectFour = () => {
         setPlayerTurn(1)
       }  
     } else {
-      console.log("not available!")
+      console.log("not available!");
     }
   };
 
@@ -75,7 +75,6 @@ const ConnectFour = () => {
           let thirdSquare = array[i - 2][x];
           let fourthSquare = array[i - 3][x];
           if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
-            console.log("winner!");
             setWinner(playerTurn);
           }
         }
@@ -92,7 +91,6 @@ const ConnectFour = () => {
           let thirdSquare = array[i][x - 2];
           let fourthSquare = array[i][x - 3];
           if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
-            console.log("winner!");
             setWinner(playerTurn);
           }
         }
@@ -109,7 +107,6 @@ const ConnectFour = () => {
           let thirdSquare = array[i - 2][x - 2];
           let fourthSquare = array[i - 3][x - 3];
           if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
-            console.log("winner!");
             setWinner(playerTurn);
           }
         }
@@ -126,7 +123,6 @@ const ConnectFour = () => {
           let thirdSquare = array[i - 2][x + 2];
           let fourthSquare = array[i - 3][x + 3];
           if ((firstSquare.selected === secondSquare.selected) && (secondSquare.selected === thirdSquare.selected) && (thirdSquare.selected === fourthSquare.selected) && (firstSquare.selected !== 0)) {
-            console.log("winner!");
             setWinner(playerTurn);
           }
         }
