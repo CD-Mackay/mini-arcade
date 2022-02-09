@@ -7,8 +7,9 @@ height: 120px;
   height: 50%;
   width: 50%;
   border: 1px solid ${props => props.selected === 0 ? "#00FFFF" : props.selected === 1 ? "red" : "yellow"};
+  background: ${props => props.selected === 0 ? "#24282f" : props.selected === 1 ? "red" : "yellow"};
   margin: 0 auto;
-  border-radius: 150px;
+  border-radius: 50px;
 }
 `
 
