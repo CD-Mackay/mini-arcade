@@ -146,10 +146,11 @@ const ConnectFour = () => {
     checkForHorizontalWin(board);
     checkForAscendingWin(board);
     checkForDescendingWin(board);
-    if (winner !== 0) {
-      playerTurn === 1 ? handleUpdateRecord("player_one") : handleUpdateRecord("player_two");
-    }
 }, [board]);
+
+useEffect(() => {
+  winner === 1 ? handleUpdateRecord("player_one") : handleUpdateRecord("player_two");
+}, [winner]);
 
 
 
