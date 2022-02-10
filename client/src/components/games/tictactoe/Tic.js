@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import GameSquare from './atoms/gameSquare/GameSquare';
 import Button from '../../atoms/Button/Button';
 import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
-import ReactDOM from 'react-dom';
 import OpponentNames from '../../../utilities/OpponentNames';
 
 import StyledTic from './StyledTic';
@@ -79,7 +78,6 @@ const Tic = () => {
           }
         }
       } else if ((a === "" && b === "" && c === "")) { // check for empty winCondition
-        console.log("empy winCondition found")
         setSquareSelected(firstNum);
         return;
       } else {
@@ -87,7 +85,6 @@ const Tic = () => {
       }
     } 
     // Picks first available square, only runs on initial turn
-    console.log("running firstTurnmode")
     for (let i = 0; i < activeBoard.length; i++) {
       if (activeBoard[i] === "") {
         setSquareSelected(i);
