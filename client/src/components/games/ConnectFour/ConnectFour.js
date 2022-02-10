@@ -9,6 +9,7 @@ import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 
 /* Asset Imports */
 import StyledConnectFour from './StyledConnectFour';
+import UpdateRecords from '../../../utilities/UpdateRecords';
 
 const ConnectFour = () => {
 
@@ -17,6 +18,7 @@ const ConnectFour = () => {
   const [winner, setWinner] = useState(0);
   const [record, setRecord] = useState({player_one: 0, player_two: 0, draw: 0});
 
+  const { handleUpdateRecord } = UpdateRecords;
 
   const makeBoard = () => {
     console.log("making board!")
@@ -129,12 +131,6 @@ const ConnectFour = () => {
     }
   };
 
-  const handleUpdateRecord = (winner) => {
-    let newRecord = {...record};
-    newRecord[winner]++;
-    setRecord(newRecord);
-  };
-
   useEffect(() =>{
     makeBoard();
   }, []);
@@ -148,7 +144,7 @@ const ConnectFour = () => {
 }, [board]);
 
 useEffect(() => {
-  winner === 1 ? handleUpdateRecord("player_one") : handleUpdateRecord("player_two");
+  winner === 1 ? setRecord(handleUpdateRecord("player_one", record)) : setRecord(handleUpdateRecord("player_two", record));
 }, [winner]);
 
 
