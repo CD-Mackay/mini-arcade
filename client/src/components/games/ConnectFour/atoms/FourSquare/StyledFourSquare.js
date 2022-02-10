@@ -3,6 +3,9 @@ import styled from 'styled-components';
 const StyledFourSquare = styled.div`
 border: 1px solid #00FFFF;
 height: 120px;
+:hover {
+  background: ${props => props.available === true ? "green" : "gray"}
+}
 #circle {
   height: 50%;
   width: 50%;

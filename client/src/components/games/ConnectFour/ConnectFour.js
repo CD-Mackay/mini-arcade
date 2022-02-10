@@ -156,7 +156,10 @@ useEffect(() => {
 
   return (
     <StyledConnectFour>
+      <div>
+        <h4>Connect Four!</h4>
       <FourBoard onSelect={handlePickSquare} board={board} winner={winner}/>
+      </div>
       <ScoreKeeper record={record} />
     </StyledConnectFour>
   )

@@ -10,7 +10,10 @@ import StyledFourSquare from './StyledFourSquare';
 const FourSquare = ({props, onSelect}) => {
 
   return (
-    <StyledFourSquare onClick={() => onSelect(props.indexArray[0], props.indexArray[1])} selected={props.selected} >
+    <StyledFourSquare 
+    onClick={() => onSelect(props.indexArray[0], props.indexArray[1])} 
+    available={props.available} 
+    selected={props.selected} >
       <p>{props.index}{props.selected}</p>
       <div id="circle"></div>
     </StyledFourSquare>
