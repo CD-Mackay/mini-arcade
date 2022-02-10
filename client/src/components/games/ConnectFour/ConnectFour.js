@@ -21,7 +21,6 @@ const ConnectFour = () => {
   const { handleUpdateRecord } = UpdateRecords;
 
   const makeBoard = () => {
-    console.log("making board!")
     let array = [];
     let subArray = [];
     for (let i = 0; i < 6; i++) {
@@ -144,7 +143,9 @@ const ConnectFour = () => {
 }, [board]);
 
 useEffect(() => {
-  winner === 1 ? setRecord(handleUpdateRecord("player_one", record)) : setRecord(handleUpdateRecord("player_two", record));
+  winner === 1 ? 
+  setRecord(handleUpdateRecord("player_one", record)) : 
+  setRecord(handleUpdateRecord("player_two", record));
 }, [winner]);
 
 
