@@ -150,13 +150,13 @@ const Tic = () => {
   const gameBoard = () => {
     console.log("rendering board");
      return game.map((element, index) => {
-    return  <GameSquare 
-      index={index} 
-      key={index} 
-      value={element}
-      playerTurn={playerTurn} 
-      setSquareSelected={setSquareSelected}
-      />
+        return  <GameSquare 
+          index={index} 
+          key={index} 
+          value={element}
+          playerTurn={playerTurn} 
+          setSquareSelected={setSquareSelected}
+          />
     });
   }
   ;

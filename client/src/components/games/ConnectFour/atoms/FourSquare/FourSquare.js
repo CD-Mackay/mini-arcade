@@ -15,7 +15,7 @@ const FourSquare = ({props, onSelect}) => {
     available={props.available} 
     selected={props.selected} >
       <p>{props.index}{props.selected}</p>
-      <div id="circle"></div>
+      <div id="circle" />
     </StyledFourSquare>
   )
 };
