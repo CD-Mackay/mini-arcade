@@ -9,6 +9,7 @@ import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 
 /* Asset Imports */
 import StyledConnectFour from './StyledConnectFour';
+import UpdateRecords from '../../../utilities/UpdateRecords';
 
 const ConnectFour = () => {
 
@@ -17,9 +18,9 @@ const ConnectFour = () => {
   const [winner, setWinner] = useState(0);
   const [record, setRecord] = useState({player_one: 0, player_two: 0, draw: 0});
 
+  const { handleUpdateRecord } = UpdateRecords;
 
   const makeBoard = () => {
-    console.log("making board!")
     let array = [];
     let subArray = [];
     for (let i = 0; i < 6; i++) {
@@ -37,7 +38,6 @@ const ConnectFour = () => {
     if (newBoard[numOne][numTwo].available == true) {
       newBoard[numOne][numTwo].selected = playerTurn;
       newBoard[numOne][numTwo].available = false;
-     // console.log(newBoard[numOne][numTwo])
       setBoard(newBoard);
       let validatedBoard = checkForValidSquares(board);
       setBoard(validatedBoard);
@@ -130,12 +130,6 @@ const ConnectFour = () => {
     }
   };
 
-  const handleUpdateRecord = (winner) => {
-    let newRecord = {...record};
-    newRecord[winner]++;
-    setRecord(newRecord);
-  };
-
   useEffect(() =>{
     makeBoard();
   }, []);
@@ -149,14 +143,19 @@ const ConnectFour = () => {
 }, [board]);
 
 useEffect(() => {
-  winner === 1 ? handleUpdateRecord("player_one") : handleUpdateRecord("player_two");
+  winner === 1 ? 
+  setRecord(handleUpdateRecord("player_one", record)) : 
+  setRecord(handleUpdateRecord("player_two", record));
 }, [winner]);
 
 
 
   return (
     <StyledConnectFour>
+      <div>
+        <h4>Connect Four!</h4>
       <FourBoard onSelect={handlePickSquare} board={board} winner={winner}/>
+      </div>
       <ScoreKeeper record={record} />
     </StyledConnectFour>
   )

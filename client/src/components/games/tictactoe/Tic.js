@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import GameSquare from './atoms/gameSquare/GameSquare';
 import Button from '../../atoms/Button/Button';
 import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
-import ReactDOM from 'react-dom';
 import OpponentNames from '../../../utilities/OpponentNames';
+import UpdateRecords from '../../../utilities/UpdateRecords';
 
 import StyledTic from './StyledTic';
 
@@ -19,6 +19,7 @@ const Tic = () => {
   const [record, setRecord] = useState({player_one: 0, player_two: 0, draw: 0});
 
   const { robitNames, pickRobotName } = OpponentNames; 
+  const { handleUpdateRecord } = UpdateRecords;
 
 
   const squares = ["", "", "", "", "", "", "", "", ""];
@@ -43,17 +44,10 @@ const Tic = () => {
 
   const startComputerGame = () => {
     setComputerPlayer(true);
-    const computerName = pickRobotName(robitNames);
-    setOpponentName(computerName);
+    setOpponentName(pickRobotName(robitNames));
     startGame();
   };
 
-
-  const handleUpdateRecord = (winner) => {
-    let newRecord = {...record};
-    newRecord[winner]++;
-    setRecord(newRecord);
-  };
 
   const handleComputerTurn = () => {
     console.log("computerTurn");
@@ -79,7 +73,6 @@ const Tic = () => {
           }
         }
       } else if ((a === "" && b === "" && c === "")) { // check for empty winCondition
-        console.log("empy winCondition found")
         setSquareSelected(firstNum);
         return;
       } else {
@@ -87,7 +80,6 @@ const Tic = () => {
       }
     } 
     // Picks first available square, only runs on initial turn
-    console.log("running firstTurnmode")
     for (let i = 0; i < activeBoard.length; i++) {
       if (activeBoard[i] === "") {
         setSquareSelected(i);
@@ -109,12 +101,12 @@ const Tic = () => {
       if (a === b && b === c) {
         if (playerTurn !== 0) {
           setVictory(playerTurn);
-          playerTurn === 1 ? handleUpdateRecord("player_one") : handleUpdateRecord("player_two")
+          playerTurn === 1 ? setRecord(handleUpdateRecord("player_one", record)) : setRecord(handleUpdateRecord("player_two", record))
         }
         break;
       } if (!game.includes("")) {
         setVictory(3);
-        handleUpdateRecord("draw");
+        setRecord(handleUpdateRecord("draw", record));
       }
     } 
   };
@@ -158,13 +150,13 @@ const Tic = () => {
   const gameBoard = () => {
     console.log("rendering board");
      return game.map((element, index) => {
-    return  <GameSquare 
-      index={index} 
-      key={index} 
-      value={element}
-      playerTurn={playerTurn} 
-      setSquareSelected={setSquareSelected}
-      />
+        return  <GameSquare 
+          index={index} 
+          key={index} 
+          value={element}
+          playerTurn={playerTurn} 
+          setSquareSelected={setSquareSelected}
+          />
     });
   }
   ;

@@ -7,6 +7,7 @@ import Button from '../../atoms/Button/Button';
 import RenderThrow from './atoms/RenderThrow/RenderThrow';
 import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 import OpponentNames from '../../../utilities/OpponentNames';
+import UpdateRecords from '../../../utilities/UpdateRecords';
 
 const RockPaper = () => {
 
@@ -18,6 +19,7 @@ const RockPaper = () => {
   const [opponentName, setOpponentName] = useState("");
 
   const { robitNames, pickRobotName } = OpponentNames;
+  const { handleUpdateRecord } = UpdateRecords;
 
   useEffect(() => {
     setOpponentName(pickRobotName(robitNames));
@@ -37,27 +39,21 @@ const RockPaper = () => {
     }, 3000)
   };
 
-  const handleUpdateRecord = (winner) => {
-    let newRecord = {...record};
-    newRecord[winner]++;
-    setRecord(newRecord);
-  };
-
   const handleGame = () => {
     const moves = ["rock", "paper", "scissors"];
     const opponentsMove = moves[Math.floor(Math.random() * moves.length)];
     setOpponentTurn(opponentsMove);
     if ((input === "rock" && opponentsMove === "paper") || (input === "paper" && opponentsMove === "scissors") || (input === "scissors" && opponentsMove === "rock")) {
       setWinner("computer");
-      handleUpdateRecord("player_two");
+      setRecord(handleUpdateRecord("player_two", record));
       return false;
      } else if ((input === "paper" && opponentsMove === "rock") || (input === "scissors" && opponentsMove === "paper") || (input === "rock" && opponentsMove === "scissors")) {
        setWinner("human");
-       handleUpdateRecord("player_one");
+       setRecord(handleUpdateRecord("player_one", record));
        return true;
     } else {
       setWinner("draw");
-      handleUpdateRecord("draw");
+      SetRecord(handleUpdateRecord("draw", record));
       return "draw"
     }
   };

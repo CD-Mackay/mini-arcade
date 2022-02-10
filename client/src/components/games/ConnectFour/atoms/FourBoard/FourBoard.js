@@ -19,9 +19,6 @@ const FourBoard = ({board, onSelect, winner}) => {
     })
   };
 
-
-
-
   return (
     <StyledFourBoard>
       {renderBoard(board)}
