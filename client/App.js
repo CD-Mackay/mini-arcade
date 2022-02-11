@@ -12,6 +12,7 @@ import Tic from './src/components/games/tictactoe/Tic.js';
 import Header from './src/components/atoms/Header/Header.js';
 import Footer from './src/components/atoms/Footer/Footer.js';
 import ConnectFour from './src/components/games/ConnectFour/ConnectFour.js';
+import Tutorial from './src/components/atoms/Tutorial/Tutorial.js';
 
 /* Asset Imports */
 import { GlobalStyle } from './GlobalStyles.js'
@@ -41,6 +42,9 @@ const App = () => {
             </Route>
             <Route exact path="/connectfour">
               <ConnectFour />
+            </Route>
+            <Route path="/:game/tutorial">
+              <Tutorial game=":game"/>
             </Route>
           </Switch>
           <Footer />

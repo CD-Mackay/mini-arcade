@@ -6,7 +6,6 @@ margin: 0 auto;
 text-align: center;
 display: flex;
 flex-direction: column;
-height: 600px;
 justify-content: center;
 
 #setup-box {
