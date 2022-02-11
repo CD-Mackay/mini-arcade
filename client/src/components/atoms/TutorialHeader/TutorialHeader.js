@@ -3,15 +3,18 @@ import React from 'react';
 
 
 /* Component Imports */
+import { Link } from 'react-router-dom';
 
 /* Asset Imports */
 import StyledTutorialHeader from './StyledTutorialHeader';
 
-const TutorialHeader = () => {
+const TutorialHeader = ({game}) => {
 
   return (
     <StyledTutorialHeader>
-      <h1>I am TutorialHeader</h1>
+      <Link to={`${game}/tutorial`}>
+        Tutorial
+      </Link>
     </StyledTutorialHeader>
   )
 };
