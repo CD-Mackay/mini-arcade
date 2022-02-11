@@ -4,6 +4,7 @@ import Button from '../../atoms/Button/Button';
 import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 import OpponentNames from '../../../utilities/OpponentNames';
 import UpdateRecords from '../../../utilities/UpdateRecords';
+import { Link } from 'react-router-dom';
 
 import StyledTic from './StyledTic';
 
@@ -173,6 +174,9 @@ const Tic = () => {
 
   return (
     <StyledTic>
+      <Link to="/tictactoe/tutorial">
+        tutorial
+        </Link>
       {gamePhase === "setup" &&
       <div id="setup-box">
         <h4>Select Human or Robotic Opponent</h4>
