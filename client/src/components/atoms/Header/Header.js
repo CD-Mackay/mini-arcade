@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import StyledHeader from './StyledHeader';
 
 const Header = () => {
+
+  
   return (
     <StyledHeader>
       <div />
