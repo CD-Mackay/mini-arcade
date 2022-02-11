@@ -31,6 +31,10 @@ const Tutorial = () => {
       <p>{instructions.introduction}</p>
       <h4>Rules</h4>
       <p>{instructions.rules}</p>
+      <h4>Strategy</h4>
+      <p>{instructions.strategy}</p>
+      <h4>Be warned</h4>
+      <p>{instructions.pitfalls}</p>
     </StyledTutorial>
   )
 };
