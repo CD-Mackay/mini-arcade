@@ -1,5 +1,5 @@
 /* Library Imports */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 
@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 
 /* Asset Imports */
 import StyledTutorial from './StyledTutorial';
+import TutorialText from '../../../utilities/TutorialText';
 
 const Tutorial = () => {
 
@@ -14,10 +15,22 @@ const Tutorial = () => {
 
   const [instructions, setInstructions] = useState({});
 
-  console.log(game);
+  const { text } = TutorialText;
+
+  useEffect(() => {
+    for (let element of text) {
+      if (element.game === game) {
+        setInstructions(element);
+      }
+    }
+  }, []);
+
   return (
     <StyledTutorial>
-      <h1>I am Tutorial</h1>
+      <h4>Introduction</h4>
+      <p>{instructions.introduction}</p>
+      <h4>Rules</h4>
+      <p>{instructions.rules}</p>
     </StyledTutorial>
   )
 };
