@@ -35,19 +35,19 @@ const App = () => {
               <Home />
             </Route>
             <Route exact path="/tictactoe">
-              <TutorialHeader />
+              <TutorialHeader game="tictactoe" />
               <Tic />
             </Route>
             <Route exact path="/hangman">
-              <TutorialHeader />
+              <TutorialHeader game="hangman" />
               <Hangman />
             </Route>
             <Route exact path="/rockpaperscissors" >
-              <TutorialHeader />
+              <TutorialHeader game="rockpaperscissors" />
               <RockPaper />
             </Route>
             <Route exact path="/connectfour">
-              <TutorialHeader />
+              <TutorialHeader game="connectfour" />
               <ConnectFour />
             </Route>
             <Route path="/:game/tutorial">

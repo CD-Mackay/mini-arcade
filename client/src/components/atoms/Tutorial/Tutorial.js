@@ -27,14 +27,22 @@ const Tutorial = () => {
 
   return (
     <StyledTutorial>
-      <h4>Introduction</h4>
-      <p>{instructions.introduction}</p>
-      <h4>Rules</h4>
-      <p>{instructions.rules}</p>
-      <h4>Strategy</h4>
-      <p>{instructions.strategy}</p>
-      <h4>Be warned</h4>
-      <p>{instructions.pitfalls}</p>
+      <div>
+        <h4>Introduction</h4>
+        <p>{instructions.introduction}</p>
+      </div>
+      <div>
+        <h4>Rules</h4>
+        <p>{instructions.rules}</p>
+      </div>
+      <div>
+        <h4>Strategy</h4>
+        <p>{instructions.strategy}</p>
+      </div>
+      <div>
+        <h4>Be warned</h4>
+        <p>{instructions.pitfalls}</p>
+      </div>
     </StyledTutorial>
   )
 };
