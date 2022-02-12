@@ -9,6 +9,10 @@ div {
     font-size: 28px;
     margin: 10px;
   }
+  h6 {
+    margin-bottom: 5px;
+    font-size: 24px;
+  }
 }
 `
 

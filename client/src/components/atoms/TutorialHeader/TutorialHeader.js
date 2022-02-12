@@ -14,7 +14,6 @@ const TutorialHeader = ({game}) => {
   return (
     <StyledTutorialHeader>
       <Link to={`${game}/tutorial`}>
-        confused
         <FaQuestionCircle fontSize="24px" color="#00FFFF" />
       </Link>
     </StyledTutorialHeader>

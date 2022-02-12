@@ -174,9 +174,6 @@ const Tic = () => {
 
   return (
     <StyledTic>
-      <Link to="/tictactoe/tutorial">
-        tutorial
-        </Link>
       {gamePhase === "setup" &&
       <div id="setup-box">
         <h4>Select Human or Robotic Opponent</h4>
