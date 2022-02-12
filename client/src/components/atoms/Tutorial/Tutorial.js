@@ -27,6 +27,7 @@ const Tutorial = () => {
 
   return (
     <StyledTutorial>
+      <h2>{instructions.title} Tutorial</h2>
       <div>
         <h4>Introduction</h4>
         <p>{instructions.introduction}</p>
