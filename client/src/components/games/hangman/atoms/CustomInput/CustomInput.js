@@ -43,6 +43,9 @@ const CustomInput = ({string, setString, onSubmit}) => {
 
   return (
     <StyledCustomInput>
+      <h4>
+        Enter your mystery word
+      </h4>
       <form onSubmit={() => handleFormSubmit(event)}>
         <input type="text" onChange={event => handleSetInput(event.target.value)} value={string} />
       </form>
