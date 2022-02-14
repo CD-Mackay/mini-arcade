@@ -51,6 +51,7 @@ const App = () => {
               <ConnectFour />
             </Route>
             <Route path="/:game/tutorial">
+              <TutorialHeader />
               <Tutorial />
             </Route>
           </Switch>
