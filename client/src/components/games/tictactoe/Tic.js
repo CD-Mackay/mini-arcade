@@ -4,7 +4,6 @@ import Button from '../../atoms/Button/Button';
 import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 import OpponentNames from '../../../utilities/OpponentNames';
 import UpdateRecords from '../../../utilities/UpdateRecords';
-import { Link } from 'react-router-dom';
 
 import StyledTic from './StyledTic';
 

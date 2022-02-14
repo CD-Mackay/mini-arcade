@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 /* Asset Imports */
 import StyledGameListItem from './StyledGameListItem';
 
-const GameListItem = ({game, name, description}) => {
+const GameListItem = ({game, name, description, icon}) => {
   return (
     <StyledGameListItem>
       <Link to={`/${game}`}>
-        <h4>{name}</h4>
+        <h4>{name}{icon ? icon : ""}</h4>
         <p>{description}</p>
       </Link>
     </StyledGameListItem>

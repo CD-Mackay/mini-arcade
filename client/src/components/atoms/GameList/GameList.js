@@ -7,6 +7,7 @@ import GameListItem from '../GameListItem/GameListItem';
 
 /* Asset Imports */
 import StyledGameList from './StyledGameList';
+import { GiTicTacToe, GiDoubleFaceMask, GiTriforce } from 'react-icons/gi';
 
 const GameList = () => {
   return (
@@ -15,16 +16,20 @@ const GameList = () => {
         <GameListItem 
         game="tictactoe" 
         name="Tic-Tac-Toe"
-        description="Simple, classic, your child can probably beat you. " />
+        description="Simple, classic, your child can probably beat you. "
+        icon={<GiTicTacToe color={"#00FFFF"} fontSize="24px" />} />
         <GameListItem 
         game="hangman" 
         name="Hangman" 
         description="Slightly morbid, good for vocabulistics"
+        icon={<GiDoubleFaceMask color={"#00FFFF"} fontSize="24px" />}
         />
         <GameListItem 
         game="rockpaperscissors" 
         name="Rock Paper Scissors" 
-        description="For those who can't do"/>
+        description="For those who can't do"
+        icon={<GiTriforce color={"#00FFFF"} fontSize="24px" />}
+        />
         <GameListItem 
         game="connectfour" 
         name="Connect Four" 
