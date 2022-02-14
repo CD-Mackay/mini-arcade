@@ -40,12 +40,7 @@ const ConnectFour = () => {
       newBoard[numOne][numTwo].available = false;
       setBoard(newBoard);
       let validatedBoard = checkForValidSquares(board);
-      setBoard(validatedBoard);
-      if (playerTurn === 1) {
-        setPlayerTurn(2);
-      } else {
-        setPlayerTurn(1)
-      }  
+      setBoard(validatedBoard); 
     } else {
       console.log("not available!");
     }
@@ -140,12 +135,19 @@ const ConnectFour = () => {
     checkForHorizontalWin(board);
     checkForAscendingWin(board);
     checkForDescendingWin(board);
+    if (playerTurn === 1) {
+      setPlayerTurn(2);
+    } else {
+      setPlayerTurn(1)
+    } 
 }, [board]);
 
 useEffect(() => {
-  winner === 1 ? 
-  setRecord(handleUpdateRecord("player_one", record)) : 
-  setRecord(handleUpdateRecord("player_two", record));
+  if (winner !== 0) {
+    winner === 1 ? 
+    setRecord(handleUpdateRecord("player_one", record)) :
+    setRecord(handleUpdateRecord("player_two", record));
+  };
 }, [winner]);
 
 
