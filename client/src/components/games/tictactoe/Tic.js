@@ -4,7 +4,6 @@ import Button from '../../atoms/Button/Button';
 import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
 import OpponentNames from '../../../utilities/OpponentNames';
 import UpdateRecords from '../../../utilities/UpdateRecords';
-import { Link } from 'react-router-dom';
 
 import StyledTic from './StyledTic';
 
@@ -51,7 +50,6 @@ const Tic = () => {
 
 
   const handleComputerTurn = () => {
-    console.log("computerTurn");
     let activeBoard = [...game];
 
     for (let i = 0; i <= 7; i++) {
@@ -126,7 +124,6 @@ const Tic = () => {
           handleComputerTurn();
         }, 300);
     } else if (computerPlayer && playerTurn === 2) {
-      console.log("human turn");
       setPlayerTurn(1);
     } else if (!computerPlayer) {
       playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
@@ -134,7 +131,6 @@ const Tic = () => {
   };
 
   const resetGame = () => {
-    console.log("reset");
     setGamePhase("setup");
     setGame(squares);
     setVictory(0);
@@ -149,7 +145,6 @@ const Tic = () => {
 
 
   const gameBoard = () => {
-    console.log("rendering board");
      return game.map((element, index) => {
         return  <GameSquare 
           index={index} 

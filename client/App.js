@@ -3,7 +3,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route, useParams
+  Route
 } from "react-router-dom";
 
 /* Component Imports */
@@ -35,23 +35,24 @@ const App = () => {
               <Home />
             </Route>
             <Route exact path="/tictactoe">
-              <TutorialHeader game="tictactoe" />
               <Tic />
+              <TutorialHeader game="tictactoe" />
             </Route>
             <Route exact path="/hangman">
-              <TutorialHeader game="hangman" />
               <Hangman />
+              <TutorialHeader game="hangman" />
             </Route>
             <Route exact path="/rockpaperscissors" >
-              <TutorialHeader game="rockpaperscissors" />
               <RockPaper />
+              <TutorialHeader game="rockpaperscissors" />
             </Route>
             <Route exact path="/connectfour">
-              <TutorialHeader game="connectfour" />
               <ConnectFour />
+              <TutorialHeader game="connectfour" />
             </Route>
             <Route path="/:game/tutorial">
               <Tutorial />
+              <TutorialHeader />
             </Route>
           </Switch>
           <Footer />
