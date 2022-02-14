@@ -128,8 +128,8 @@ const Hangman = () => {
           <div id="setup-menu">
             <h4>Welcome to HangMan!</h4>
             <div>
-              <Button message="Play Against Robot" onClick={() => setGamePhase("input")} />
-              <Button message="Play Against Human" onClick={() => startGame()} />
+              <Button message="Play Against Robot" onClick={() => startGame()} />
+              <Button message="Play Against Human" onClick={() => setGamePhase("input")} />
             </div>
           </div>}
           {gamePhase == "input" && <CustomInput string={stringInput} onSubmit={() => startCustomGame(stringInput)} setString={setStringInput} />}
