@@ -14,6 +14,17 @@ a {
   border-radius: 10px;
   padding: 5px;
 }
+div {
+  display: flex;
+  p {
+    font-size: 24px;
+    padding-top: 5px;
+    margin-right: 5px;
+  }
+  a {
+    margin-right: 5px;
+  }
+}
 `
 
 export default StyledTutorialHeader;
