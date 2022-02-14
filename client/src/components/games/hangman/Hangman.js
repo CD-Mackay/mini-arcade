@@ -132,7 +132,13 @@ const Hangman = () => {
               <Button message="Play Against Human" onClick={() => setGamePhase("input")} />
             </div>
           </div>}
-          {gamePhase == "input" && <CustomInput string={stringInput} onSubmit={() => startCustomGame(stringInput)} setString={setStringInput} />}
+          {gamePhase == "input" && 
+          <CustomInput string={stringInput} onSubmit={() => startCustomGame(stringInput)} setString={setStringInput} />}
+          {gamePhase == "win" &&
+          <h4>Congratulations! You were not hanged</h4>
+          }{gamePhase === "loss" &&
+          <h4>You are hung, and not in the good way</h4>
+          }
       
     </StyledHangman>
   )
