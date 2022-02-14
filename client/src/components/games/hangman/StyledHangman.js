@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledHangman = styled.section`
 display: grid;
-grid-template-columns: 1fr 1fr;
+grid-template-columns: ${props => props.phase === "play" ? "1fr 1fr" : "1fr"};
 width: 80vw;
 margin: 0 auto;
 #game-wrapper {
@@ -17,9 +17,20 @@ margin: 0 auto;
   }
 }
 #setup-menu {
-  Button {
-    margin-bottom: 10px;
+  margin: 0 auto;
+  text-align: center;
+  h4 {
+    font-size: 24px;
+    margin-bottom: 5px;
   }
+  div {
+    display: flex;
+    Button {
+      margin-bottom: 10px;
+      margin-right: 5px;
+    }
+  }
+ 
 }
 `
 

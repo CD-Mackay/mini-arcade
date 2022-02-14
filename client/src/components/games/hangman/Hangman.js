@@ -104,7 +104,7 @@ const Hangman = () => {
 
 
   return (
-    <StyledHangman>
+    <StyledHangman phase={gamePhase}>
         {gamePhase == "play" && 
         <div id="game-wrapper">
           <h4>Welcome to HangMan!</h4>
@@ -126,8 +126,11 @@ const Hangman = () => {
           </div>}
           {gamePhase == "setup" && 
           <div id="setup-menu">
-            <Button message="Play Against Robot" onClick={() => setGamePhase("input")} />
-            <Button message="Play Against Human" onClick={() => startGame()} />
+            <h4>Welcome to HangMan!</h4>
+            <div>
+              <Button message="Play Against Robot" onClick={() => setGamePhase("input")} />
+              <Button message="Play Against Human" onClick={() => startGame()} />
+            </div>
           </div>}
           {gamePhase == "input" && <CustomInput string={stringInput} onSubmit={() => startCustomGame(stringInput)} setString={setStringInput} />}
       
