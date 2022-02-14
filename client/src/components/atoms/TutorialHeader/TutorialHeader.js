@@ -15,14 +15,14 @@ const TutorialHeader = ({game}) => {
   const { text } = TutorialText;
 
   const links = text.map((element, index) => {
-    return <Link key={index} to={`${element.game}/tutorial`}>
+    return <Link key={index} to={`/${element.game}/tutorial`}>
       {element.title}
     </Link>
   });
 
   return (
     <StyledTutorialHeader>
-      {game && <Link to={`${game}/tutorial`}>
+      {game && <Link to={`/${game}/tutorial`}>
         <FaQuestionCircle fontSize="24px" color="#00FFFF" />
       </Link>}
       {!game && 

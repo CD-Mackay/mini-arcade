@@ -23,7 +23,7 @@ const Tutorial = () => {
         setInstructions(element);
       }
     }
-  }, []);
+  }, [game]);
 
   return (
     <StyledTutorial>
