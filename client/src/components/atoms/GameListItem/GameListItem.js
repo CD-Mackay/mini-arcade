@@ -13,7 +13,9 @@ const GameListItem = ({game, name, description, icon}) => {
       <Link to={`/${game}`}>
         <h4>{name}</h4>
         <p>{description}</p>
-        {icon ? icon : ""}
+        <div>
+          {icon ? icon : ""}
+        </div>
       </Link>
     </StyledGameListItem>
   )
