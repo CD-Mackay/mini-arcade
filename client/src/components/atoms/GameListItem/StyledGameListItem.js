@@ -10,6 +10,9 @@ padding: 15px;
 text-align: center;
 a {
    text-decoration: none;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
    h4 {
       color: #00FFFF;
       font-size: 32px;

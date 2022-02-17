@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 /* Asset Imports */
 import StyledGameListItem from './StyledGameListItem';
-import { FaQuestionCircle } from 'react-icons/fa';
 
 const GameListItem = ({game, name, description, icon}) => {
   return (
@@ -14,7 +13,9 @@ const GameListItem = ({game, name, description, icon}) => {
       <Link to={`/${game}`}>
         <h4>{name}</h4>
         <p>{description}</p>
-        {icon ? icon : ""}
+        <div>
+          {icon ? icon : ""}
+        </div>
       </Link>
     </StyledGameListItem>
   )
