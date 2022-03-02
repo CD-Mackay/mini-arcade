@@ -16,6 +16,7 @@ const ConnectFour = () => {
   const [playerTurn, setPlayerTurn] = useState(1);
   const [winner, setWinner] = useState(0);
   const [record, setRecord] = useState({player_one: 0, player_two: 0, draw: 0});
+  const [error, setError] = useState("");
 
   const { handleUpdateRecord } = UpdateRecords;
 
@@ -41,7 +42,10 @@ const ConnectFour = () => {
       let validatedBoard = checkForValidSquares(board);
       setBoard(validatedBoard); 
     } else {
-      console.log("not available!");
+      setError("not available!")
+      setTimeout(() =>{
+        setError("");
+      }, 3000);
     }
   };
 
@@ -156,6 +160,7 @@ useEffect(() => {
       <div>
         <h4>Connect Four!</h4>
         <h6>Player {playerTurn}'s Turn</h6>
+        <p>{error}</p>
       <FourBoard onSelect={handlePickSquare} board={board} winner={winner}/>
       </div>
       <ScoreKeeper record={record} />

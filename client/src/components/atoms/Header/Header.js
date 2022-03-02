@@ -4,24 +4,26 @@ import React from 'react';
 
 /* Component Imports */
 import Button from '../Button/Button';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 /* Asset Imports */
 import StyledHeader from './StyledHeader';
 
 const Header = () => {
 
-  
+  let location = useLocation();
+
   return (
-    <StyledHeader>
+    <StyledHeader location={location.pathname}>
+     {location.pathname !== "/" && 
       <div />
-      <div>
-        <h1>Behold! The mini Arcade!</h1>
-      </div>
+     }
+        <h1>The Mini Arcade</h1>
+      {location.pathname !== "/" && 
       <div id="button-wrapper">
         <Link to="/">
           <Button message="Return to Home" />
         </Link>
-      </div>
+      </div>}
     </StyledHeader>
   )
 };

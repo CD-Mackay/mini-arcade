@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 
 /* Component Imports */
+import Button from '../../../../atoms/Button/Button';
 
 /* Asset Imports */
 import StyledCustomInput from './StyledCustomInput';
@@ -48,6 +49,7 @@ const CustomInput = ({string, setString, onSubmit}) => {
       </h4>
       <form onSubmit={() => handleFormSubmit(event)}>
         <input type="text" onChange={event => handleSetInput(event.target.value)} value={string} />
+        <Button onClick={(event) => handleFormSubmit(event)} message="Start Game" />
       </form>
     </StyledCustomInput>
   )
