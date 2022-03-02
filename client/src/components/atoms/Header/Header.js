@@ -14,9 +14,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <div />
-      <div>
-        <h1>Behold! The mini Arcade!</h1>
-      </div>
+        <h1>The Mini Arcade</h1>
       <div id="button-wrapper">
         <Link to="/">
           <Button message="Return to Home" />
