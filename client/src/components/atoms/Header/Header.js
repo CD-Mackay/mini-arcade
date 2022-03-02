@@ -12,11 +12,11 @@ const Header = () => {
 
   let location = useLocation();
 
-  console.log(location);
-
   return (
     <StyledHeader location={location.pathname}>
-     {location.pathname !== "/" && <div />}
+     {location.pathname !== "/" && 
+      <div />
+     }
         <h1>The Mini Arcade</h1>
       {location.pathname !== "/" && 
       <div id="button-wrapper">
