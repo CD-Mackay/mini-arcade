@@ -3,7 +3,7 @@ import React from 'react';
 
 
 /* Component Imports */
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 /* Asset Imports */
 import StyledTutorialHeader from './StyledTutorialHeader';
@@ -14,7 +14,12 @@ const TutorialHeader = ({game}) => {
 
   const { text } = TutorialText;
 
-  const links = text.map((element, index) => {
+  let location = useLocation();
+  console.log(location);
+
+  const links = text
+  .filter((element) => !location.pathname.includes(element.game))
+  .map((element, index) => {
     return <Link key={index} to={`/${element.game}/tutorial`}>
       {element.title}
     </Link>
