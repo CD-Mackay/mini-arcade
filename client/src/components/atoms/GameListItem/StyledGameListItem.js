@@ -8,7 +8,15 @@ padding: 15px;
 text-align: center;
 .game-grid {
    display: grid;
-   grid-template-columns: 4fr 1fr;
+   grid-template-columns: 3fr 1fr;
+}
+.grid-icon {
+   display: flex; 
+   flex-direction: column;
+   justify-content: center;
+   svg {
+      margin: 0 auto;
+   }
 }
 a {
    text-decoration: none;
