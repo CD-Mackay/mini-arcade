@@ -28,13 +28,13 @@ const GameList = () => {
         <GameListItem 
         game="rockpaperscissors" 
         name="Rock Paper Scissors" 
-        description="For those who can't do"
+        description="For those who can't do."
         icon={<GiTriforce color={"#00FFFF"} fontSize="32px" />}
         />
         <GameListItem 
         game="connectfour" 
         name="Connect Four" 
-        description="Because counting to 5 is hard"
+        description="Because counting to 5 is hard."
         icon={<BiCategory color={"#00FFFF"} fontSize="32px" />}
          />
         <GameListItem />
