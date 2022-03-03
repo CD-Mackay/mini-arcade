@@ -15,6 +15,12 @@ div {
     font-size: 24px;
   }
 }
+#scoreboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
 `
 
 export default StyledConnectFour;

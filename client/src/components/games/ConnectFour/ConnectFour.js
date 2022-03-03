@@ -163,7 +163,9 @@ useEffect(() => {
         <p>{error}</p>
       <FourBoard onSelect={handlePickSquare} board={board} winner={winner}/>
       </div>
-      <ScoreKeeper record={record} />
+      <div id="scoreboard-wrapper">
+        <ScoreKeeper record={record} />
+      </div>
     </StyledConnectFour>
   )
 };
