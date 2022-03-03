@@ -15,7 +15,6 @@ const TutorialHeader = ({game}) => {
   const { text } = TutorialText;
 
   let location = useLocation();
-  console.log(location);
 
   const links = text
   .filter((element) => !location.pathname.includes(element.game))
