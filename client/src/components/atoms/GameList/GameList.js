@@ -18,18 +18,18 @@ const GameList = () => {
         game="tictactoe" 
         name="Tic-Tac-Toe"
         description="Simple, classic, your child can probably beat you. "
-        icon={<GiTicTacToe color={"#00FFFF"} fontSize="32px" />} />
+        icon={<GiTicTacToe color={"#00FFFF"} fontSize="48px" />} />
         <GameListItem 
         game="hangman" 
         name="Hangman" 
         description="Slightly morbid, good for vocabulistics"
-        icon={<GiDoubleFaceMask color={"#00FFFF"} fontSize="32px" />}
+        icon={<GiDoubleFaceMask color={"#00FFFF"} fontSize="48px" />}
         />
         <GameListItem 
         game="rockpaperscissors" 
         name="Rock Paper Scissors" 
         description="For those who can't do."
-        icon={<GiTriforce color={"#00FFFF"} fontSize="32px" />}
+        icon={<GiTriforce color={"#00FFFF"} fontSize="48px" />}
         />
         <GameListItem 
         game="connectfour" 
