@@ -53,8 +53,9 @@ const RockPaper = () => {
        return true;
     } else {
       setWinner("draw");
-      SetRecord(handleUpdateRecord("draw", record));
-      return "draw"
+      console.log("draw");
+      setRecord(handleUpdateRecord("draw", record));
+      return "draw";
     }
   };
 
