@@ -7,8 +7,8 @@ border: 1px solid #00FFFF;
 padding: 15px;
 text-align: center;
 .game-grid {
-   display: grid;
-   grid-template-columns: 3fr 1fr;
+   display: flex;
+   flex-direction: column;
 }
 .grid-icon {
    display: flex; 
@@ -27,11 +27,22 @@ a {
    }
 }
 p {
-   color: #00FFFF;
-   font-size: 24px;
+   display: none;
 }
 :hover {
    background: #323445;
+}
+
+@media (min-width: 768px) {
+  .game-grid {
+   display: grid;
+   grid-template-columns: 3fr 1fr;
+  } 
+  p {
+   display: inline;
+   color: #00FFFF;
+   font-size: 24px;
+  }
 }
 `
 

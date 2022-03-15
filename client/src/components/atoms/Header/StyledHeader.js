@@ -8,6 +8,7 @@ width: 100vw;
 text-align: center;
 h1 {
   font-size: 42px;
+  padding: 10px;
 }
 #button-wrapper {
   display: flex;
