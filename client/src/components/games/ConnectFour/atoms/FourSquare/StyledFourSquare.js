@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledFourSquare = styled.div`
 border: 1px solid #00FFFF;
 width: 100%;
-height: 120px;
+height: 50px;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -17,6 +17,17 @@ justify-content: center;
   background: ${props => props.selected === 0 ? "#24282f" : props.selected === 1 ? "red" : "yellow"};
   margin: 0 auto;
   border-radius: 50%;
+}
+
+@media (min-width: 576px) {
+  height: 60px;
+}
+
+@media (min-width: 768px) {
+  height: 90px;
+}
+@media (min-width: 976px) {
+  height: 120px;
 }
 `
 
