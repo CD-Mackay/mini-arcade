@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 const StyledTic = styled.section`
-width: 40vw;
 margin: 0 auto;
 text-align: center;
 display: flex;
 flex-direction: column;
 justify-content: center;
-
+width: 80vw;
 #setup-box {
   h4 {
     padding: 10px;
@@ -18,6 +17,7 @@ justify-content: center;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
     button {
       width: 150px;
       padding: 2px;
@@ -49,6 +49,13 @@ justify-content: center;
   button {
     margin-left: 5px;
     margin-right: 5px;
+  }
+}
+
+@media (min-width: 768px) {
+  width: 40vw;
+  #button-wrapper {
+    flex-direction: row;
   }
 }
 `
