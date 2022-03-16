@@ -11,7 +11,7 @@ const WordWrapper = ({string}) => {
     if (string !== "") {
       return string
       .map((element, index) => {
-        return <LetterWrapper key={index} letter={element.value} selected={element.selected} />
+        return <LetterWrapper key={index} letter={element.value} length={string.length} selected={element.selected} />
       })
     }
   };

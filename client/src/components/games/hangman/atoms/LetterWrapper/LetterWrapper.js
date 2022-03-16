@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 // Component Imports
 import StyledLetterWrapper from './StyledLetterWrapper';
 
-const LetterWrapper = ({letter, selected}) => {
+const LetterWrapper = ({letter, selected, length}) => {
 
   const [displayLetter, setDisplayLetter] = useState(selected);
 
@@ -13,7 +13,7 @@ const LetterWrapper = ({letter, selected}) => {
   }, [selected]);
 
   return (
-    <StyledLetterWrapper display={displayLetter.toString()}>
+    <StyledLetterWrapper length={length} display={displayLetter.toString()}>
       <span>
         {letter}
       </span>
