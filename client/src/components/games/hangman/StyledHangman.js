@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 const StyledHangman = styled.section`
-display: grid;
-grid-template-columns: ${props => props.phase === "play" ? "1fr 1fr" : "1fr"};
-width: 80vw;
+display: flex;
+flex-direction: column;
 margin: 0 auto;
 #game-wrapper {
   display: flex;
@@ -30,7 +29,10 @@ margin: 0 auto;
       margin-right: 5px;
     }
   }
- 
+}
+@media (min-width: 768px) {
+  display: grid;
+  grid-template-columns: ${props => props.phase === "play" ? "1fr 1fr" : "1fr"};
 }
 `
 
