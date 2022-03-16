@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const StyledConnectFour = styled.section`
-display: grid;
-grid-template-columns: 3fr 1fr;
+display: flex;
+flex-direction: column;
 padding: 10px;
 div {
   text-align: center;
@@ -20,6 +20,11 @@ div {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+}
+
+@media (min-width: 768px) {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
 }
 `
 

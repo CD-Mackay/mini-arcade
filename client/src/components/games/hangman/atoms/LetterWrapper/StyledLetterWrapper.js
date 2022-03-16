@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const StyledLetterWrapper = styled.span`
 margin: 5px;
 border-bottom: 2px solid #00FFFF;
-width: 50px;
+width: ${props =>  1 / props.length * 80 }%;
 height: 50px;
 display: inline-block;
   span {
