@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledGameSquare = styled.div`
 border: 1px solid #00FFFF;
-height: 150px;
+height: 50px;
 width: 100%;
 display: flex;
 flex-direction: column;
@@ -14,6 +14,14 @@ justify-content: center;
   }
 :hover {
   background: #8d1b1f;
+}
+
+@media (min-width: 576px) {
+  height: 90px;
+}
+
+@media (min-width: 768px) {
+height: 150px;
 }
 `
 
