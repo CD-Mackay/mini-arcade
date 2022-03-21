@@ -1,7 +1,7 @@
 /* Library Imports */
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 /* Component Imports */
 
@@ -43,6 +43,11 @@ const Tutorial = () => {
       <div>
         <h4>Be warned</h4>
         <p>{instructions.pitfalls}</p>
+      </div>
+      <div>
+      <Link to={`/${instructions.game}`}>
+      Return to Game
+    </Link>
       </div>
     </StyledTutorial>
   )
