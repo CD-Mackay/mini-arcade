@@ -19,12 +19,12 @@ const OpponentThrow = ({timer, winner, display}) => {
   return (
     <StyledOpponentThrow opacity={opacity} >
       <div>
+      <p>{timer}</p>
       {winner ? <h1>{winner === "draw" ? "DRAW!" : `${winner} wins!`}</h1> : <h1> </h1>}
       {display === "rock" && <GiMailedFist fontSize="36px" id="rock" />}
       {display === "paper"  && <GiPalm fontSize="36px" id="paper" />}
       {display === "scissors" && <FaRegHandScissors fontSize="36px" id="scissors" />}
       </div>
-      <p>{timer}</p>
     </StyledOpponentThrow>
   )
 };

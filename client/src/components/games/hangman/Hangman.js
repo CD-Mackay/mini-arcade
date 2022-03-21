@@ -107,7 +107,6 @@ const Hangman = () => {
     <StyledHangman phase={gamePhase}>
         {gamePhase == "play" && 
         <div id="game-wrapper">
-          <h4>Welcome to HangMan!</h4>
           <h5>{gamePhase == "win" && "Congratulations!"}</h5>
           <h5>{gamePhase == "loss" && "You have been hanged"}</h5>
           <Gallows failed={failedGuesses} />
