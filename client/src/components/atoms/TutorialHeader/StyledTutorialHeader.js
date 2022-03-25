@@ -5,7 +5,6 @@ display: flex;
 flex-direction: row;
 justify-content: flex-end;
 margin: 20px;
-width: 80vw;
 a {
   font-size: 24px;
   text-decoration: none;

@@ -26,9 +26,6 @@ const TutorialHeader = ({game}) => {
 
   return (
     <StyledTutorialHeader>
-      {game && <Link to={`/${game}/tutorial`}>
-        <FaQuestionCircle fontSize="24px" color="#00FFFF" />
-      </Link>}
       {!game && 
       <div>
         <p>Other Tutorials:</p>
