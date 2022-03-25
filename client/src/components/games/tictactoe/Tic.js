@@ -18,7 +18,7 @@ const Tic = () => {
   const [game, setGame] = useState([]);
   const [victory, setVictory] = useState(0);
   const [computerPlayer, setComputerPlayer] = useState(false);
-  const [squareValues, setSquareValues] = useState([]);
+  // const [squareValues, setSquareValues] = useState([]);
   const [opponentName, setOpponentName] = useState("");
   const [record, setRecord] = useState({
     player_one: 0,
@@ -53,46 +53,38 @@ const Tic = () => {
 
   const startComputerGame = () => {
     setComputerPlayer(true);
-    setSquareValues(
-      squares.map((element, index) => {
-        return { element, score: 0, index };
-      })
-    );
     setOpponentName(pickRobotName(robitNames));
     startGame();
   };
 
   const clearSquareValues = () => {
-    // Captures selected squares
     let activeBoard = [...game];
-    setSquareValues(
+    setGame(
       activeBoard.map((index, element) => {
-        // console.log({index, element: element, score: 0}); // But does not add them to squareValues?
         return { index, element: element, score: 0 };
       })
     );
   };
 
   const updateSquareValues = (number, squareScore) => {
-    let values = [...squareValues];
+    let values = [...game];
     for (let entry of values) {
       if (entry.index === number) {
         entry.score += squareScore;
       }
     }
-    setSquareValues(values);
+    setGame(values);
   };
 
   const selectComputerOffense = () => {
-    let activeBoard = [...game];
 
     for (let i = 0; i <= 7; i++) {
       const winCondition = winConditions[i];
-      const a = game[winCondition[0]];
+      const a = game[winCondition[0]].element;
       const firstNum = winCondition[0];
-      const b = game[winCondition[1]];
+      const b = game[winCondition[1]].element;
       const secondNum = winCondition[1];
-      const c = game[winCondition[2]];
+      const c = game[winCondition[2]].element;
       const thirdNum = winCondition[2];
       let array = [
         { letter: a, number: firstNum, score: 0 },
@@ -119,11 +111,11 @@ const Tic = () => {
   const selectComputerDefense = () => {
     for (let i = 0; i <= 7; i++) {
       const winCondition = winConditions[i];
-      const a = game[winCondition[0]];
+      const a = game[winCondition[0]].element;
       const firstNum = winCondition[0];
-      const b = game[winCondition[1]];
+      const b = game[winCondition[1]].element;
       const secondNum = winCondition[1];
-      const c = game[winCondition[2]];
+      const c = game[winCondition[2]].element;
       const thirdNum = winCondition[2];
       let array = [
         { letter: a, number: firstNum, score: 0 },
@@ -146,7 +138,7 @@ const Tic = () => {
     clearSquareValues();
     selectComputerDefense();
     selectComputerOffense();
-    let finalScores = [...squareValues];
+    let finalScores = [...game];
     finalScores = finalScores.sort((a, b) => {
       return b.score - a.score;
     });
@@ -156,7 +148,6 @@ const Tic = () => {
 
   const checkForWin = (game, playerTurn) => {
     if (game.length > 0) {
-      console.log(game);
       for (let i = 0; i <= 7; i++) {
         const winCondition = winConditions[i];
         const a = game[winCondition[0]];
@@ -174,7 +165,11 @@ const Tic = () => {
           }
           break;
         }
-        if (!game.includes("")) {
+        let array = [];
+        for (let entry of game) {
+          array.push(entry.element);
+        }
+        if (!array.includes("")) {
           setVictory(3);
           setRecord(handleUpdateRecord("draw", record));
         }
@@ -184,14 +179,13 @@ const Tic = () => {
 
   const updateBoard = (index) => {
     let board = [...game];
-    console.log("board", board);
     for (let entry of board) {
       if (entry.index === index) {
         entry.element = playerTurn;
       }
     }
-      setGame(board);
-      checkForWin(board, playerTurn);
+    setGame(board);
+    checkForWin(board, playerTurn);
   };
 
   const handleTurn = () => {
@@ -201,7 +195,7 @@ const Tic = () => {
         handleComputerTurn();
       }, 300);
     } else if (computerPlayer && playerTurn === 2) {
-      setPlayerTurn(1);
+      setPlayerTurn(1); // Somehow it's automatically making/overwriting human turns?
     } else if (!computerPlayer) {
       playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
     }
@@ -209,14 +203,11 @@ const Tic = () => {
 
   const resetGame = () => {
     setGamePhase("setup");
-    setGame(squares);
+    setGame(squares.map((element, index) => {
+      return { element, index, score: 0 };
+    }));
     setVictory(0);
     setGamePhase("play");
-    setSquareValues(
-      squares.map((element, index) => {
-        return { index, score: 0 };
-      })
-    );
   };
 
   const quitGame = () => {

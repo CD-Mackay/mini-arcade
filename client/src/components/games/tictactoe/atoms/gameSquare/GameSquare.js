@@ -14,7 +14,6 @@ const GameSquare = ({index, setSquareSelected, value}) => {
   };
 
   useEffect(() => {
-    console.log("useeffect")
     if (value !== "") {
       setOpacity(1);
     }
