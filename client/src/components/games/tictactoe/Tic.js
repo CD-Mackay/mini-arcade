@@ -1,3 +1,7 @@
+/* State of this: Struggling to update ai to use scores for individual squares.
+SquareValues should contain references to the gameboard i.e. which squares are selected, but defaults to 
+empty string */
+
 import React, { useEffect, useState } from "react";
 import GameSquare from "./atoms/gameSquare/GameSquare";
 import Button from "../../atoms/Button/Button";
@@ -14,7 +18,7 @@ const Tic = () => {
   const [game, setGame] = useState([]);
   const [victory, setVictory] = useState(0);
   const [computerPlayer, setComputerPlayer] = useState(false);
-  const [squareValues, setSquareValues] = useState([]);
+  // const [squareValues, setSquareValues] = useState([]);
   const [opponentName, setOpponentName] = useState("");
   const [record, setRecord] = useState({
     player_one: 0,
@@ -40,48 +44,47 @@ const Tic = () => {
 
   const startGame = () => {
     setGamePhase("play");
-    setGame(squares);
+    setGame(
+      squares.map((element, index) => {
+        return { element, score: 0, index };
+      })
+    );
   };
 
   const startComputerGame = () => {
     setComputerPlayer(true);
-    setSquareValues(
-      squares.map((element, index) => {
-        return { index, score: 0, element };
-      })
-    );
     setOpponentName(pickRobotName(robitNames));
     startGame();
   };
 
-  const clearSquareValues = () => { // Captures selected squares
+  const clearSquareValues = () => {
     let activeBoard = [...game];
-    setSquareValues(activeBoard.map((element, index) => {
-      return { index, element: element, score: 0}
-    }));
+    setGame(
+      activeBoard.map((index, element) => {
+        return { index, element: element, score: 0 };
+      })
+    );
   };
 
   const updateSquareValues = (number, squareScore) => {
-    let values = [...squareValues];
-    //console.log("values", values); // Does not capture selected Squares!!!!!
+    let values = [...game];
     for (let entry of values) {
       if (entry.index === number) {
         entry.score += squareScore;
       }
     }
-    setSquareValues(values);
+    setGame(values);
   };
 
   const selectComputerOffense = () => {
-    let activeBoard = [...game];
 
     for (let i = 0; i <= 7; i++) {
       const winCondition = winConditions[i];
-      const a = game[winCondition[0]];
+      const a = game[winCondition[0]].element;
       const firstNum = winCondition[0];
-      const b = game[winCondition[1]];
+      const b = game[winCondition[1]].element;
       const secondNum = winCondition[1];
-      const c = game[winCondition[2]];
+      const c = game[winCondition[2]].element;
       const thirdNum = winCondition[2];
       let array = [
         { letter: a, number: firstNum, score: 0 },
@@ -93,7 +96,6 @@ const Tic = () => {
         for (let entry of array) {
           if (entry.letter === "") {
             // grab first available square from winCondition
-            console.log(entry.number);
             updateSquareValues(entry.number, 1);
           }
         }
@@ -109,24 +111,24 @@ const Tic = () => {
   const selectComputerDefense = () => {
     for (let i = 0; i <= 7; i++) {
       const winCondition = winConditions[i];
-      const a = game[winCondition[0]];
+      const a = game[winCondition[0]].element;
       const firstNum = winCondition[0];
-      const b = game[winCondition[1]];
+      const b = game[winCondition[1]].element;
       const secondNum = winCondition[1];
-      const c = game[winCondition[2]];
+      const c = game[winCondition[2]].element;
       const thirdNum = winCondition[2];
       let array = [
         { letter: a, number: firstNum, score: 0 },
         { letter: b, number: secondNum, score: 0 },
         { letter: c, number: thirdNum, score: 0 },
       ]; // letter value = selected status of game square, number = index of square
-      if ((a === 1 || b === 1 || c === 1) && (a !== 2 && b !== 2 && c !== 2)) {
+      if ((a === 1 || b === 1 || c === 1) && a !== 2 && b !== 2 && c !== 2) {
         // Check if human has already progressed on winCondition, check for block
         for (let entry of array) {
           if (entry.letter === "") {
             // grab first available square from winCondition
             updateSquareValues(entry.number, 1);
-          } 
+          }
         }
       }
     }
@@ -134,85 +136,54 @@ const Tic = () => {
 
   const handleComputerTurn = () => {
     clearSquareValues();
-    let previousScore = [...squareValues];
-    console.log("after clearValues", previousScore);
     selectComputerDefense();
     selectComputerOffense();
-    let finalScores = [...squareValues];
+    let finalScores = [...game];
     finalScores = finalScores.sort((a, b) => {
       return b.score - a.score;
     });
-    console.log("after updateValues", finalScores);
     setSquareSelected(finalScores[0].index);
     return;
-
-    // for (let i = 0; i <= 7; i++) {
-    //   const winCondition = winConditions[i];
-    //   const a = game[winCondition[0]];
-    //   const firstNum = winCondition[0];
-    //   const b = game[winCondition[1]];
-    //   const secondNum = winCondition[1];
-    //   const c = game[winCondition[2]];
-    //   const thirdNum = winCondition[2];
-    //   let array = [
-    //     { letter: a, number: firstNum },
-    //     { letter: b, number: secondNum },
-    //     { letter: c, number: thirdNum },
-    //   ]; // letter value = selected status of game square, number = index of square
-    //   if ((a === 2 || b === 2 || c === 2) && a !== 1 && b !== 1 && c !== 1) {
-    //     // Check if computer has already progressed on winCondition, check for block
-    //     for (const entry of array) {
-    //       if (entry.letter === "") {
-    //         // grab first available square from winCondition
-    //         setSquareSelected(entry.number);
-    //         return;
-    //       }
-    //     }
-    //   } else if (a === "" && b === "" && c === "") {
-    //     // check for empty winCondition
-    //     setSquareSelected(firstNum);
-    //     return;
-    //   } else {
-    //     continue;
-    //   }
-    // } // end of loop
-    // // Picks first available square, only runs on initial turn
-    // for (let i = 0; i < activeBoard.length; i++) {
-    //   if (activeBoard[i] === "") {
-    //     setSquareSelected(i);
-    //     return;
-    //   }
-    // }
   };
 
   const checkForWin = (game, playerTurn) => {
-    for (let i = 0; i <= 7; i++) {
-      const winCondition = winConditions[i];
-      const a = game[winCondition[0]];
-      const b = game[winCondition[1]];
-      const c = game[winCondition[2]];
-      if (a === "" || b === "" || c === "") {
-        continue;
-      }
-      if (a === b && b === c) {
-        if (playerTurn !== 0) {
-          setVictory(playerTurn);
-          playerTurn === 1
-            ? setRecord(handleUpdateRecord("player_one", record))
-            : setRecord(handleUpdateRecord("player_two", record));
+    if (game.length > 0) {
+      for (let i = 0; i <= 7; i++) {
+        const winCondition = winConditions[i];
+        const a = game[winCondition[0]];
+        const b = game[winCondition[1]];
+        const c = game[winCondition[2]];
+        if (a.element === "" || b.element === "" || c.element === "") {
+          continue;
         }
-        break;
-      }
-      if (!game.includes("")) {
-        setVictory(3);
-        setRecord(handleUpdateRecord("draw", record));
+        if (a.element === b.element && b.element === c.element) {
+          if (playerTurn !== 0) {
+            setVictory(playerTurn);
+            playerTurn === 1
+              ? setRecord(handleUpdateRecord("player_one", record))
+              : setRecord(handleUpdateRecord("player_two", record));
+          }
+          break;
+        }
+        let array = [];
+        for (let entry of game) {
+          array.push(entry.element);
+        }
+        if (!array.includes("")) {
+          setVictory(3);
+          setRecord(handleUpdateRecord("draw", record));
+        }
       }
     }
   };
 
   const updateBoard = (index) => {
     let board = [...game];
-    board[index] = playerTurn;
+    for (let entry of board) {
+      if (entry.index === index) {
+        entry.element = playerTurn;
+      }
+    }
     setGame(board);
     checkForWin(board, playerTurn);
   };
@@ -224,7 +195,7 @@ const Tic = () => {
         handleComputerTurn();
       }, 300);
     } else if (computerPlayer && playerTurn === 2) {
-      setPlayerTurn(1);
+      setPlayerTurn(1); // Somehow it's automatically making/overwriting human turns?
     } else if (!computerPlayer) {
       playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
     }
@@ -232,14 +203,11 @@ const Tic = () => {
 
   const resetGame = () => {
     setGamePhase("setup");
-    setGame(squares);
+    setGame(squares.map((element, index) => {
+      return { element, index, score: 0 };
+    }));
     setVictory(0);
     setGamePhase("play");
-    setSquareValues(
-      squares.map((element, index) => {
-        return { index, score: 0 };
-      })
-    );
   };
 
   const quitGame = () => {
@@ -254,7 +222,7 @@ const Tic = () => {
         <GameSquare
           index={index}
           key={index}
-          value={element}
+          value={element.element}
           playerTurn={playerTurn}
           setSquareSelected={setSquareSelected}
         />
