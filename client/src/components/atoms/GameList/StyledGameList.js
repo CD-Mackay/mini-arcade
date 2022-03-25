@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const StyledGameList = styled.div`
-width: 100vw;
 .game-wrapper {
   border-radius: 15px;
   display: grid;
