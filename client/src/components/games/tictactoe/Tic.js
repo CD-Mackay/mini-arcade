@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import GameSquare from './atoms/gameSquare/GameSquare';
-import Button from '../../atoms/Button/Button';
-import ScoreKeeper from '../../atoms/ScoreKeeper/ScoreKeeper';
-import OpponentNames from '../../../utilities/OpponentNames';
-import UpdateRecords from '../../../utilities/UpdateRecords';
+import React, { useEffect, useState } from "react";
+import GameSquare from "./atoms/gameSquare/GameSquare";
+import Button from "../../atoms/Button/Button";
+import ScoreKeeper from "../../atoms/ScoreKeeper/ScoreKeeper";
+import OpponentNames from "../../../utilities/OpponentNames";
+import UpdateRecords from "../../../utilities/UpdateRecords";
 
-import StyledTic from './StyledTic';
+import StyledTic from "./StyledTic";
 
 const Tic = () => {
-
   const [gamePhase, setGamePhase] = useState("setup");
   const [playerTurn, setPlayerTurn] = useState(0);
   const [squareSelected, setSquareSelected] = useState(null);
   const [game, setGame] = useState([]);
   const [victory, setVictory] = useState(0);
   const [computerPlayer, setComputerPlayer] = useState(false);
+  const [squareValues, setSquareValues] = useState([]);
   const [opponentName, setOpponentName] = useState("");
-  const [record, setRecord] = useState({player_one: 0, player_two: 0, draw: 0});
+  const [record, setRecord] = useState({
+    player_one: 0,
+    player_two: 0,
+    draw: 0,
+  });
 
-  const { robitNames, pickRobotName } = OpponentNames; 
+  const { robitNames, pickRobotName } = OpponentNames;
   const { handleUpdateRecord } = UpdateRecords;
-
 
   const squares = ["", "", "", "", "", "", "", "", ""];
 
@@ -32,10 +35,8 @@ const Tic = () => {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ];
-  
-
 
   const startGame = () => {
     setGamePhase("play");
@@ -44,12 +45,34 @@ const Tic = () => {
 
   const startComputerGame = () => {
     setComputerPlayer(true);
+    setSquareValues(
+      squares.map((element, index) => {
+        return { index, score: 0, element };
+      })
+    );
     setOpponentName(pickRobotName(robitNames));
     startGame();
   };
 
+  const clearSquareValues = () => { // Captures selected squares
+    let activeBoard = [...game];
+    setSquareValues(activeBoard.map((element, index) => {
+      return { index, element: element, score: 0}
+    }));
+  };
 
-  const handleComputerTurn = () => {
+  const updateSquareValues = (number, squareScore) => {
+    let values = [...squareValues];
+    //console.log("values", values); // Does not capture selected Squares!!!!!
+    for (let entry of values) {
+      if (entry.index === number) {
+        entry.score += squareScore;
+      }
+    }
+    setSquareValues(values);
+  };
+
+  const selectComputerOffense = () => {
     let activeBoard = [...game];
 
     for (let i = 0; i <= 7; i++) {
@@ -61,34 +84,108 @@ const Tic = () => {
       const c = game[winCondition[2]];
       const thirdNum = winCondition[2];
       let array = [
-        {letter: a, number: firstNum }, {letter: b, number: secondNum}, {letter: c, number: thirdNum}
+        { letter: a, number: firstNum, score: 0 },
+        { letter: b, number: secondNum, score: 0 },
+        { letter: c, number: thirdNum, score: 0 },
       ]; // letter value = selected status of game square, number = index of square
-      console.log("empty winCondition?", a === "" && b === "" && c === "", winCondition);
-      if ((a === 2 || b === 2 || c === 2) && (a !== 1 && b !== 1 && c !== 1)) { // Check if computer has already progressed on winCondition, check for block
-        for (const entry of array) {
-          if (entry.letter === "") { // grab first available square from winCondition
-            setSquareSelected(entry.number);
-            return;
+      if ((a === 2 || b === 2 || c === 2) && a !== 1 && b !== 1 && c !== 1) {
+        // Check if computer has already progressed on winCondition, check for block
+        for (let entry of array) {
+          if (entry.letter === "") {
+            // grab first available square from winCondition
+            console.log(entry.number);
+            updateSquareValues(entry.number, 1);
           }
         }
-      } else if ((a === "" && b === "" && c === "")) { // check for empty winCondition
-        setSquareSelected(firstNum);
-        return;
-      } else {
-        continue;
-      }
-    } 
-    // Picks first available square, only runs on initial turn
-    for (let i = 0; i < activeBoard.length; i++) {
-      if (activeBoard[i] === "") {
-        setSquareSelected(i);
-        return;
+      } else if (a === "" && b === "" && c === "") {
+        // check for empty winCondition
+        updateSquareValues(firstNum, 1);
+        updateSquareValues(secondNum, 1);
+        updateSquareValues(thirdNum, 1);
       }
     }
-  }
+  };
+
+  const selectComputerDefense = () => {
+    for (let i = 0; i <= 7; i++) {
+      const winCondition = winConditions[i];
+      const a = game[winCondition[0]];
+      const firstNum = winCondition[0];
+      const b = game[winCondition[1]];
+      const secondNum = winCondition[1];
+      const c = game[winCondition[2]];
+      const thirdNum = winCondition[2];
+      let array = [
+        { letter: a, number: firstNum, score: 0 },
+        { letter: b, number: secondNum, score: 0 },
+        { letter: c, number: thirdNum, score: 0 },
+      ]; // letter value = selected status of game square, number = index of square
+      if ((a === 1 || b === 1 || c === 1) && (a !== 2 && b !== 2 && c !== 2)) {
+        // Check if human has already progressed on winCondition, check for block
+        for (let entry of array) {
+          if (entry.letter === "") {
+            // grab first available square from winCondition
+            updateSquareValues(entry.number, 1);
+          } 
+        }
+      }
+    }
+  };
+
+  const handleComputerTurn = () => {
+    clearSquareValues();
+    let previousScore = [...squareValues];
+    console.log("after clearValues", previousScore);
+    selectComputerDefense();
+    selectComputerOffense();
+    let finalScores = [...squareValues];
+    finalScores = finalScores.sort((a, b) => {
+      return b.score - a.score;
+    });
+    console.log("after updateValues", finalScores);
+    setSquareSelected(finalScores[0].index);
+    return;
+
+    // for (let i = 0; i <= 7; i++) {
+    //   const winCondition = winConditions[i];
+    //   const a = game[winCondition[0]];
+    //   const firstNum = winCondition[0];
+    //   const b = game[winCondition[1]];
+    //   const secondNum = winCondition[1];
+    //   const c = game[winCondition[2]];
+    //   const thirdNum = winCondition[2];
+    //   let array = [
+    //     { letter: a, number: firstNum },
+    //     { letter: b, number: secondNum },
+    //     { letter: c, number: thirdNum },
+    //   ]; // letter value = selected status of game square, number = index of square
+    //   if ((a === 2 || b === 2 || c === 2) && a !== 1 && b !== 1 && c !== 1) {
+    //     // Check if computer has already progressed on winCondition, check for block
+    //     for (const entry of array) {
+    //       if (entry.letter === "") {
+    //         // grab first available square from winCondition
+    //         setSquareSelected(entry.number);
+    //         return;
+    //       }
+    //     }
+    //   } else if (a === "" && b === "" && c === "") {
+    //     // check for empty winCondition
+    //     setSquareSelected(firstNum);
+    //     return;
+    //   } else {
+    //     continue;
+    //   }
+    // } // end of loop
+    // // Picks first available square, only runs on initial turn
+    // for (let i = 0; i < activeBoard.length; i++) {
+    //   if (activeBoard[i] === "") {
+    //     setSquareSelected(i);
+    //     return;
+    //   }
+    // }
+  };
 
   const checkForWin = (game, playerTurn) => {
-
     for (let i = 0; i <= 7; i++) {
       const winCondition = winConditions[i];
       const a = game[winCondition[0]];
@@ -100,14 +197,17 @@ const Tic = () => {
       if (a === b && b === c) {
         if (playerTurn !== 0) {
           setVictory(playerTurn);
-          playerTurn === 1 ? setRecord(handleUpdateRecord("player_one", record)) : setRecord(handleUpdateRecord("player_two", record))
+          playerTurn === 1
+            ? setRecord(handleUpdateRecord("player_one", record))
+            : setRecord(handleUpdateRecord("player_two", record));
         }
         break;
-      } if (!game.includes("")) {
+      }
+      if (!game.includes("")) {
         setVictory(3);
         setRecord(handleUpdateRecord("draw", record));
       }
-    } 
+    }
   };
 
   const updateBoard = (index) => {
@@ -119,10 +219,10 @@ const Tic = () => {
 
   const handleTurn = () => {
     if (computerPlayer && playerTurn === 1) {
-        setPlayerTurn(2);
-        setTimeout(() => {
-          handleComputerTurn();
-        }, 300);
+      setPlayerTurn(2);
+      setTimeout(() => {
+        handleComputerTurn();
+      }, 300);
     } else if (computerPlayer && playerTurn === 2) {
       setPlayerTurn(1);
     } else if (!computerPlayer) {
@@ -135,28 +235,32 @@ const Tic = () => {
     setGame(squares);
     setVictory(0);
     setGamePhase("play");
+    setSquareValues(
+      squares.map((element, index) => {
+        return { index, score: 0 };
+      })
+    );
   };
 
   const quitGame = () => {
     setGamePhase("setup");
     setGame(squares);
     setVictory(0);
-  }
-
+  };
 
   const gameBoard = () => {
-     return game.map((element, index) => {
-        return  <GameSquare 
-          index={index} 
-          key={index} 
+    return game.map((element, index) => {
+      return (
+        <GameSquare
+          index={index}
+          key={index}
           value={element}
-          playerTurn={playerTurn} 
+          playerTurn={playerTurn}
           setSquareSelected={setSquareSelected}
-          />
+        />
+      );
     });
-  }
-  ;
-
+  };
   useEffect(() => {
     updateBoard(squareSelected);
   }, [squareSelected, gamePhase]);
@@ -165,40 +269,42 @@ const Tic = () => {
     if (victory === 0) {
       handleTurn();
     }
-  }, [game])
+  }, [game]);
 
   return (
     <StyledTic>
-      {gamePhase === "setup" &&
-      <div id="setup-box">
-        <h4>Select Human or Robotic Opponent</h4>
-        <div id="button-wrapper">
-          <Button onClick={startGame} message="Human" />
-          <Button onClick={startComputerGame} message="Robot" />
+      {gamePhase === "setup" && (
+        <div id="setup-box">
+          <h4>Select Human or Robotic Opponent</h4>
+          <div id="button-wrapper">
+            <Button onClick={startGame} message="Human" />
+            <Button onClick={startComputerGame} message="Robot" />
+          </div>
         </div>
-      </div>
-      }
-      {gamePhase === "play" && 
-      <div>
-        <div id="game-header">
-          <h4>The Game is Afoot!</h4>
-          {(victory == 0 && !computerPlayer) && <p>It's currently Player {playerTurn}'s turn</p>}
-          {(victory == 1 || victory == 2) && <p>Player {victory} is victorious! </p>}
-          {computerPlayer && <p>Playing against {opponentName}</p>}
-          {victory == 3 && <p>Draw</p>}
+      )}
+      {gamePhase === "play" && (
+        <div>
+          <div id="game-header">
+            <h4>The Game is Afoot!</h4>
+            {victory == 0 && !computerPlayer && (
+              <p>It's currently Player {playerTurn}'s turn</p>
+            )}
+            {(victory == 1 || victory == 2) && (
+              <p>Player {victory} is victorious! </p>
+            )}
+            {computerPlayer && <p>Playing against {opponentName}</p>}
+            {victory == 3 && <p>Draw</p>}
+          </div>
+          <div className="game-grid">{gameBoard()}</div>
+          <div className="game-options">
+            <Button message="Reset Game" onClick={() => resetGame()} />
+            <Button message="Quit Game" onClick={() => quitGame()} />
+          </div>
+          <ScoreKeeper name={opponentName} record={record} />
         </div>
-        <div className="game-grid" >
-          {gameBoard()}
-        </div>
-        <div className="game-options">
-          <Button message="Reset Game" onClick={() => resetGame()} />
-          <Button message="Quit Game" onClick={() => quitGame()}/>
-        </div>
-        <ScoreKeeper name={opponentName} record={record} />
-      </div>
-      }
+      )}
     </StyledTic>
-  )
+  );
 };
 
 export default Tic;
