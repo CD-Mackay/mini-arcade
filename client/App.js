@@ -24,6 +24,7 @@ const App = () => {
       <StyledApp>
         <GlobalStyle />
         <Header />
+        <Layout>
           <Switch>
             <Route exact path="/">
               <Home />
@@ -49,6 +50,7 @@ const App = () => {
               <TutorialHeader />
             </Route>
           </Switch>
+          </Layout>
         <Footer />
       </StyledApp>
     </Router>

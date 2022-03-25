@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const StyledGameList = styled.div`
+max-width: 1000px;
+margin: 0 auto;
 .game-wrapper {
   border-radius: 15px;
   display: grid;
