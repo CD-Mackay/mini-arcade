@@ -157,7 +157,7 @@ useEffect(() => {
 
   return (
     <StyledConnectFour>
-      <div>
+      <div id="game-wrapper">
         <h4>Connect Four!</h4>
         <h6>Player {playerTurn}'s Turn</h6>
         <p>{error}</p>

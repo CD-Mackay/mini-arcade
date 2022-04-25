@@ -60,8 +60,8 @@ const Tic = () => {
   const clearSquareValues = () => {
     let activeBoard = [...game];
     setGame(
-      activeBoard.map((index, element) => {
-        return { index, element: element, score: 0 };
+      activeBoard.map((element) => {
+        return { element: element.element, index: element.index, score: 0 };
       })
     );
   };
@@ -77,7 +77,6 @@ const Tic = () => {
   };
 
   const selectComputerOffense = () => {
-
     for (let i = 0; i <= 7; i++) {
       const winCondition = winConditions[i];
       const a = game[winCondition[0]].element;
@@ -125,6 +124,7 @@ const Tic = () => {
       if ((a === 1 || b === 1 || c === 1) && a !== 2 && b !== 2 && c !== 2) {
         // Check if human has already progressed on winCondition, check for block
         for (let entry of array) {
+          console.log(entry);
           if (entry.letter === "") {
             // grab first available square from winCondition
             updateSquareValues(entry.number, 1);
@@ -134,16 +134,23 @@ const Tic = () => {
     }
   };
 
-  const handleComputerTurn = () => {
-    clearSquareValues();
-    selectComputerDefense();
-    selectComputerOffense();
-    let finalScores = [...game];
-    finalScores = finalScores.sort((a, b) => {
-      return b.score - a.score;
-    });
-    setSquareSelected(finalScores[0].index);
-    return;
+  const handleComputerTurn = (turn) => {
+    if (turn === 2) {
+      console.log("inside if block", turn)
+      clearSquareValues();
+      selectComputerDefense();
+      // selectComputerOffense();
+      let finalScores = [...game];
+      finalScores = finalScores.sort((a, b) => {
+        return b.score - a.score;
+      });
+      for (let i = 0; i <= finalScores.length; i++) {
+        if (finalScores[i].element === '') {
+          setSquareSelected(finalScores[i].index);
+          return;
+        }
+      }
+    }
   };
 
   const checkForWin = (game, playerTurn) => {
@@ -192,7 +199,7 @@ const Tic = () => {
     if (computerPlayer && playerTurn === 1) {
       setPlayerTurn(2);
       setTimeout(() => {
-        handleComputerTurn();
+        handleComputerTurn(2);
       }, 300);
     } else if (computerPlayer && playerTurn === 2) {
       setPlayerTurn(1); // Somehow it's automatically making/overwriting human turns?
@@ -203,9 +210,11 @@ const Tic = () => {
 
   const resetGame = () => {
     setGamePhase("setup");
-    setGame(squares.map((element, index) => {
-      return { element, index, score: 0 };
-    }));
+    setGame(
+      squares.map((element, index) => {
+        return { element, index, score: 0 };
+      })
+    );
     setVictory(0);
     setGamePhase("play");
   };
@@ -231,19 +240,16 @@ const Tic = () => {
   };
   useEffect(() => {
     updateBoard(squareSelected);
-  }, [squareSelected, gamePhase]);
-
-  useEffect(() => {
     if (victory === 0) {
       handleTurn();
     }
-  }, [game]);
+  }, [squareSelected, gamePhase]);
 
   return (
     <StyledTic>
       {gamePhase === "setup" && (
         <div id="setup-box">
-          <h4>Select Human or Robotic Opponent</h4>
+          <h4>Select Opponent:</h4>
           <div id="button-wrapper">
             <Button onClick={startGame} message="Human" />
             <Button onClick={startComputerGame} message="Robot" />

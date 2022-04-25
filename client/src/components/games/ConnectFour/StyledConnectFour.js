@@ -4,8 +4,11 @@ const StyledConnectFour = styled.section`
 display: flex;
 flex-direction: column;
 padding: 10px;
-div {
+#game-wrapper {
   text-align: center;
+    border: 1px solid #00FFFF;
+    padding: 10px;
+    margin-bottom: 10px;
   h4 {
     font-size: 28px;
     margin: 10px;

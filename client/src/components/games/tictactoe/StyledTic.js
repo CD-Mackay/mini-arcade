@@ -8,9 +8,10 @@ flex-direction: column;
 justify-content: center;
 width: 80vw;
 #setup-box {
+  display: flex;
   h4 {
     padding: 10px;
-    font-size: 42px;
+    font-size: 32px;
   }
   #button-wrapper {
     width: 60%;
@@ -21,6 +22,7 @@ width: 80vw;
     button {
       width: 150px;
       padding: 2px;
+      margin: 5px;
 
     }
   }
@@ -53,10 +55,15 @@ width: 80vw;
 }
 
 @media (min-width: 768px) {
-  width: 40vw;
+  max-width: 40vw;
   #button-wrapper {
     flex-direction: row;
   }
+}
+
+@media (min-width: 992px) {
+  max-width: 30vw;
+
 }
 `
 
