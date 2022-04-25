@@ -248,7 +248,7 @@ const Tic = () => {
     <StyledTic>
       {gamePhase === "setup" && (
         <div id="setup-box">
-          <h4>Select Human or Robotic Opponent</h4>
+          <h4>Select Opponent:</h4>
           <div id="button-wrapper">
             <Button onClick={startGame} message="Human" />
             <Button onClick={startComputerGame} message="Robot" />
