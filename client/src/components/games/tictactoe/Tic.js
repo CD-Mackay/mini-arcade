@@ -124,6 +124,7 @@ const Tic = () => {
       if ((a === 1 || b === 1 || c === 1) && a !== 2 && b !== 2 && c !== 2) {
         // Check if human has already progressed on winCondition, check for block
         for (let entry of array) {
+          console.log(entry);
           if (entry.letter === "") {
             // grab first available square from winCondition
             updateSquareValues(entry.number, 1);
@@ -138,12 +139,11 @@ const Tic = () => {
       console.log("inside if block", turn)
       clearSquareValues();
       selectComputerDefense();
-      selectComputerOffense();
+      // selectComputerOffense();
       let finalScores = [...game];
       finalScores = finalScores.sort((a, b) => {
         return b.score - a.score;
       });
-      console.log(finalScores);
       for (let i = 0; i <= finalScores.length; i++) {
         if (finalScores[i].element === '') {
           setSquareSelected(finalScores[i].index);
@@ -196,15 +196,12 @@ const Tic = () => {
   };
 
   const handleTurn = () => {
-    console.log("handleTurn()", playerTurn);
     if (computerPlayer && playerTurn === 1) {
       setPlayerTurn(2);
       setTimeout(() => {
-        console.log("computerTurn()")
         handleComputerTurn(2);
       }, 300);
     } else if (computerPlayer && playerTurn === 2) {
-      console.log("human turn")
       setPlayerTurn(1); // Somehow it's automatically making/overwriting human turns?
     } else if (!computerPlayer) {
       playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
