@@ -144,8 +144,12 @@ const Tic = () => {
         return b.score - a.score;
       });
       console.log(finalScores);
-      setSquareSelected(finalScores[0].index);
-      return;
+      for (let i = 0; i <= finalScores.length; i++) {
+        if (finalScores[i].element === '') {
+          setSquareSelected(finalScores[i].index);
+          return;
+        }
+      }
     }
   };
 
