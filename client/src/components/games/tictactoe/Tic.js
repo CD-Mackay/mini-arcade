@@ -143,6 +143,7 @@ const Tic = () => {
       finalScores = finalScores.sort((a, b) => {
         return b.score - a.score;
       });
+      console.log(finalScores);
       setSquareSelected(finalScores[0].index);
       return;
     }
@@ -238,14 +239,10 @@ const Tic = () => {
   };
   useEffect(() => {
     updateBoard(squareSelected);
-  }, [squareSelected, gamePhase]);
-
-  useEffect(() => {
-    console.log("inside handleturn useEffect")
     if (victory === 0) {
       handleTurn();
     }
-  }, [squareSelected]);
+  }, [squareSelected, gamePhase]);
 
   return (
     <StyledTic>
