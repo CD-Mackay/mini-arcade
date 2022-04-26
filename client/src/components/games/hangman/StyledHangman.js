@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const StyledHangman = styled.section`
 display: flex;
 flex-direction: column;
-margin: 0 auto;
 #game-wrapper {
   display: flex;
   flex-direction: column;
@@ -30,10 +29,7 @@ margin: 0 auto;
     }
   }
 }
-@media (min-width: 768px) {
-  display: grid;
-  grid-template-columns: ${props => props.phase === "play" ? "1fr 1fr" : "1fr"};
-}
+
 `
 
 export default StyledHangman;
