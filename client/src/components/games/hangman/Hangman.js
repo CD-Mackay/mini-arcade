@@ -10,6 +10,7 @@ import DisplayWrong from './atoms/DisplayWrong/DisplayWrong';
 import Gallows from './atoms/Gallows/Gallows';
 import { Link } from 'react-router-dom';
 import CustomInput from './atoms/CustomInput/CustomInput';
+import Alert from '../../atoms/Alert/Alert';
 
 
 const Hangman = () => {
@@ -21,6 +22,11 @@ const Hangman = () => {
   const [stringInput, setStringInput] = useState("");
   const [gamePhase, setGamePhase] = useState("setup");
   const [failedGuesses, setFailedGuesses] = useState([]);
+  const [alert, setAlert] = useState({
+    visible: false,
+    color: null,
+    message: ""
+  });
 
   const pickString = () => {
     const max = Math.floor(strings.length);
@@ -87,6 +93,13 @@ const Hangman = () => {
     if (validateLetter()) {
       let newGameString = [...gameString];
       for (const letter of newGameString) {
+        if (letter.value === input && letter.selected === true) {
+          setAlert({
+            visible: true,
+            color: "#0DFF76",
+            message: "Letter has already been selected"
+          });
+        }
         if (letter.value == input) {
           letter.selected = true;
         }
@@ -112,6 +125,7 @@ const Hangman = () => {
           <Gallows failed={failedGuesses} />
           <WordWrapper string={gameString} />
           <TextInput setInput={setInput} input={input} onSubmit={handleTurn} />
+          <Alert visible={alert.visible} message={alert.message} color={alert.color} />
           <div id="finished-menu">
             <Button message="New Game" onClick={resetGame} />
             <Link to="/">
