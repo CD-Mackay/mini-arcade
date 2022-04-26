@@ -7,6 +7,10 @@ flex-direction: column;
   display: flex;
   flex-direction: column;
   align-items: center;
+  #game-information {
+    display: flex;
+    width: 100%;
+  }
   #finished-menu {
     display: flex;
     Button {
