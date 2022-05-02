@@ -49,6 +49,7 @@ const Tic = () => {
         return { element, score: 0, index };
       })
     );
+    setPlayerTurn(1);
   };
 
   const startComputerGame = () => {
@@ -202,7 +203,7 @@ const Tic = () => {
         handleComputerTurn(2);
       }, 300);
     } else if (computerPlayer && playerTurn === 2) {
-      setPlayerTurn(1); // Somehow it's automatically making/overwriting human turns?
+      setPlayerTurn(1); 
     } else if (!computerPlayer) {
       playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
     }
@@ -217,6 +218,7 @@ const Tic = () => {
     );
     setVictory(0);
     setGamePhase("play");
+    setPlayerTurn(1);
   };
 
   const quitGame = () => {
