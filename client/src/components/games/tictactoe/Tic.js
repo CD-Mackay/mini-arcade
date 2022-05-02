@@ -231,6 +231,7 @@ const Tic = () => {
   const quitGame = () => {
     setGamePhase("setup");
     setGame(squares);
+    setComputerPlayer(false)
     setVictory(0);
   };
 
