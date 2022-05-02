@@ -49,6 +49,7 @@ const Tic = () => {
         return { element, score: 0, index };
       })
     );
+    setPlayerTurn(1);
   };
 
   const startComputerGame = () => {
@@ -121,15 +122,22 @@ const Tic = () => {
         { letter: b, number: secondNum, score: 0 },
         { letter: c, number: thirdNum, score: 0 },
       ]; // letter value = selected status of game square, number = index of square
-      if ((a === 1 || b === 1 || c === 1) && a !== 2 && b !== 2 && c !== 2) {
-        // Check if human has already progressed on winCondition, check for block
-        for (let entry of array) {
-          console.log(entry);
-          if (entry.letter === "") {
-            // grab first available square from winCondition
-            updateSquareValues(entry.number, 1);
+      let incrementer = 0;
+      for (let entry of array) {
+        if (entry.letter === 1) {
+          incrementer++
+        }
+        if (incrementer === 2) {
+          for (let entry of array) {
+            if (entry.letter === "") {
+              updateSquareValues(entry.number, 20);
+            }
           }
         }
+      }
+      if ((a === 1 || b === 1 || c === 1) && a !== 2 && b !== 2 && c !== 2) {
+        // Check if human has already progressed on winCondition, check for block
+
       }
     }
   };
@@ -139,7 +147,7 @@ const Tic = () => {
       console.log("inside if block", turn)
       clearSquareValues();
       selectComputerDefense();
-      // selectComputerOffense();
+      selectComputerOffense();
       let finalScores = [...game];
       finalScores = finalScores.sort((a, b) => {
         return b.score - a.score;
@@ -202,7 +210,7 @@ const Tic = () => {
         handleComputerTurn(2);
       }, 300);
     } else if (computerPlayer && playerTurn === 2) {
-      setPlayerTurn(1); // Somehow it's automatically making/overwriting human turns?
+      setPlayerTurn(1); 
     } else if (!computerPlayer) {
       playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
     }
@@ -217,11 +225,13 @@ const Tic = () => {
     );
     setVictory(0);
     setGamePhase("play");
+    setPlayerTurn(1);
   };
 
   const quitGame = () => {
     setGamePhase("setup");
     setGame(squares);
+    setComputerPlayer(false)
     setVictory(0);
   };
 

@@ -3,13 +3,18 @@ import React, { useState } from 'react';
 
 // Component Imports
 import StyledTextInput from './StyledTextInput';
+import Alert from '../../../../atoms/Alert/Alert';
 
 
 const TextInput = ({setInput, input, onSubmit}) => {
 
   let regex = /[a-zA-Z]/;
 
-  const [error, setError] = useState(false);
+  const [error, setError] = useState({
+    visible: false,
+    color: null,
+    message: ""
+  });
 
 
 
@@ -23,9 +28,17 @@ const TextInput = ({setInput, input, onSubmit}) => {
       setInput(newInput);
       return true;
     } else {
-      setError(true);
+      setError({
+        visible: true,
+        color: "#FFAC19",
+        message: "Not a letter!"
+      });
       setTimeout(() => {
-        setError(false);
+        setError({
+          visible: false,
+          color: null,
+          message: ""
+        });
       }, 2500);
       return false;
     }
@@ -45,7 +58,7 @@ const TextInput = ({setInput, input, onSubmit}) => {
       <form onSubmit={() => handleFormSubmit(event)}>
         <input placeholder="guess a letter" type="text" value={input} onChange={(event) => handleSetInput(event.target.value)} />
         <div>
-          <p id="error">Not a lettter! </p>
+          <Alert visible={error.visible} color={error.color} message={error.message} />
         </div>
       </form>
     </StyledTextInput>
