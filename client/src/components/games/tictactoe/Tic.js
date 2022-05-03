@@ -1,7 +1,3 @@
-/* State of this: Struggling to update ai to use scores for individual squares.
-SquareValues should contain references to the gameboard i.e. which squares are selected, but defaults to 
-empty string */
-
 import React, { useEffect, useState } from "react";
 import GameSquare from "./atoms/gameSquare/GameSquare";
 import Button from "../../atoms/Button/Button";
@@ -18,7 +14,6 @@ const Tic = () => {
   const [game, setGame] = useState([]);
   const [victory, setVictory] = useState(0);
   const [computerPlayer, setComputerPlayer] = useState(false);
-  // const [squareValues, setSquareValues] = useState([]);
   const [opponentName, setOpponentName] = useState("");
   const [record, setRecord] = useState({
     player_one: 0,
