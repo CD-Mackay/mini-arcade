@@ -37,6 +37,8 @@ const SnakeGrid = () => {
   function startGame(){
     let apple = [3, 2];
     let appleNode = document.getElementById(`${apple[0]}${apple[1]}`);
+    console.log(appleNode);
+    appleNode.setAttribute("id", "apple");
   };
 
   function handleOutcome() {
