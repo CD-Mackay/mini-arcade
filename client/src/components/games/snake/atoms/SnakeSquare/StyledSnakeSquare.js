@@ -8,5 +8,8 @@ const StyledSnakeSquare = styled.div`
   #apple {
     background-color: red;
   }
+  #snake {
+    background-color: blue;
+  }
 `;
 export default StyledSnakeSquare;
