@@ -8,7 +8,11 @@ const StyledSnakeSquare = styled.div`
       ? "blue"
       : props.status === "apple"
       ? "red"
-      : "green"};
-`;
+      : ""};
+      #32 {
+        color: red;
+      }
+`
+;
 
 export default StyledSnakeSquare;

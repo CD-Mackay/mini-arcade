@@ -18,7 +18,7 @@ const SnakeGrid = () => {
       }
     }
     return board.map(element => {
-      return <SnakeSquare index={element} id={`${element.row} ${element.column}`} key={[element.row, element.column]} />
+      return <SnakeSquare index={element} key={[element.row, element.column]} />
     })
   };
 
@@ -35,17 +35,19 @@ const SnakeGrid = () => {
   };
 
   function startGame(){
-
+    let apple = [3, 2];
+    let appleNode = document.getElementById(`${apple[0]}${apple[1]}`);
   };
 
   function handleOutcome() {
-    
+
   }
 
   document.addEventListener("keyup", control);
   return (
     <StyledSnakeGrid >
       {buildBoard()}
+      <button onClick={startGame}>start</button>
     </StyledSnakeGrid>
   );
 };
