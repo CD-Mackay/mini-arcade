@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 const StyledSnakeSquare = styled.div`
-  width: 40px;
-  height: 40px;
-  background-color: ${(props) =>
-    props.status === "snake"
-      ? "blue"
-      : props.status === "apple"
-      ? "red"
-      : "green"};
+  div {
+    width: 40px;
+    height: 40px;
+  }
+  #apple {
+    background-color: red;
+  }
+  #snake {
+    background-color: blue;
+  }
 `;
-
 export default StyledSnakeSquare;

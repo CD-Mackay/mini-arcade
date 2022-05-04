@@ -8,7 +8,9 @@ const SnakeSquare = ({index}) => {
 
   return (
     <StyledSnakeSquare status={status} >
+      <div id={`${index.row}${index.column}`}>
       {index.row}{index.column}
+      </div>
     </StyledSnakeSquare>
   );
 };
