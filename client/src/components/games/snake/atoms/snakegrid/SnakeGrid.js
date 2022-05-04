@@ -32,6 +32,14 @@ const SnakeGrid = () => {
     } else if (event.key === "a") {
       console.log("left");
     }
+  };
+
+  function startGame(){
+
+  };
+
+  function handleOutcome() {
+    
   }
 
   document.addEventListener("keyup", control);
