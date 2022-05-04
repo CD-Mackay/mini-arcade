@@ -37,7 +37,11 @@ const GameList = () => {
         description="Because counting to 5 is hard."
         icon={<BiCategory color={"#00FFFF"} fontSize="32px" />}
          />
-        <GameListItem />
+        <GameListItem 
+        game="snake" 
+        name="Snake" 
+        description="snaaaake it's a snaaake"
+        />
         <GameListItem />
     </div>
     </StyledGameList>

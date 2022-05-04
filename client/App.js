@@ -11,6 +11,7 @@ import ConnectFour from "./src/components/games/ConnectFour/ConnectFour.js";
 import Tutorial from "./src/components/atoms/Tutorial/Tutorial.js";
 import TutorialHeader from "./src/components/atoms/TutorialHeader/TutorialHeader.js";
 import Layout from "./src/components/atoms/Layout/Layout.js";
+import Snake from "./src/components/games/snake/Snake.js";
 
 /* Asset Imports */
 import { GlobalStyle } from "./GlobalStyles.js";
@@ -45,12 +46,16 @@ const App = () => {
               <ConnectFour />
               <TutorialHeader game="connectfour" />
             </Route>
+            <Route exact path="/snake">
+              <Snake />
+              <TutorialHeader game="snake" />
+            </Route>
             <Route path="/:game/tutorial">
               <Tutorial />
               <TutorialHeader />
             </Route>
           </Switch>
-          </Layout>
+        </Layout>
         <Footer />
       </StyledApp>
     </Router>
