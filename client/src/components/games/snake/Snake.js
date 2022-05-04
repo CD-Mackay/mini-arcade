@@ -1,16 +1,13 @@
-import React from 'react';
-import SnakeGrid from './atoms/snakegrid/SnakeGrid';
+import React from "react";
+import SnakeGrid from "./atoms/snakegrid/SnakeGrid";
 
 import StyledSnake from "./StyledSnake";
 
 const Snake = () => {
-
+  
   return (
-    <StyledSnake >
-    <div>
-      I am Snake
+    <StyledSnake>
       <SnakeGrid />
-      </div>
     </StyledSnake>
   );
 };

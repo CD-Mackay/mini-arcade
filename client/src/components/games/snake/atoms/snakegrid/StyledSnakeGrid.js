@@ -1,12 +1,22 @@
 import styled from 'styled-components';
 
 const StyledSnakeGrid = styled.div`
-display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+width: 400px;
+height: 400px;
+display: flex;
+flex-wrap: wrap;
+border: 2px solid #00FFFF;
 .game-square {
-  width: 100%;
-  height: 80px;
-  border: 1px solid #00FFFF;
+  width: 40px;
+  height: 40px;
+}
+
+.snake {
+  color: blue;
+}
+
+.apple {
+  color: red;
 }
 
 `
