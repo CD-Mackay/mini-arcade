@@ -7,7 +7,7 @@ const SnakeGrid = () => {
   const [board, setBoard] = useState();
   const [currentSnake, setCurrentSnake] = useState([]);
   const [appleIndex, setAppleIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
+  const [direction, setDirection] = useState("right");
 
   const buildBoard = () => {
     let board = [];
@@ -22,6 +22,13 @@ const SnakeGrid = () => {
       );
     });
   };
+
+  function updateSnake(array) {
+    for (let entry of array) {
+      let snakeNode = document.getElementById(`${entry.row}${entry.column}`);
+      snakeNode.setAttribute("id", "snake");
+    }
+  }
 
   function control(event) {
     if (event.key === "w") {
@@ -46,13 +53,22 @@ const SnakeGrid = () => {
       { row: 0, column: 2 },
     ]
     setCurrentSnake(initSnake);
-    for (let entry of initSnake) {
-      let snakeNode = document.getElementById(`${entry.row}${entry.column}`);
-      snakeNode.setAttribute("id", "snake");
-    }
-  }
+    updateSnake(initSnake)
+  };
 
-  function handleOutcome() {}
+
+
+  function handleOutcome() {
+    let newSnake = [...currentSnake];
+    if (direction === "right") {
+      newSnake[0].column += newSnake.length;
+      updateSnake(newSnake);
+    }
+  };
+
+  setInterval(() => {
+    handleOutcome();
+  }, 1000)
 
   document.addEventListener("keyup", control);
   return (
