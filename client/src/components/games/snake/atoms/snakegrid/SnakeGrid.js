@@ -48,9 +48,9 @@ const SnakeGrid = () => {
     console.log(appleNode);
     appleNode.setAttribute("id", "apple");
     let initSnake = [
-      { row: 0, column: 0 },
-      { row: 0, column: 1 },
-      { row: 0, column: 2 },
+      { row: 0, column: 0, index: 0 },
+      { row: 0, column: 1, index: 1 },
+      { row: 0, column: 2, index: 2 },
     ]
     setCurrentSnake(initSnake);
     updateSnake(initSnake)
@@ -62,19 +62,25 @@ const SnakeGrid = () => {
     let newSnake = [...currentSnake];
     if (direction === "right") {
       newSnake[0].column += newSnake.length;
+      console.log(newSnake)
+      newSnake.sort(function (a, b) {
+        return b.index - a.index
+      });
+      console.log(newSnake);
       updateSnake(newSnake);
     }
   };
 
-  setInterval(() => {
-    handleOutcome();
-  }, 1000)
+  // setInterval(() => {
+  //   handleOutcome();
+  // }, 1000)
 
   document.addEventListener("keyup", control);
   return (
     <StyledSnakeGrid>
       {buildBoard()}
       <button onClick={startGame}>start</button>
+      <button onClick={handleOutcome}>move</button>
     </StyledSnakeGrid>
   );
 };
