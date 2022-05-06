@@ -26,6 +26,10 @@ const SnakeGrid = () => {
   function updateSnake(array) {
     for (let entry of array) {
       let snakeNode = document.getElementById(`${entry.row}${entry.column}`);
+      if (!snakeNode) {
+        console.log(`Could not find: ${entry.row}${entry.column}`)
+      }
+      console.log(snakeNode)
       snakeNode.setAttribute("id", "snake");
     }
   }
@@ -60,14 +64,16 @@ const SnakeGrid = () => {
 
   function handleOutcome() {
     let newSnake = [...currentSnake];
+    newSnake.sort(function (a, b) {
+      return b.index - a.index
+    });
     if (direction === "right") {
-      newSnake[0].column += newSnake.length;
       console.log(newSnake)
-      newSnake.sort(function (a, b) {
+      newSnake[0].column += newSnake.length;
+      let finalSnake = newSnake.sort(function (a, b) {
         return b.index - a.index
       });
-      console.log(newSnake);
-      updateSnake(newSnake);
+      updateSnake(finalSnake);
     }
   };
 
