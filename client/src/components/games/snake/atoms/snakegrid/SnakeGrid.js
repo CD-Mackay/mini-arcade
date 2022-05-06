@@ -26,6 +26,10 @@ const SnakeGrid = () => {
   function updateSnake(array) {
     for (let entry of array) {
       let snakeNode = document.getElementById(`${entry.row}${entry.column}`);
+      if (!snakeNode) {
+        console.log(`Could not find: ${entry.row}${entry.column}`)
+      }
+      console.log(snakeNode)
       snakeNode.setAttribute("id", "snake");
     }
   }
@@ -48,9 +52,9 @@ const SnakeGrid = () => {
     console.log(appleNode);
     appleNode.setAttribute("id", "apple");
     let initSnake = [
-      { row: 0, column: 0 },
-      { row: 0, column: 1 },
-      { row: 0, column: 2 },
+      { row: 0, column: 0, index: 0 },
+      { row: 0, column: 1, index: 1 },
+      { row: 0, column: 2, index: 2 },
     ]
     setCurrentSnake(initSnake);
     updateSnake(initSnake)
@@ -60,21 +64,29 @@ const SnakeGrid = () => {
 
   function handleOutcome() {
     let newSnake = [...currentSnake];
+    newSnake.sort(function (a, b) {
+      return b.index - a.index
+    });
     if (direction === "right") {
+      console.log(newSnake)
       newSnake[0].column += newSnake.length;
-      updateSnake(newSnake);
+      let finalSnake = newSnake.sort(function (a, b) {
+        return b.index - a.index
+      });
+      updateSnake(finalSnake);
     }
   };
 
-  setInterval(() => {
-    handleOutcome();
-  }, 1000)
+  // setInterval(() => {
+  //   handleOutcome();
+  // }, 1000)
 
   document.addEventListener("keyup", control);
   return (
     <StyledSnakeGrid>
       {buildBoard()}
       <button onClick={startGame}>start</button>
+      <button onClick={handleOutcome}>move</button>
     </StyledSnakeGrid>
   );
 };
