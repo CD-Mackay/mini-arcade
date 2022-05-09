@@ -73,9 +73,12 @@ const SnakeGrid = () => {
     });
     if (direction === "right") {
       console.log(newSnake);
-     let removed = newSnake[0];
+     const removed = {...newSnake[0]};
+     console.log(newSnake[0], removed)
       newSnake[0].column += newSnake.length;
+      console.log(newSnake[0], removed)
       newSnake[0].index = newSnake.length;
+      console.log(newSnake[0], removed)
       for (let entry of newSnake) {
         entry.index--;
       };
@@ -83,8 +86,8 @@ const SnakeGrid = () => {
         return b.index - a.index
       });
       console.log(newSnake, removed);
-      // setCurrentSnake(newSnake);
-      // updateSnake(newSnake, removed);
+      setCurrentSnake(newSnake);
+      updateSnake(newSnake, removed);
     }
   };
 
