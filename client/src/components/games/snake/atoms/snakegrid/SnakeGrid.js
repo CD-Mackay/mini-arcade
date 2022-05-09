@@ -33,7 +33,6 @@ const SnakeGrid = () => {
       }
     }
     if (removed) {
-      console.log(removed);
       let removedNode = document.getElementById(`${removed.row}${removed.column}`);
       removedNode.classList.remove("snake")
     }
@@ -74,19 +73,17 @@ const SnakeGrid = () => {
     });
     if (direction === "right") {
       console.log(newSnake);
-     let newPart = newSnake[0];
-     let removed = newSnake.shift(); // Why does this value for removed change between 78 and 88???
-      newPart.column += currentSnake.length;
-      newPart.index = currentSnake.length;
+     let removed = newSnake[0];
+      newSnake[0].column += newSnake.length;
+      newSnake[0].index = newSnake.length;
       for (let entry of newSnake) {
         entry.index--;
       };
-      newSnake.push(newPart);
       newSnake.sort(function (a, b) {
         return b.index - a.index
       });
       console.log(newSnake, removed);
-      setCurrentSnake(newSnake);
+      // setCurrentSnake(newSnake);
       // updateSnake(newSnake, removed);
     }
   };
