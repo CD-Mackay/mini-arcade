@@ -23,16 +23,19 @@ const SnakeGrid = () => {
     });
   };
 
-  function updateSnake(array) {
+  function updateSnake(array, removed) {
     for (let entry of array) {
       let snakeNode = document.getElementById(`${entry.row}${entry.column}`);
       if (!snakeNode) {
-        console.log(`Could not find: ${entry.row}${entry.column}`)
+        console.log(`Could not find: ${entry.row}${entry.column}`);
       } if (snakeNode) {
-        console.log(snakeNode)
-        snakeNode.setAttribute("id", "snake");
+        snakeNode.classList.add("snake")
       }
-   
+    }
+    if (removed) {
+      console.log(removed);
+      let removedNode = document.getElementById(`${removed.row}${removed.column}`);
+      removedNode.classList.remove("snake")
     }
   };
 
@@ -70,21 +73,20 @@ const SnakeGrid = () => {
       return a.index - b.index
     });
     if (direction === "right") {
-      console.log(newSnake);
      let newPart = newSnake[0];
-      newPart.column += snake.length;
-      newPart.index = snake.length;
+      newPart.column += currentSnake.length;
+      newPart.index = currentSnake.length;
       for (let entry of newSnake) {
         entry.index--;
       };
-      console.log(newSnake, newPart);
       newSnake.push(newPart);
-      // newSnake.sort(function (a, b) {
-      //   return a.index - b.index
-      // });
-      // let removed = newSnake.shift();
+      newSnake.sort(function (a, b) {
+        return b.index - a.index
+      });
       console.log(newSnake);
-      console.log(newPart);
+      let removed = newSnake.shift();
+      setCurrentSnake(newSnake);
+      updateSnake(newSnake, removed);
     }
   };
 
