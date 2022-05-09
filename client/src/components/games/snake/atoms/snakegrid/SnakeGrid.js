@@ -33,7 +33,6 @@ const SnakeGrid = () => {
       }
     }
     if (removed) {
-      console.log(removed);
       let removedNode = document.getElementById(`${removed.row}${removed.column}`);
       removedNode.classList.remove("snake")
     }
@@ -74,20 +73,21 @@ const SnakeGrid = () => {
     });
     if (direction === "right") {
       console.log(newSnake);
-     let newPart = newSnake[0];
-     let removed = newSnake.shift();
-      newPart.column += currentSnake.length;
-      newPart.index = currentSnake.length;
+     const removed = {...newSnake[0]};
+     console.log(newSnake[0], removed)
+      newSnake[0].column += newSnake.length;
+      console.log(newSnake[0], removed)
+      newSnake[0].index = newSnake.length;
+      console.log(newSnake[0], removed)
       for (let entry of newSnake) {
         entry.index--;
       };
-      newSnake.push(newPart);
       newSnake.sort(function (a, b) {
         return b.index - a.index
       });
       console.log(newSnake, removed);
       setCurrentSnake(newSnake);
-      // updateSnake(newSnake, removed);
+      updateSnake(newSnake, removed);
     }
   };
 
