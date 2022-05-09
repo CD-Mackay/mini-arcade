@@ -28,11 +28,13 @@ const SnakeGrid = () => {
       let snakeNode = document.getElementById(`${entry.row}${entry.column}`);
       if (!snakeNode) {
         console.log(`Could not find: ${entry.row}${entry.column}`)
+      } if (snakeNode) {
+        console.log(snakeNode)
+        snakeNode.setAttribute("id", "snake");
       }
-      console.log(snakeNode)
-      snakeNode.setAttribute("id", "snake");
+   
     }
-  }
+  };
 
   function control(event) {
     if (event.key === "w") {
@@ -65,15 +67,24 @@ const SnakeGrid = () => {
   function handleOutcome() {
     let newSnake = [...currentSnake];
     newSnake.sort(function (a, b) {
-      return b.index - a.index
+      return a.index - b.index
     });
     if (direction === "right") {
-      console.log(newSnake)
-      newSnake[0].column += newSnake.length;
-      let finalSnake = newSnake.sort(function (a, b) {
-        return b.index - a.index
-      });
-      updateSnake(finalSnake);
+      console.log(newSnake);
+     let newPart = newSnake[0];
+      newPart.column += snake.length;
+      newPart.index = snake.length;
+      for (let entry of newSnake) {
+        entry.index--;
+      };
+      console.log(newSnake, newPart);
+      newSnake.push(newPart);
+      // newSnake.sort(function (a, b) {
+      //   return a.index - b.index
+      // });
+      // let removed = newSnake.shift();
+      console.log(newSnake);
+      console.log(newPart);
     }
   };
 
