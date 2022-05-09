@@ -75,7 +75,7 @@ const SnakeGrid = () => {
     if (direction === "right") {
       console.log(newSnake);
      let newPart = newSnake[0];
-     let removed = newSnake.shift();
+     let removed = newSnake.shift(); // Why does this value for removed change between 78 and 88???
       newPart.column += currentSnake.length;
       newPart.index = currentSnake.length;
       for (let entry of newSnake) {
