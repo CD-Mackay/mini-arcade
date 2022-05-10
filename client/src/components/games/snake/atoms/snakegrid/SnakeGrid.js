@@ -72,10 +72,9 @@ const SnakeGrid = () => {
     newSnake.sort(function (a, b) {
       return a.index - b.index;
     });
-    // const removed = {...newSnake[0]};
     const removed = newSnake.shift();
     const newNode = { ...newSnake[newSnake.length - 1] };
-    console.log(removed, newNode);
+    console.log(newSnake, removed, newNode);
     if (direction === "right") {
       newNode.column += 1;
       newNode.index = newSnake.length + 1;
@@ -110,8 +109,10 @@ const SnakeGrid = () => {
   }
 
   // setInterval(() => {
-  //   handleOutcome();
-  // }, 1000)
+  //   if (currentSnake.length > 0) {
+  //     handleOutcome();
+  //   }
+  // }, 2000);
 
   document.addEventListener("keyup", control);
   return (
