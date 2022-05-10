@@ -43,13 +43,13 @@ const SnakeGrid = () => {
 
   function control(event) {
     if (event.key === "w") {
-      console.log("up");
+      setDirection("up");
     } else if (event.key === "d") {
-      console.log("right");
+      setDirection("right");
     } else if (event.key === "s") {
-      console.log("down");
+      setDirection("down");
     } else if (event.key === "a") {
-      console.log("left");
+      setDirection("left");
     }
   }
 
