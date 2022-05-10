@@ -28,15 +28,18 @@ const SnakeGrid = () => {
       let snakeNode = document.getElementById(`${entry.row}${entry.column}`);
       if (!snakeNode) {
         console.log(`Could not find: ${entry.row}${entry.column}`);
-      } if (snakeNode) {
-        snakeNode.classList.add("snake")
+      }
+      if (snakeNode) {
+        snakeNode.classList.add("snake");
       }
     }
     if (removed) {
-      let removedNode = document.getElementById(`${removed.row}${removed.column}`);
-      removedNode.classList.remove("snake")
+      let removedNode = document.getElementById(
+        `${removed.row}${removed.column}`
+      );
+      removedNode.classList.remove("snake");
     }
-  };
+  }
 
   function control(event) {
     if (event.key === "w") {
@@ -59,37 +62,52 @@ const SnakeGrid = () => {
       { row: 0, column: 0, index: 0 },
       { row: 0, column: 1, index: 1 },
       { row: 0, column: 2, index: 2 },
-    ]
+    ];
     setCurrentSnake(initSnake);
-    updateSnake(initSnake)
-  };
-
-
+    updateSnake(initSnake);
+  }
 
   function handleOutcome() {
     let newSnake = [...currentSnake];
     newSnake.sort(function (a, b) {
-      return a.index - b.index
+      return a.index - b.index;
     });
+    // const removed = {...newSnake[0]};
+    const removed = newSnake.shift();
+    const newNode = { ...newSnake[newSnake.length - 1] };
+    console.log(removed, newNode);
     if (direction === "right") {
-      console.log(newSnake);
-     const removed = {...newSnake[0]};
-     console.log(newSnake[0], removed)
-      newSnake[0].column += newSnake.length;
-      console.log(newSnake[0], removed)
-      newSnake[0].index = newSnake.length;
-      console.log(newSnake[0], removed)
-      for (let entry of newSnake) {
-        entry.index--;
-      };
-      newSnake.sort(function (a, b) {
-        return b.index - a.index
-      });
-      console.log(newSnake, removed);
-      setCurrentSnake(newSnake);
-      updateSnake(newSnake, removed);
+      newNode.column += 1;
+      newNode.index = newSnake.length + 1;
+      newSnake.push(newNode);
     }
-  };
+    if (direction === "down") {
+      newNode.row += 1;
+      newNode.index = newSnake.length + 1;
+      newSnake.push(newNode);
+    }
+
+    if (direction === "up") {
+      newNode.row -= 1;
+      newNode.index = newSnake.length + 1;
+      newSnake.push(newNode);
+    }
+
+    if (direction === "left") {
+      newNode.column -= 1;
+      newNode.index = newSnake.length + 1;
+      newSnake.push(newNode);
+    }
+
+    for (let entry of newSnake) {
+      entry.index--;
+    }
+    newSnake.sort(function (a, b) {
+      return b.index - a.index;
+    });
+    setCurrentSnake(newSnake);
+    updateSnake(newSnake, removed);
+  }
 
   // setInterval(() => {
   //   handleOutcome();
