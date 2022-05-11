@@ -30,6 +30,8 @@ const RockPaper = () => {
   }, []);
 
   const handleRenderGamePlay = () => {
+    setOpponentTurn("");
+    setWinner("")
     if (input === "") {
       setError("No Move Selected");
       return;
