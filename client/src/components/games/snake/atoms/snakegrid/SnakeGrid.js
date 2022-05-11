@@ -104,19 +104,21 @@ const SnakeGrid = () => {
     newSnake.sort(function (a, b) {
       return b.index - a.index;
     });
-    setCurrentSnake(newSnake);
     updateSnake(newSnake, removed);
+    return newSnake;
   }
 
   useEffect(() => {
     setInterval(() => {
       if (currentSnake.length > 0) {
-         handleOutcome();
+        let snake = handleOutcome();
+        setCurrentSnake(snake);
       }
     }, 2000);
   }, [currentSnake]);
 
   document.addEventListener("keyup", control);
+  
   return (
     <StyledSnakeGrid>
       {buildBoard()}

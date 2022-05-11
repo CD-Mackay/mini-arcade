@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 /* Component Imports */
 import FourBoard from "./atoms/FourBoard/FourBoard";
 import ScoreKeeper from "../../atoms/ScoreKeeper/ScoreKeeper";
+import Button from "../../atoms/Button/Button";
 
 /* Asset Imports */
 import StyledConnectFour from "./StyledConnectFour";
@@ -12,6 +13,8 @@ import UpdateRecords from "../../../utilities/UpdateRecords";
 const ConnectFour = () => {
   const [board, setBoard] = useState([]);
   const [playerTurn, setPlayerTurn] = useState(1);
+  const [computerPlayer, setComputerPlayer] = useState(false);
+  const [phase, setPhase] = useState("setup");
   const [winner, setWinner] = useState(0);
   const [record, setRecord] = useState({
     player_one: 0,
@@ -21,6 +24,30 @@ const ConnectFour = () => {
   const [error, setError] = useState("");
 
   const { handleUpdateRecord } = UpdateRecords;
+
+  const handleComputerMove = () => {
+    console.log("handlingcomputermove!")
+    let newBoard = [...board];
+    for (let i = 0; i < newBoard.length; i++) {
+      for (let x = 0; x < newBoard[i].length; x++) {
+        if (newBoard[i][x].available === true) {
+          console.log("found free square")
+          console.log(i, x);
+          newBoard[i][x].selected = 2;
+          newBoard[i][x].available = false;
+          setBoard(newBoard);
+          let validatedBoard = checkForValidSquares(board);
+          setBoard(validatedBoard);
+          return;
+        }
+      }
+    }
+  };
+
+  const handleSetup = (computer) => {
+    setComputerPlayer(computer);
+    setPhase("play");
+  }
 
   const makeBoard = () => {
     let array = [];
@@ -168,10 +195,21 @@ const ConnectFour = () => {
     checkForHorizontalWin(board);
     checkForAscendingWin(board);
     checkForDescendingWin(board);
-    if (playerTurn === 1) {
-      setPlayerTurn(2);
-    } else {
-      setPlayerTurn(1);
+    if (!computerPlayer) {
+      if (playerTurn === 1) {
+        setPlayerTurn(2);
+      } else {
+        setPlayerTurn(1);
+      }
+    }
+    if (computerPlayer) {
+      console.log("computerPlayer!")
+      if (playerTurn === 1) {
+        setPlayerTurn(2);
+        handleComputerMove();
+      } else {
+        setPlayerTurn(1);
+      }
     }
   }, [board]);
 
@@ -189,7 +227,19 @@ const ConnectFour = () => {
         <h4>Connect Four!</h4>
         <h6>Player {playerTurn}'s Turn</h6>
         <p>{error}</p>
-        <FourBoard onSelect={handlePickSquare} board={board} winner={winner} />
+        {phase === "play" && (
+          <FourBoard
+            onSelect={handlePickSquare}
+            board={board}
+            winner={winner}
+          />
+        )}
+        {phase === "setup" && (
+          <div>
+            <Button message="Human" onClick={() => handleSetup(false)}/>
+            <Button message="Robot" onClick={() => handleSetup(true)} />
+          </div>
+        )}
       </div>
       <div id="scoreboard-wrapper">
         <ScoreKeeper record={record} />

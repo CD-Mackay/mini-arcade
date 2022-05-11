@@ -8,6 +8,7 @@ import GameListItem from '../GameListItem/GameListItem';
 /* Asset Imports */
 import StyledGameList from './StyledGameList';
 import { GiTicTacToe, GiDoubleFaceMask, GiTriforce } from 'react-icons/gi';
+import { MdConstruction } from 'react-icons/md';
 import { BiCategory } from 'react-icons/bi';
 
 const GameList = () => {
@@ -35,14 +36,15 @@ const GameList = () => {
         game="connectfour" 
         name="Connect Four" 
         description="Because counting to 5 is hard."
-        icon={<BiCategory color={"#00FFFF"} fontSize="32px" />}
+        icon={<BiCategory color={"#00FFFF"} fontSize="48px" />}
          />
         <GameListItem 
         game="snake" 
         name="Snake" 
-        description="snaaaake it's a snaaake"
+        description="it's a snaaake (in development)"
+        icon={<MdConstruction color={"#00FFFF"} fontSize="48px" />}
         />
-        <GameListItem />
+        <GameListItem/>
     </div>
     </StyledGameList>
   )
