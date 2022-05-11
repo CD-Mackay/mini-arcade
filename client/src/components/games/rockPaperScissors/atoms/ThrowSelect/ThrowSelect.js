@@ -4,20 +4,24 @@ import StyledThrowSelect from './StyledThrowSelect';
 
 import Button from '../../../../atoms/Button/Button';
 
-const ThrowSelect = ({input, setInput}) => {
+const ThrowSelect = ({input, setInput, setError}) => {
 
 
+  const handleSetInput = (event) => {
+    setInput(event.target.innerHTML);
+    setError("");
+  }
 
   return (
     <StyledThrowSelect input={input}>
       <div id="rock">
-        <Button  message="rock" onClick={(event) => setInput(event.target.innerHTML)} />
+        <Button  message="rock" onClick={(event) => handleSetInput(event)} />
       </div>
       <div id="paper">
-        <Button  message="paper" onClick={(event) => setInput(event.target.innerHTML)} />
+        <Button  message="paper" onClick={(event) => handleSetInput(event)} />
       </div>
       <div id="scissors">
-        <Button  message="scissors" onClick={(event) => setInput(event.target.innerHTML)} />
+        <Button  message="scissors" onClick={(event) => handleSetInput(event)} />
       </div>
     </StyledThrowSelect>
   )
