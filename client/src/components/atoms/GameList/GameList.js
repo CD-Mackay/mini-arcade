@@ -8,6 +8,7 @@ import GameListItem from '../GameListItem/GameListItem';
 /* Asset Imports */
 import StyledGameList from './StyledGameList';
 import { GiTicTacToe, GiDoubleFaceMask, GiTriforce } from 'react-icons/gi';
+import { MdConstruction } from 'react-icons/md';
 import { BiCategory } from 'react-icons/bi';
 
 const GameList = () => {
@@ -40,7 +41,8 @@ const GameList = () => {
         <GameListItem 
         game="snake" 
         name="Snake" 
-        description="snaaaake it's a snaaake"
+        description="it's a snaaake (in development)"
+        icon={<MdConstruction color={"#00FFFF"} fontSize="32px" />}
         />
         <GameListItem />
     </div>
