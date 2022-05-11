@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SnakeSquare from "../SnakeSquare/SnakeSquare";
 
 import StyledSnakeGrid from "./StyledSnakeGrid";
@@ -53,7 +53,7 @@ const SnakeGrid = () => {
     }
   }
 
-  function startGame() {
+  async function startGame() {
     let apple = [3, 2];
     let appleNode = document.getElementById(`${apple[0]}${apple[1]}`);
     console.log(appleNode);
@@ -108,11 +108,13 @@ const SnakeGrid = () => {
     updateSnake(newSnake, removed);
   }
 
-  // setInterval(() => {
-  //   if (currentSnake.length > 0) {
-  //     handleOutcome();
-  //   }
-  // }, 2000);
+  useEffect(() => {
+    setInterval(() => {
+      if (currentSnake.length > 0) {
+         handleOutcome();
+      }
+    }, 2000);
+  }, [currentSnake]);
 
   document.addEventListener("keyup", control);
   return (
