@@ -26,15 +26,19 @@ const ConnectFour = () => {
   const { handleUpdateRecord } = UpdateRecords;
 
   const handleComputerMove = () => {
+    console.log("handlingcomputermove!")
     let newBoard = [...board];
     for (let i = 0; i < newBoard.length; i++) {
-      for (let x = 0; x > newBoard[i].length; x++) {
+      for (let x = 0; x < newBoard[i].length; x++) {
         if (newBoard[i][x].available === true) {
-          newBoard[i][x].selected = playerTurn;
+          console.log("found free square")
+          console.log(i, x);
+          newBoard[i][x].selected = 2;
           newBoard[i][x].available = false;
           setBoard(newBoard);
           let validatedBoard = checkForValidSquares(board);
           setBoard(validatedBoard);
+          return;
         }
       }
     }
@@ -199,6 +203,7 @@ const ConnectFour = () => {
       }
     }
     if (computerPlayer) {
+      console.log("computerPlayer!")
       if (playerTurn === 1) {
         setPlayerTurn(2);
         handleComputerMove();
