@@ -78,7 +78,7 @@ const RockPaper = () => {
   return (
     <StyledRockPaper>
       <div>
-      <ThrowSelect input={input} setInput={setInput} setError={setError}/>
+        <ThrowSelect input={input} setInput={setInput} setError={setError} />
         <Button onClick={handleRenderGamePlay} message="Begin!" />
       </div>
       <div id="turn-display">
