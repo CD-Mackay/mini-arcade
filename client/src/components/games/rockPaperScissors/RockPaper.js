@@ -12,6 +12,7 @@ import UpdateRecords from "../../../utilities/UpdateRecords";
 const RockPaper = () => {
   const [input, setInput] = useState("");
   const [countDown, setCountDown] = useState(0);
+  const [error, setError] = useState("");
   const [winner, setWinner] = useState("");
   const [opponentTurn, setOpponentTurn] = useState("");
   const [record, setRecord] = useState({
@@ -29,6 +30,10 @@ const RockPaper = () => {
   }, []);
 
   const handleRenderGamePlay = () => {
+    if (input === "") {
+      setError("No Move Selected");
+      return;
+    }
     setCountDown(3);
     setTimeout(() => {
       setCountDown(2);
@@ -73,7 +78,7 @@ const RockPaper = () => {
   return (
     <StyledRockPaper>
       <div>
-        <ThrowSelect input={input} setInput={setInput} />
+      <ThrowSelect input={input} setInput={setInput} setError={setError}/>
         <Button onClick={handleRenderGamePlay} message="Begin!" />
       </div>
       <div id="turn-display">
@@ -83,6 +88,7 @@ const RockPaper = () => {
           winner={winner}
           display={opponentTurn}
         />
+        <p>{error}</p>
       </div>
       <ScoreKeeper name={opponentName} record={record} />
     </StyledRockPaper>

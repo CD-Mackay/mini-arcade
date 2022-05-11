@@ -36,15 +36,15 @@ const GameList = () => {
         game="connectfour" 
         name="Connect Four" 
         description="Because counting to 5 is hard."
-        icon={<BiCategory color={"#00FFFF"} fontSize="32px" />}
+        icon={<BiCategory color={"#00FFFF"} fontSize="48px" />}
          />
         <GameListItem 
         game="snake" 
         name="Snake" 
         description="it's a snaaake (in development)"
-        icon={<MdConstruction color={"#00FFFF"} fontSize="32px" />}
+        icon={<MdConstruction color={"#00FFFF"} fontSize="48px" />}
         />
-        <GameListItem />
+        <GameListItem/>
     </div>
     </StyledGameList>
   )
