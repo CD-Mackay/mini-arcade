@@ -35,14 +35,15 @@ const ConnectFour = () => {
           console.log(i, x);
           newBoard[i][x].selected = 2;
           newBoard[i][x].available = false;
-          setBoard(newBoard);
-          let validatedBoard = checkForValidSquares(board);
+          console.log(newBoard[i][x]);
+          // setBoard(newBoard);
+          let validatedBoard = checkForValidSquares(newBoard);
           setBoard(validatedBoard);
           return;
         }
       }
     }
-  };
+};
 
   const handleSetup = (computer) => {
     setComputerPlayer(computer);
@@ -74,7 +75,7 @@ const ConnectFour = () => {
     if (newBoard[numOne][numTwo].available == true) {
       newBoard[numOne][numTwo].selected = playerTurn;
       newBoard[numOne][numTwo].available = false;
-      setBoard(newBoard);
+      // setBoard(newBoard);
       let validatedBoard = checkForValidSquares(board);
       setBoard(validatedBoard);
     } else {
@@ -92,7 +93,7 @@ const ConnectFour = () => {
         if (i > 0) {
           let bottomSquare = arrayCopy[i][x];
           let topSquare = arrayCopy[i - 1][x];
-          if (bottomSquare.selected !== 0) {
+          if (bottomSquare.selected !== 0 && topSquare.selected === 0) {
             topSquare.available = true;
           }
         }
