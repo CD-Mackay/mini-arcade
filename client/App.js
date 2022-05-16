@@ -18,6 +18,7 @@ import { GlobalStyle } from "./GlobalStyles.js";
 import StyledApp from "./StyledApp.js";
 import Hangman from "./src/components/games/hangman/Hangman.js";
 import RockPaper from "./src/components/games/rockPaperScissors/RockPaper.js";
+import Sidebar from "./src/components/atoms/sidebar/Sidebar.js";
 
 const App = () => {
   return (
@@ -55,6 +56,7 @@ const App = () => {
               <TutorialHeader />
             </Route>
           </Switch>
+          <Sidebar />
         </Layout>
         <Footer />
       </StyledApp>
