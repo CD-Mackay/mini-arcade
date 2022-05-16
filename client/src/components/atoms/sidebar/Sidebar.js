@@ -5,11 +5,17 @@ import React from 'react';
 /* Component Imports */
 /* Asset Imports */
 import StyledSidebar from './StyledSidebar';
+import { Link, useLocation } from 'react-router-dom';
+
 
 const Sidebar = () => {
+
+  const location = useLocation();
+  console.log(location);
+
   return (
-    <StyledSidebar>
-      <p>I am Sidebar</p>
+    <StyledSidebar show={location.pathname}>
+
     </StyledSidebar>
   )
 };

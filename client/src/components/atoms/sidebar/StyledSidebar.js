@@ -5,7 +5,8 @@ position: absolute;
 left: 0;
 top: 0;
 height: 100vh;
-background-color: red;
+border-right: 1px solid #00FFFF;
+width: ${props => props.show === "/" ? "0px" : "100px"};
 `
 
 export default StyledSidebar;
