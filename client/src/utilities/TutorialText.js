@@ -32,6 +32,15 @@ const text = [
     strategy: "As with Tic-Tac-Toe, the best move usually combines elements of offense and defense. Look for moves which advance your own win conditions while blocking your opponents.",
     pitfalls: "Some win conditions can seem more available than they actually are. For example, if you already have three squares connected, but the fourth space is much higher than the other stacks, it may be more advantageous to look for other, less completed but more accesible win conditions."
 
+  },
+  {
+    game: "snake",
+    title: "Snake",
+    introduction: "An endless challenge that gets more difficult as it goes on",
+    rules: "Use the WASD keys to change your snakes direction, chasing apples around and avoiding the walls and yourself.",
+    strategy: "Lorem ipsum",
+    pitfalls: "Lorem ipsum"
+
   }
 ];
 
