@@ -15,7 +15,7 @@ const Sidebar = () => {
 
   return (
     <StyledSidebar show={location.pathname}>
-      {location.pathname !== "/" && <h3>Other Games</h3>}
+      {location.pathname !== "/" && <h4>Other Games</h4>}
       {location.pathname !== "/" &&
         text
           .filter((element) => !location.pathname.includes(element.game))
