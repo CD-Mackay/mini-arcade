@@ -3,7 +3,7 @@ import React from "react";
 
 /* Component Imports */
 import TutorialText from "../../../utilities/TutorialText";
-import Button from '../Button/Button';
+import Button from "../Button/Button";
 /* Asset Imports */
 import StyledSidebar from "./StyledSidebar";
 import { Link, useLocation } from "react-router-dom";
@@ -15,6 +15,7 @@ const Sidebar = () => {
 
   return (
     <StyledSidebar show={location.pathname}>
+      {location.pathname !== "/" && <h3>Other Games</h3>}
       {location.pathname !== "/" &&
         text
           .filter((element) => !location.pathname.includes(element.game))
