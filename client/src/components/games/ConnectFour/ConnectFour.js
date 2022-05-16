@@ -26,12 +26,12 @@ const ConnectFour = () => {
   const { handleUpdateRecord } = UpdateRecords;
 
   const handleComputerMove = () => {
-    console.log("handlingcomputermove!")
+    console.log("handlingcomputermove!");
     let newBoard = [...board];
     for (let i = 0; i < newBoard.length; i++) {
       for (let x = 0; x < newBoard[i].length; x++) {
         if (newBoard[i][x].available === true) {
-          console.log("found free square")
+          console.log("found free square");
           console.log(i, x);
           newBoard[i][x].selected = 2;
           newBoard[i][x].available = false;
@@ -43,12 +43,18 @@ const ConnectFour = () => {
         }
       }
     }
-};
+  };
 
   const handleSetup = (computer) => {
     setComputerPlayer(computer);
     setPhase("play");
-  }
+  };
+
+  const resetGame = () => {
+    setPhase("reset");
+    makeBoard();
+    setPhase("play");
+  };
 
   const makeBoard = () => {
     let array = [];
@@ -204,7 +210,7 @@ const ConnectFour = () => {
       }
     }
     if (computerPlayer) {
-      console.log("computerPlayer!")
+      console.log("computerPlayer!");
       if (playerTurn === 1) {
         setPlayerTurn(2);
         handleComputerMove();
@@ -229,15 +235,18 @@ const ConnectFour = () => {
         <h6>Player {playerTurn}'s Turn</h6>
         <p>{error}</p>
         {phase === "play" && (
-          <FourBoard
-            onSelect={handlePickSquare}
-            board={board}
-            winner={winner}
-          />
+          <div>
+            <FourBoard
+              onSelect={handlePickSquare}
+              board={board}
+              winner={winner}
+            />
+            <Button onClick={resetGame} message="Reset Game" />
+          </div>
         )}
         {phase === "setup" && (
           <div>
-            <Button message="Human" onClick={() => handleSetup(false)}/>
+            <Button message="Human" onClick={() => handleSetup(false)} />
             <Button message="Robot" onClick={() => handleSetup(true)} />
           </div>
         )}

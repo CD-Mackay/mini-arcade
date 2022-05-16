@@ -7,7 +7,11 @@ button {
   border: 1px solid #00FFFF;
   color: #00FFFF;
   font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+
 button:hover { 
   background: #323445;
 }
