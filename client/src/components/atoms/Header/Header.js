@@ -7,6 +7,8 @@ import { Link, useLocation } from "react-router-dom";
 /* Asset Imports */
 import StyledHeader from "./StyledHeader";
 import { FaQuestionCircle } from "react-icons/fa";
+import { BsHouseDoor } from 'react-icons/bs';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 const Header = () => {
   let location = useLocation();
@@ -17,7 +19,7 @@ const Header = () => {
       {location.pathname !== "/" && (
         <div className="button-wrapper">
         <Link to={`${location.pathname}/tutorial`} >
-          <FaQuestionCircle color="#00FFFF" fontSize="24px" />
+          <AiOutlineQuestionCircle color="#00FFFF" fontSize="28px" />
         </Link>
         </div>
       )}
@@ -25,7 +27,7 @@ const Header = () => {
       {location.pathname !== "/" && (
         <div className="button-wrapper">
           <Link to="/">
-            <Button message="Return to Home" />
+            <BsHouseDoor color="#00FFFF" fontSize="24px" />
           </Link>
         </div>
       )}
