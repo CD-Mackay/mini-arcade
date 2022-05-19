@@ -33,7 +33,7 @@ const StyledConnectFour = styled.section`
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
   }
 `;
 
