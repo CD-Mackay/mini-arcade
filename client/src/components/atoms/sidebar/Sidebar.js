@@ -21,7 +21,7 @@ const Sidebar = () => {
           .filter((element) => !location.pathname.includes(element.game))
           .map((element, index) => {
             return (
-              <Link key={index} to={`/element.game`}>
+              <Link key={index} to={`/${element.game}`}>
                 <Button message={element.game} />
               </Link>
             );
