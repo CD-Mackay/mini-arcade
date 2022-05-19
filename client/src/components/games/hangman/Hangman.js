@@ -139,15 +139,15 @@ const Hangman = () => {
           <WordWrapper string={gameString} />
           <TextInput setInput={setInput} input={input} onSubmit={handleTurn} />
           <div id="game-information">
-          <Alert
-            visible={alert.visible}
-            message={alert.message}
-            color={alert.color}
-          />
-        <div id="letter-graveyard">
-          <DisplayWrong wrong={failedGuesses} />
-        </div>
-      </div>
+            <Alert
+              visible={alert.visible}
+              message={alert.message}
+              color={alert.color}
+            />
+            <div id="letter-graveyard">
+              <DisplayWrong wrong={failedGuesses} />
+            </div>
+          </div>
           <div id="finished-menu">
             <Button message="New Game" onClick={resetGame} />
             <Link to="/">
@@ -169,11 +169,13 @@ const Hangman = () => {
         </div>
       )}
       {gamePhase == "input" && (
-        <CustomInput
-          string={stringInput}
-          onSubmit={() => startCustomGame(stringInput)}
-          setString={setStringInput}
-        />
+        <div id="input-wrapper">
+          <CustomInput
+            string={stringInput}
+            onSubmit={() => startCustomGame(stringInput)}
+            setString={setStringInput}
+          />
+        </div>
       )}
       {gamePhase == "win" && <h4>Congratulations! You were not hanged</h4>}
       {gamePhase === "loss" && <h4>You are hung, and not in the good way</h4>}

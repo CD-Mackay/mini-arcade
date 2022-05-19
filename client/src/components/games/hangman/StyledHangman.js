@@ -18,6 +18,11 @@ flex-direction: column;
     }
   }
 }
+
+#input-wrapper {
+  display: flex;
+  justify-content: center;
+}
 #setup-menu {
   margin: 0 auto;
   text-align: center;

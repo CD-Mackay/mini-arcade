@@ -5,6 +5,9 @@ h4 {
   font-size: 22px;
   margin-bottom: 10px;
 }
+button {
+  margin-top: 10px;
+}
 `
 
 export default StyledCustomInput;
