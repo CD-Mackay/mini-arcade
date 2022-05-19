@@ -9,7 +9,8 @@ flex-direction: column;
   align-items: center;
   #game-information {
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    width: 60vw;
   }
   #finished-menu {
     display: flex;
