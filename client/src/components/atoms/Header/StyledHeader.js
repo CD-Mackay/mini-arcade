@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const StyledHeader = styled.div`
 display: grid;
-grid-template-columns: ${props => props.location === "/" ? "1fr" : "1fr 1fr 1fr"};
+grid-template-columns: ${props => props.location === "/" ? "1fr" : "1fr 3fr 1fr"};
 padding: 10px;
-width: 70vw;
+width: 100vw;
 margin: 0 auto;
 text-align: center;
 h1 {
@@ -22,6 +22,14 @@ h1 {
   a {
     margin: 0 auto;
   }
+}
+
+@media (min-width: 576px) {
+  width: 90vw;
+}
+
+@media (min-width: 992px) {
+  width: 70vw;
 }
 `
 

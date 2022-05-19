@@ -9,6 +9,7 @@ import Button from "../../atoms/Button/Button";
 /* Asset Imports */
 import StyledConnectFour from "./StyledConnectFour";
 import UpdateRecords from "../../../utilities/UpdateRecords";
+import Alert from "../../atoms/Alert/Alert";
 
 const ConnectFour = () => {
   const [board, setBoard] = useState([]);
@@ -21,7 +22,7 @@ const ConnectFour = () => {
     player_two: 0,
     draw: 0,
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState({});
 
   const { handleUpdateRecord } = UpdateRecords;
 
@@ -85,9 +86,17 @@ const ConnectFour = () => {
       let validatedBoard = checkForValidSquares(board);
       setBoard(validatedBoard);
     } else {
-      setError("not available!");
+      setError({
+        message: "Square not available",
+        color: "red",
+        visible: true,
+      });
       setTimeout(() => {
-        setError("");
+        setError({
+          message: "",
+          color: null,
+          visible: false,
+        });
       }, 3000);
     }
   };
@@ -232,10 +241,15 @@ const ConnectFour = () => {
     <StyledConnectFour>
       <div id="game-wrapper">
         <h4>Connect Four!</h4>
-        <h6>Player {playerTurn}'s Turn</h6>
-        <p>{error}</p>
+        <h6>Select Your Opponent</h6>
         {phase === "play" && (
           <div>
+            <h6>Player {playerTurn}'s Turn</h6>
+            <Alert
+              visible={error.visible}
+              message={error.message}
+              color={error.color}
+            />
             <FourBoard
               onSelect={handlePickSquare}
               board={board}
@@ -245,7 +259,7 @@ const ConnectFour = () => {
           </div>
         )}
         {phase === "setup" && (
-          <div>
+          <div id="setup-wrapper">
             <Button message="Human" onClick={() => handleSetup(false)} />
             <Button message="Robot" onClick={() => handleSetup(true)} />
           </div>

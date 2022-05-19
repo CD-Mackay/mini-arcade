@@ -6,6 +6,7 @@ grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 grid-gap: 0px;
 max-width: 1200px;
 margin: 0 auto;
+margin-bottom: 10px;
 `
 
 export default StyledFourBoard;
