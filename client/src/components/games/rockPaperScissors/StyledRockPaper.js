@@ -6,14 +6,18 @@ margin: 0 auto;
 display: flex;
 flex-direction: column;
 padding: 10px;
+align-items: center;
+
+#input-wrapper {
+  margin-bottom: 10px;
+}
 #turn-display {
  display: flex;
  flex-direction: column;
+ margin-bottom: 10px;
 }
 
 @media (min-width: 768px) {
-  display: flex;
-  flex-direction: row;
   width: 100%;
   justify-content: space-between;
   #turn-display {
