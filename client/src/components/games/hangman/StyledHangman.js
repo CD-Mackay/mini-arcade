@@ -9,7 +9,8 @@ flex-direction: column;
   align-items: center;
   #game-information {
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    width: 60vw;
   }
   #finished-menu {
     display: flex;
@@ -17,6 +18,11 @@ flex-direction: column;
       margin: 5px;
     }
   }
+}
+
+#input-wrapper {
+  display: flex;
+  justify-content: center;
 }
 #setup-menu {
   margin: 0 auto;

@@ -239,9 +239,10 @@ const ConnectFour = () => {
 
   return (
     <StyledConnectFour>
+      <div />
       <div id="game-wrapper">
         <h4>Connect Four!</h4>
-        <h6>Select Your Opponent</h6>
+        {phase === "setup" && <h6>Select Your Opponent</h6>}
         {phase === "play" && (
           <div>
             <h6>Player {playerTurn}'s Turn</h6>
@@ -265,9 +266,11 @@ const ConnectFour = () => {
           </div>
         )}
       </div>
-      <div id="scoreboard-wrapper">
-        <ScoreKeeper record={record} />
-      </div>
+      {phase === "play" && (
+        <div id="scoreboard-wrapper">
+          <ScoreKeeper record={record} />
+        </div>
+      )}
     </StyledConnectFour>
   );
 };
