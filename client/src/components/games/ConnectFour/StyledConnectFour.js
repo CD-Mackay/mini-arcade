@@ -25,6 +25,12 @@ const StyledConnectFour = styled.section`
     align-items: center;
   }
 
+  #setup-wrapper {
+    button {
+      margin-bottom: 5px;
+    }
+  }
+
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: 3fr 1fr;

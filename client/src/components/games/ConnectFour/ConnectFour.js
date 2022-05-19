@@ -245,7 +245,7 @@ const ConnectFour = () => {
           </div>
         )}
         {phase === "setup" && (
-          <div>
+          <div id="setup-wrapper">
             <Button message="Human" onClick={() => handleSetup(false)} />
             <Button message="Robot" onClick={() => handleSetup(true)} />
           </div>
