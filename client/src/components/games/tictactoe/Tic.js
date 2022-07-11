@@ -120,7 +120,7 @@ const Tic = () => {
       let incrementer = 0;
       for (let entry of array) {
         if (entry.letter === 1) {
-          incrementer++
+          incrementer++;
         }
         if (incrementer === 2) {
           for (let entry of array) {
@@ -132,14 +132,13 @@ const Tic = () => {
       }
       if ((a === 1 || b === 1 || c === 1) && a !== 2 && b !== 2 && c !== 2) {
         // Check if human has already progressed on winCondition, check for block
-
       }
     }
   };
 
   const handleComputerTurn = (turn) => {
     if (turn === 2) {
-      console.log("inside if block", turn)
+      console.log("inside if block", turn);
       clearSquareValues();
       selectComputerDefense();
       selectComputerOffense();
@@ -148,7 +147,7 @@ const Tic = () => {
         return b.score - a.score;
       });
       for (let i = 0; i <= finalScores.length; i++) {
-        if (finalScores[i].element === '') {
+        if (finalScores[i].element === "") {
           setSquareSelected(finalScores[i].index);
           return;
         }
@@ -205,7 +204,7 @@ const Tic = () => {
         handleComputerTurn(2);
       }, 300);
     } else if (computerPlayer && playerTurn === 2) {
-      setPlayerTurn(1); 
+      setPlayerTurn(1);
     } else if (!computerPlayer) {
       playerTurn == 1 ? setPlayerTurn(2) : setPlayerTurn(1);
     }
@@ -226,7 +225,7 @@ const Tic = () => {
   const quitGame = () => {
     setGamePhase("setup");
     setGame(squares);
-    setComputerPlayer(false)
+    setComputerPlayer(false);
     setVictory(0);
   };
 

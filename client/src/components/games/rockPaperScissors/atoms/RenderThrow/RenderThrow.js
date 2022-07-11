@@ -5,14 +5,6 @@ import { FaRegHandScissors } from "react-icons/fa";
 import StyledRenderThrow from "./StyledRenderThrow";
 
 const RenderThrow = ({ move }) => {
-  // const shownThrow = (input) => {
-  //   let icon = null;
-  //   input === "rock" ?
-  //   icon = <GiMailedFist fontSize="36px" id="rock" />
-  //   : input === "paper" ? icon = <GiPalm fontSize="36px" id="paper" />
-  //   : input === "scissors" ? icon = <FaRegHandScissors fontSize="36px" id="scissors" /> : icon = <GiMailedFist fontSize="36px" color="#24282f" />
-  //   return icon;
-  // };
 
   return (
     <StyledRenderThrow move={move}>

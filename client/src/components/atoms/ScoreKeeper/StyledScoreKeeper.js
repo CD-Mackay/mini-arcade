@@ -1,22 +1,22 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledScoreKeeper = styled.div`
-border: 1px solid #00FFFF;
-max-width: 300px;
-min-width: 250px;
-max-height: 200px;
-h4 {
-  font-size: 28px;
-  margin: 5px;
-}
-.score {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid #00FFFF;
-  p {
-    margin: 4px;
+  border: 1px solid #00ffff;
+  max-width: 300px;
+  min-width: 250px;
+  max-height: 200px;
+  h4 {
+    font-size: 28px;
+    margin: 5px;
   }
-}
-`
+  .score {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #00ffff;
+    p {
+      margin: 4px;
+    }
+  }
+`;
 
 export default StyledScoreKeeper;
