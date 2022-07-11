@@ -41,6 +41,7 @@ width: 80vw;
 .game-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 0px;
   margin-bottom: 20px;
 }
@@ -48,6 +49,7 @@ width: 80vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 20px;
   button {
     margin-left: 5px;
     margin-right: 5px;
