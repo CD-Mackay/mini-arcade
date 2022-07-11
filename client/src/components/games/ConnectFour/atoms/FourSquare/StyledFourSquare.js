@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const StyledFourSquare = styled.div`
 border: 1px solid #00FFFF;
-width: 100%;
-height: 50px;
+width: 40px;
+height: 40px;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -21,13 +21,16 @@ justify-content: center;
 
 @media (min-width: 576px) {
   height: 60px;
+  width: 60px;
 }
 
 @media (min-width: 768px) {
-  height: 90px;
+  height: 70px;
+  width: 70px;
 }
 @media (min-width: 976px) {
-  height: 120px;
+  height: 100px;
+  width: 100px;
 }
 `
 
