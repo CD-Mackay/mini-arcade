@@ -6,10 +6,10 @@ height: 400px;
 display: flex;
 flex-wrap: wrap;
 border: 2px solid #00FFFF;
-.game-square {
-  width: 40px;
-  height: 40px;
-}
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr;
+
 
 .snake {
   color: blue;
