@@ -30,11 +30,6 @@ const StyledConnectFour = styled.section`
       margin-bottom: 5px;
     }
   }
-
-  @media (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-  }
 `;
 
 export default StyledConnectFour;
