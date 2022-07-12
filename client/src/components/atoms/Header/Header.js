@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import StyledHeader from "./StyledHeader";
 import { BsHouseDoor } from "react-icons/bs";
 import { AiOutlineQuestionCircle } from "react-icons/ai";
+import Dropdown from "../Dropdown/Dropdown";
 
 const Header = () => {
   let location = useLocation();
@@ -30,6 +31,10 @@ const Header = () => {
               <BsHouseDoor color="#00FFFF" fontSize="24px" />
             </Link>
           </div>
+          <div className="button-wrapper">
+            <Dropdown />
+          </div>
+
         </div>
       )}
       {/* {location.pathname !== "/" && (
