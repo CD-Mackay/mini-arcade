@@ -1,6 +1,9 @@
 /* Library Imports */
 import React, { useState } from "react";
+import { Router } from "react-router-dom";
 import Button from "../Button/Button";
+import { useHistory } from "react-router-dom";
+
 
 /* Component Imports */
 
@@ -8,6 +11,8 @@ import Button from "../Button/Button";
 import StyledDropdown from "./StyledDropdown";
 
 const Dropdown = () => {
+  const history = useHistory();
+
 
   const [showOptions, setShowOptions] = useState(false);
 
@@ -15,13 +20,20 @@ const Dropdown = () => {
     showOptions ? setShowOptions(false) : setShowOptions(true);
   }
 
+  const handleSelectDrop = (input) => {
+    history.push(input);
+    setShowOptions(false);
+  }
+
   return (
     <StyledDropdown>
       <Button message="More games" onClick={handleToggleShow}/>
       {showOptions && <div className="drop">
-        <Button message="snake" />
-        <Button message="tictactoe" />
-        <Button message="Connect Four" />
+        <Button message="snake" onClick={() => handleSelectDrop("/snake")} />
+        <Button message="tictactoe" onClick={() => handleSelectDrop("/tictactoe")} />
+        <Button message="Connect Four"  onClick={() => handleSelectDrop("connectfour")} />
+        <Button message="Hangman" onClick={() => handleSelectDrop("hangman")} />
+        <Button message="Rock Paper Scissors" onClick={() => handleSelectDrop("rockpaperscissors")} />
       </div>}
     </StyledDropdown>
   );
