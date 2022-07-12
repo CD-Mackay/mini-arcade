@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const StyledHeader = styled.div`
-display: grid;
-grid-template-columns: ${props => props.location === "/" ? "1fr" : "1fr 3fr 1fr"};
+display: flex;
+justify-content: ${props => props.location === "/" ? "center" : "space-between"};
 padding: 10px;
 width: 100vw;
 margin: 0 auto;
@@ -10,6 +10,10 @@ text-align: center;
 h1 {
   font-size: 42px;
   padding: 10px;
+}
+
+.nav {
+  display: flex;
 }
 
 .button-wrapper {

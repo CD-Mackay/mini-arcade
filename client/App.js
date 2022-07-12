@@ -56,7 +56,7 @@ const App = () => {
               <TutorialHeader />
             </Route>
           </Switch>
-          <Sidebar />
+          {/* <Sidebar /> */}
         </Layout>
         <Footer />
       </StyledApp>
