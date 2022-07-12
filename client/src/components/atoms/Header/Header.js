@@ -2,11 +2,9 @@
 import React from "react";
 
 /* Component Imports */
-import Button from "../Button/Button";
 import { Link, useLocation } from "react-router-dom";
 /* Asset Imports */
 import StyledHeader from "./StyledHeader";
-import { FaQuestionCircle } from "react-icons/fa";
 import { BsHouseDoor } from 'react-icons/bs';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
