@@ -15,7 +15,7 @@ const ConnectFour = () => {
   const [board, setBoard] = useState([]);
   const [playerTurn, setPlayerTurn] = useState(1);
   const [computerPlayer, setComputerPlayer] = useState(false);
-  const [phase, setPhase] = useState("setup");
+  const [phase, setPhase] = useState("play");
   const [winner, setWinner] = useState(0);
   const [record, setRecord] = useState({
     player_one: 0,
