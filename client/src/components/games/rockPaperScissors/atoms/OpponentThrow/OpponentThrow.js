@@ -24,10 +24,23 @@ const OpponentThrow = ({ timer, winner, display }) => {
         ) : (
           <h1> </h1>
         )}
-        {display === "rock" && <GiMailedFist fontSize="36px" id="rock" />}
-        {display === "paper" && <GiPalm fontSize="36px" id="paper" />}
+        {display === "rock" && (
+          <div className="throw">
+            <GiMailedFist fontSize="36px" id="rock" />
+            <span>{display}</span>
+          </div>
+        )}
+        {display === "paper" && (
+          <div className="throw">
+            <GiPalm fontSize="36px" id="paper" />
+            <span>{display}</span>
+          </div>
+        )}
         {display === "scissors" && (
-          <FaRegHandScissors fontSize="36px" id="scissors" />
+          <div className="throw">
+            <FaRegHandScissors fontSize="36px" id="scissors" />
+            <span>{display}</span>
+          </div>
         )}
       </div>
     </StyledOpponentThrow>

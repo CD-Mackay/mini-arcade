@@ -15,6 +15,11 @@ p {
   font-size: 18px;
 }
 
+.throw {
+  display: flex;
+  flex-direction: column;
+}
+
 `
 
 export default StyledOpponentThrow;
