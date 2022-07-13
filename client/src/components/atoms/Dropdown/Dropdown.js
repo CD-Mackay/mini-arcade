@@ -28,7 +28,7 @@ const Dropdown = () => {
 
   return (
     <StyledDropdown>
-      <Button message="More games" onClick={handleToggleShow}/>
+      <Button message="Games" onClick={handleToggleShow}/>
       {showOptions && <div className="drop">
         <Button message="snake" onClick={() => handleSelectDrop("/snake")} />
         <Button message="tictactoe" onClick={() => handleSelectDrop("/tictactoe")} />

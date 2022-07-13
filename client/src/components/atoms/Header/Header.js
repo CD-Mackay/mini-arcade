@@ -20,6 +20,9 @@ const Header = () => {
       </div>
       {location.pathname !== "/" && (
         <div className="nav">
+          <div className="drop-wrapper">
+            <Dropdown />
+          </div>
           <div className="button-wrapper">
             <Link to={`${location.pathname}/tutorial`}>
               <AiOutlineQuestionCircle color="#00FFFF" fontSize="28px" />
@@ -31,10 +34,6 @@ const Header = () => {
               <BsHouseDoor color="#00FFFF" fontSize="24px" />
             </Link>
           </div>
-          <div className="button-wrapper">
-            <Dropdown />
-          </div>
-
         </div>
       )}
       {/* {location.pathname !== "/" && (
