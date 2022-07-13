@@ -6,13 +6,11 @@ import { Link, useLocation } from "react-router-dom";
 /* Asset Imports */
 import StyledHeader from "./StyledHeader";
 import { BsHouseDoor } from "react-icons/bs";
-import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { FaQuestion } from "react-icons/fa";
 import Dropdown from "../Dropdown/Dropdown";
 
 const Header = () => {
   let location = useLocation();
-  console.log(location.pathname);
 
   return (
     <StyledHeader location={location.pathname}>
