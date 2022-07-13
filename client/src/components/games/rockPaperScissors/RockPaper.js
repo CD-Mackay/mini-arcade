@@ -71,7 +71,6 @@ const RockPaper = () => {
       return true;
     } else {
       setWinner("draw");
-      console.log("draw");
       setRecord(handleUpdateRecord("draw", record));
       return "draw";
     }

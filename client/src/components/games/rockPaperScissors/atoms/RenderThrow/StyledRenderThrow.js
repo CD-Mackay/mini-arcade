@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledRenderThrow = styled.div`
 display: flex;
 transition: opacity 0.3s ease-out;
+margin-bottom: 20px;
 h1 {
   font-size: 24px;
 }

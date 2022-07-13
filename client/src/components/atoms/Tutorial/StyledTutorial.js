@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 
 const StyledTutorial = styled.section`
-max-width: 1200px;
+width: 90vw;
 border: 1px dotted #00FFFF;
 margin: 0 auto;
 padding: 10px;
@@ -30,6 +30,12 @@ div {
     border-radius: 10px;
     padding: 5px;
   }
+}
+
+
+
+@media (min-width: 1200px) {
+  max-width: 1200px;
 }
 `
 
