@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 
 /* Asset Imports */
 import StyledDropdown from "./StyledDropdown";
+import { Link } from "react-router-dom";
 
 const Dropdown = () => {
   const history = useHistory();
@@ -21,7 +22,7 @@ const Dropdown = () => {
   }
 
   const handleSelectDrop = (input) => {
-    history.push(input);
+    history.replace(input);
     setShowOptions(false);
   }
 
@@ -34,6 +35,7 @@ const Dropdown = () => {
         <Button message="Connect Four"  onClick={() => handleSelectDrop("connectfour")} />
         <Button message="Hangman" onClick={() => handleSelectDrop("hangman")} />
         <Button message="Rock Paper Scissors" onClick={() => handleSelectDrop("rockpaperscissors")} />
+
       </div>}
     </StyledDropdown>
   );
