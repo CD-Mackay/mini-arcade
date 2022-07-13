@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const StyledTutorialHeader = styled.div`
+width: 90vw;
 display: flex;
 flex-direction: row;
 justify-content: flex-end;
@@ -15,6 +16,7 @@ a {
 }
 div {
   display: flex;
+  flex-direction: column;
   p {
     font-size: 24px;
     padding-top: 5px;
@@ -22,6 +24,12 @@ div {
   }
   a {
     margin-right: 5px;
+  }
+}
+
+@media (min-width: 576px) {
+  div {
+    flex-direction: row;
   }
 }
 `
