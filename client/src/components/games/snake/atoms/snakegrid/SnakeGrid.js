@@ -71,10 +71,12 @@ const SnakeGrid = () => {
     let newSnake = [...currentSnake];
     newSnake.sort((a, b) => a - b);
     let tailNode = newSnake.filter((element) => element.position === "tail");
+    let removed = [...tailNode];
     let headNode = newSnake.filter((element) => element.position === "head");
     let snakeCopy = newSnake.filter((element) => element.position === "head" || element.position === "body");
     tailNode[0].column = headNode[0].column;
     tailNode[0].column += 1;
+    tailNode[0].index = newSnake.length - 1;
     tailNode[0].position = "head";
     for (let element of snakeCopy) {
       if (element.position === "head") {
@@ -82,9 +84,11 @@ const SnakeGrid = () => {
       } else if (element.index === 1) {
         element.position = "tail"
       }
+      element.index--;
     };
     let finalSnakeCopy = snakeCopy.concat(tailNode);
-    console.log("post", finalSnakeCopy)
+    console.log("post", finalSnakeCopy);
+    updateSnake(finalSnakeCopy, removed[0]);
   }
 
   document.addEventListener("keyup", control);
