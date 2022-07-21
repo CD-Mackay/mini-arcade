@@ -30,7 +30,6 @@ const SnakeGrid = () => {
         console.log(`Could not find: ${entry.row}${entry.column}`);
       }
       if (snakeNode) {
-        console.log(snakeNode);
         snakeNode.classList.add("snake");
       }
     }
@@ -71,9 +70,9 @@ const SnakeGrid = () => {
     let newSnake = [...currentSnake];
     newSnake.sort((a, b) => a - b);
     let tailNode = newSnake.filter((element) => element.position === "tail");
-    let removed = [...tailNode];
     let headNode = newSnake.filter((element) => element.position === "head");
     let snakeCopy = newSnake.filter((element) => element.position === "head" || element.position === "body");
+    const removed = newSnake.filter((element) => element.position === "tail");
     tailNode[0].column = headNode[0].column;
     tailNode[0].column += 1;
     tailNode[0].index = newSnake.length - 1;
@@ -87,7 +86,6 @@ const SnakeGrid = () => {
       element.index--;
     };
     let finalSnakeCopy = snakeCopy.concat(tailNode);
-    console.log("post", finalSnakeCopy);
     updateSnake(finalSnakeCopy, removed[0]);
   }
 
