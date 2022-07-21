@@ -69,13 +69,13 @@ const SnakeGrid = () => {
 
   function handleOutcome() {
     let newSnake = [...currentSnake];
-
-    const tailNode = newSnake.filter((element) => element.position === "tail");
-
-    const newHead = [...tailNode];
-    console.log(newSnake, currentSnake, tailNode, newHead);
-    newHead[0].column += newSnake.length;
-    console.log(newSnake, currentSnake, tailNode, newHead);
+    newSnake.sort((a, b) => a - b);
+    let tailNode = newSnake.filter((element) => element.position === "tail");
+    console.log(tailNode, newSnake);
+    let headNode = newSnake.filter((element) => element.position === "head");
+    console.log(headNode, tailNode, newSnake);
+    tailNode[0].column = headNode[0].column;
+    tailNode[0].column += 1;
   }
 
   document.addEventListener("keyup", control);
