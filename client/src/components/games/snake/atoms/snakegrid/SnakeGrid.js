@@ -55,13 +55,12 @@ const SnakeGrid = () => {
 
   async function startGame() {
     let apple = [3, 2];
-    let appleNode = document.getElementById(`${apple[0]}${apple[1]}`);
-    console.log(appleNode);
-    appleNode.setAttribute("id", "apple");
+    // let appleNode = document.getElementById(`${apple[0]}${apple[1]}`);
+    //appleNode.setAttribute("id", "apple");
     let initSnake = [
-      { row: 0, column: 0, index: 0 },
-      { row: 0, column: 1, index: 1 },
-      { row: 0, column: 2, index: 2 },
+      { row: 0, column: 0, index: 0, position: "tail" },
+      { row: 0, column: 1, index: 1, position: "body" },
+      { row: 0, column: 2, index: 2, position: "head" },
     ];
     setCurrentSnake(initSnake);
     updateSnake(initSnake);
@@ -69,56 +68,29 @@ const SnakeGrid = () => {
 
   function handleOutcome() {
     let newSnake = [...currentSnake];
-    newSnake.sort(function (a, b) {
-      return a.index - b.index;
-    });
-    const removed = newSnake.shift();
-    const newNode = { ...newSnake[newSnake.length - 1] };
-    console.log(newSnake, removed, newNode);
-    if (direction === "right") {
-      newNode.column += 1;
-      newNode.index = newSnake.length + 1;
-      newSnake.push(newNode);
-    }
-    if (direction === "down") {
-      newNode.row += 1;
-      newNode.index = newSnake.length + 1;
-      newSnake.push(newNode);
-    }
-
-    if (direction === "up") {
-      newNode.row -= 1;
-      newNode.index = newSnake.length + 1;
-      newSnake.push(newNode);
-    }
-
-    if (direction === "left") {
-      newNode.column -= 1;
-      newNode.index = newSnake.length + 1;
-      newSnake.push(newNode);
-    }
-
-    for (let entry of newSnake) {
-      entry.index--;
-    }
-    newSnake.sort(function (a, b) {
-      return b.index - a.index;
-    });
-    updateSnake(newSnake, removed);
-    return newSnake;
+    newSnake.sort((a, b) => a - b);
+    let tailNode = newSnake.filter((element) => element.position === "tail");
+    let headNode = newSnake.filter((element) => element.position === "head");
+    let snakeCopy = newSnake.filter((element) => element.position === "head" || element.position === "body");
+    const removed = newSnake.filter((element) => element.position === "tail");
+    tailNode[0].column = headNode[0].column;
+    tailNode[0].column += 1;
+    tailNode[0].index = newSnake.length - 1;
+    tailNode[0].position = "head";
+    for (let element of snakeCopy) {
+      if (element.position === "head") {
+        element.position = "body";
+      } else if (element.index === 1) {
+        element.position = "tail"
+      }
+      element.index--;
+    };
+    let finalSnakeCopy = snakeCopy.concat(tailNode);
+    updateSnake(finalSnakeCopy, removed[0]);
   }
 
-  useEffect(() => {
-    setInterval(() => {
-      if (currentSnake.length > 0) {
-        let snake = handleOutcome();
-        setCurrentSnake(snake);
-      }
-    }, 2000);
-  }, [currentSnake]);
-
   document.addEventListener("keyup", control);
-  
+
   return (
     <StyledSnakeGrid>
       {buildBoard()}
