@@ -56,12 +56,12 @@ const SnakeGrid = () => {
 
   async function startGame() {
     let apple = [3, 2];
-   // let appleNode = document.getElementById(`${apple[0]}${apple[1]}`);
+    // let appleNode = document.getElementById(`${apple[0]}${apple[1]}`);
     //appleNode.setAttribute("id", "apple");
     let initSnake = [
       { row: 0, column: 0, index: 0, position: "tail" },
       { row: 0, column: 1, index: 1, position: "body" },
-      { row: 0, column: 2, index: 2, position: "head"},
+      { row: 0, column: 2, index: 2, position: "head" },
     ];
     setCurrentSnake(initSnake);
     updateSnake(initSnake);
@@ -69,8 +69,8 @@ const SnakeGrid = () => {
 
   function handleOutcome() {
     let newSnake = [...currentSnake];
-    
-    const tailNode = newSnake.filter(element => element.position === "tail");
+
+    const tailNode = newSnake.filter((element) => element.position === "tail");
 
     const newHead = [...tailNode];
     console.log(newSnake, currentSnake, tailNode, newHead);
@@ -78,9 +78,8 @@ const SnakeGrid = () => {
     console.log(newSnake, currentSnake, tailNode, newHead);
   }
 
-
   document.addEventListener("keyup", control);
-  
+
   return (
     <StyledSnakeGrid>
       {buildBoard()}
