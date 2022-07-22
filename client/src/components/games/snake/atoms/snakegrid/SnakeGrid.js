@@ -67,26 +67,41 @@ const SnakeGrid = () => {
   }
 
   function handleOutcome() {
-    let newSnake = [...currentSnake];
-    newSnake.sort((a, b) => a - b);
-    let tailNode = newSnake.filter((element) => element.position === "tail");
-    let headNode = newSnake.filter((element) => element.position === "head");
-    let snakeCopy = newSnake.filter((element) => element.position === "head" || element.position === "body");
-    const removed = newSnake.filter((element) => element.position === "tail");
-    tailNode[0].column = headNode[0].column;
-    tailNode[0].column += 1;
-    tailNode[0].index = newSnake.length - 1;
-    tailNode[0].position = "head";
-    for (let element of snakeCopy) {
-      if (element.position === "head") {
-        element.position = "body";
-      } else if (element.index === 1) {
-        element.position = "tail"
-      }
+    let newSnake = JSON.parse(JSON.stringify(currentSnake));
+    newSnake.sort((a, b) => a.index - b.index);
+    const headNode = newSnake.filter((element) => element.position === "head");
+    const tailNode = newSnake.filter((element) => element.position === "tail");
+    let newNode = JSON.parse(JSON.stringify(headNode));
+    if (direction === "left") {
+      newNode[0].column--;
+    }
+    if (direction === "up") {
+      newNode[0].row++;
+    }
+    if (direction === "right") {
+      newNode[0].column++;
+    }
+    if (direction === "down") {
+      newNode[0].row--;
+    }
+    newNode[0].index += 1;
+    let snakeCopy = newSnake.filter((element) => element.position !== "tail");
+    let finalSnake = snakeCopy.concat(newNode);
+    finalSnake.forEach((element) => {
       element.index--;
-    };
-    let finalSnakeCopy = snakeCopy.concat(tailNode);
-    updateSnake(finalSnakeCopy, removed[0]);
+    });
+    for (let element of finalSnake) {
+      if (element.index === 0) {
+        element.position = "tail";
+      } else if (
+        element.index !== 0 &&
+        element.index !== finalSnake.length - 1
+      ) {
+        element.position = "body";
+      }
+    }
+    updateSnake(finalSnake, tailNode[0]);
+    setCurrentSnake(finalSnake);
   }
 
   document.addEventListener("keyup", control);
