@@ -42,6 +42,7 @@ const SnakeGrid = () => {
   }
 
   function control(event) {
+    console.log("control");
     if (event.key === "w") {
       setDirection("up");
     } else if (event.key === "d") {
@@ -76,13 +77,13 @@ const SnakeGrid = () => {
       newNode[0].column--;
     }
     if (direction === "up") {
-      newNode[0].row++;
+      newNode[0].row--;
     }
     if (direction === "right") {
       newNode[0].column++;
     }
     if (direction === "down") {
-      newNode[0].row--;
+      newNode[0].row++;
     }
     newNode[0].index += 1;
     let snakeCopy = newSnake.filter((element) => element.position !== "tail");
@@ -104,7 +105,7 @@ const SnakeGrid = () => {
     setCurrentSnake(finalSnake);
   }
 
-  document.addEventListener("keyup", control);
+  document.addEventListener("keydown", control);
 
   return (
     <StyledSnakeGrid>
