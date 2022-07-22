@@ -56,8 +56,8 @@ const SnakeGrid = () => {
 
   async function startGame() {
     let apple = [3, 2];
-    // let appleNode = document.getElementById(`${apple[0]}${apple[1]}`);
-    //appleNode.setAttribute("id", "apple");
+    let appleNode = document.getElementById(`${apple[0]}${apple[1]}`);
+    appleNode.setAttribute("id", "apple");
     let initSnake = [
       { row: 0, column: 0, index: 0, position: "tail" },
       { row: 0, column: 1, index: 1, position: "body" },
