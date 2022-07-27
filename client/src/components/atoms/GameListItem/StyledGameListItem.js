@@ -4,7 +4,7 @@ const StyledGameListItem = styled.div`
 background: #24282f;
 border-radius: 5px;
 border: 1px solid #00FFFF;
-padding: 15px;
+padding: 5px;
 text-align: center;
 .game-grid {
    display: flex;
@@ -33,6 +33,10 @@ p {
    background: #323445;
 }
 
+@media (min-width: 576px) {
+   padding: 15px;
+}
+
 @media (min-width: 768px) {
   .game-grid {
    display: grid;
@@ -44,6 +48,8 @@ p {
    font-size: 24px;
   }
 }
+
+
 `
 
 export default StyledGameListItem;
