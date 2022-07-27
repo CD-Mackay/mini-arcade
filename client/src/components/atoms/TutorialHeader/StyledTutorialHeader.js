@@ -6,6 +6,7 @@ display: flex;
 flex-direction: row;
 justify-content: flex-end;
 margin: 20px;
+
 a {
   font-size: 24px;
   text-decoration: none;
@@ -30,6 +31,7 @@ div {
 @media (min-width: 576px) {
   div {
     flex-direction: row;
+    margin: 0 auto;
   }
 }
 `
