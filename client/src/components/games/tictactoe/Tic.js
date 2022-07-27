@@ -263,7 +263,7 @@ const Tic = () => {
       {gamePhase === "play" && (
         <div>
           <div id="game-header">
-            <h4>The Game is Afoot!</h4>
+            <h4>Tic-Tac-Toe</h4>
             {victory == 0 && !computerPlayer && (
               <p>It's currently Player {playerTurn}'s turn</p>
             )}
