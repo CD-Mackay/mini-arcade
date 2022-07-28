@@ -8,28 +8,20 @@ import UpdateRecords from "../../../utilities/UpdateRecords";
 import StyledTic from "./StyledTic";
 
 const Tic = () => {
-  const [gamePhase, setGamePhase] = useState("setup"); // keep separate
-  const [squareSelected, setSquareSelected] = useState(null); // keep separate
-  const [opponentName, setOpponentName] = useState(""); // keep separate
-  const [record, setRecord] = useState({
-    player_one: 0,
-    player_two: 0,
-    draw: 0,
-  }); // keep separate
-
-  // const [playerTurn, setPlayerTurn] = useState(0);
-  // const [game, setGame] = useState([]);
-  // const [victory, setVictory] = useState(0);
-  // const [computerPlayer, setComputerPlayer] = useState(false);
-
+  const [gamePhase, setGamePhase] = useState("setup");
+  const [squareSelected, setSquareSelected] = useState(null);
+  const [opponentName, setOpponentName] = useState("");
   const [gameDetails, setGameDetails] = useState({
     playerTurn: 0,
     game: [],
     victory: 0,
     computerPlayer: false,
   });
-
-  console.log(gameDetails);
+  const [record, setRecord] = useState({
+    player_one: 0,
+    player_two: 0,
+    draw: 0,
+  });
 
   const { robitNames, pickRobotName } = OpponentNames;
   const { handleUpdateRecord } = UpdateRecords;
@@ -52,15 +44,12 @@ const Tic = () => {
     let gamePiece = squares.map((element, index) => {
       return { element: element, score: 0, index };
     });
-    // setGame(gamePiece);
     setGameDetails((prevGameDetails) => {
       return { ...prevGameDetails, game: gamePiece, playerTurn: 1 };
     });
-    // setPlayerTurn(1);
   };
 
   const startComputerGame = () => {
-    // setComputerPlayer(true);
     setGameDetails((prevGameDetails) => {
       return { ...prevGameDetails, computerPlayer: true };
     });
@@ -70,11 +59,6 @@ const Tic = () => {
 
   const clearSquareValues = () => {
     let activeBoard = [...gameDetails.game];
-    // setGame(
-    //   activeBoard.map((element) => {
-    //     return { element: element.element, index: element.index, score: 0 };
-    //   })
-    // );
     const currentBoard = activeBoard.map((element) => {
       return { element: element.element, index: element.index, score: 0 };
     });
@@ -90,7 +74,6 @@ const Tic = () => {
         entry.score += squareScore;
       }
     }
-    // setGame(values);
 
     setGameDetails((prevGameDetails) => {
       return { ...prevGameDetails, game: values };
@@ -192,7 +175,6 @@ const Tic = () => {
         }
         if (a.element === b.element && b.element === c.element) {
           if (gameDetails.playerTurn !== 0) {
-            // setVictory(playerTurn);
             setGameDetails((prevGameDetails) => {
               return { ...prevGameDetails, victory: playerTurn };
             });
@@ -207,7 +189,6 @@ const Tic = () => {
           array.push(entry.element);
         }
         if (!array.includes("")) {
-          // setVictory(3);
           setGameDetails((prevGameDetails) => {
             return { ...prevGameDetails, victory: 3 };
           });
@@ -220,13 +201,11 @@ const Tic = () => {
   const updateBoard = (index) => {
     if (gameDetails.playerTurn !== 0) {
       let board = [...gameDetails.game];
-      console.log("running updateBoard", board);
       for (let entry of board) {
         if (entry.index === index) {
           entry.element = gameDetails.playerTurn;
         }
       }
-      // setGame(board);
       setGameDetails((prevGameDetails) => {
         return { ...prevGameDetails, game: board };
       });
@@ -236,7 +215,6 @@ const Tic = () => {
 
   const handleTurn = () => {
     if (gameDetails.computerPlayer && gameDetails.playerTurn === 1) {
-      // setPlayerTurn(2);
       setGameDetails((prevGameDetails) => {
         return { ...prevGameDetails, playerTurn: 2 };
       });
@@ -244,7 +222,6 @@ const Tic = () => {
         handleComputerTurn(2);
       }, 300);
     } else if (gameDetails.computerPlayer && gameDetails.playerTurn === 2) {
-      // setPlayerTurn(1);
       setGameDetails((prevGameDetails) => {
         return { ...prevGameDetails, playerTurn: 1 };
       });
@@ -261,11 +238,6 @@ const Tic = () => {
 
   const resetGame = () => {
     setGamePhase("setup");
-    // setGame(
-    //   squares.map((element, index) => {
-    //     return { element, index, score: 0 };
-    //   })
-    // );
     let gameStart = squares.map((element, index) => {
       return { element, index, score: 0 };
     });
@@ -273,20 +245,21 @@ const Tic = () => {
     setGameDetails((prevGameDetails) => {
       return { ...prevGameDetails, game: gameStart, victory: 0, playerTurn: 1 };
     });
-    // setVictory(0);
+
     setSquareSelected(null);
     setGamePhase("play");
-    // setPlayerTurn(1);
   };
 
   const quitGame = () => {
     setGamePhase("setup");
-    // setGame([]);
-    // setComputerPlayer(false);
-    // setPlayerTurn(0);
-    // setVictory(0);
     setGameDetails((prevGameDetails) => {
-      return { ...prevGameDetails, game: [], victory: 0, playerTurn: 0, computerPlayer: false };
+      return {
+        ...prevGameDetails,
+        game: [],
+        victory: 0,
+        playerTurn: 0,
+        computerPlayer: false,
+      };
     });
     setSquareSelected(null);
   };
