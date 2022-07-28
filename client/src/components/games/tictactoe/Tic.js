@@ -167,6 +167,7 @@ const Tic = () => {
         }
         if (a.element === b.element && b.element === c.element) {
           if (playerTurn !== 0) {
+            console.log('newGame test');
             setVictory(playerTurn);
             playerTurn === 1
               ? setRecord(handleUpdateRecord("player_one", record))
@@ -224,8 +225,10 @@ const Tic = () => {
 
   const quitGame = () => {
     setGamePhase("setup");
+    console.log("squaraes", squares);
     setGame(squares);
     setComputerPlayer(false);
+    setPlayerTurn(0);
     setVictory(0);
   };
 
@@ -244,7 +247,7 @@ const Tic = () => {
   };
   useEffect(() => {
     updateBoard(squareSelected);
-    if (victory === 0) {
+    if (victory === 0 && playerTurn !== 0) {
       handleTurn();
     }
   }, [squareSelected, gamePhase]);
