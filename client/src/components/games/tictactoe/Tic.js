@@ -8,18 +8,18 @@ import UpdateRecords from "../../../utilities/UpdateRecords";
 import StyledTic from "./StyledTic";
 
 const Tic = () => {
-  const [gamePhase, setGamePhase] = useState("setup");
+  const [gamePhase, setGamePhase] = useState("setup"); // keep separate
   const [playerTurn, setPlayerTurn] = useState(0);
-  const [squareSelected, setSquareSelected] = useState(null);
+  const [squareSelected, setSquareSelected] = useState(null); // keep separate
   const [game, setGame] = useState([]);
   const [victory, setVictory] = useState(0);
   const [computerPlayer, setComputerPlayer] = useState(false);
-  const [opponentName, setOpponentName] = useState("");
+  const [opponentName, setOpponentName] = useState(""); // keep separate 
   const [record, setRecord] = useState({
     player_one: 0,
     player_two: 0,
     draw: 0,
-  });
+  }); // keep separate 
 
   const { robitNames, pickRobotName } = OpponentNames;
   const { handleUpdateRecord } = UpdateRecords;

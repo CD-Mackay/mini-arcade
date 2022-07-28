@@ -74,7 +74,7 @@ const ConnectFour = () => {
       array.push(subArray);
       subArray = [];
     }
-    setBoard(array);
+    setBoard(array); // Abstract this out into separate file 
   };
 
   const handlePickSquare = (numOne, numTwo) => {
