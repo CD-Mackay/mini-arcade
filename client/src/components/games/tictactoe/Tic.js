@@ -39,11 +39,10 @@ const Tic = () => {
 
   const startGame = () => {
     setGamePhase("play");
-    setGame(
-      squares.map((element, index) => {
-        return { element, score: 0, index };
-      })
-    );
+    let gamePiece = squares.map((element, index) => {
+      return { element: element, score: 0, index };
+    });
+    setGame(gamePiece);
     setPlayerTurn(1);
   };
 
@@ -167,7 +166,6 @@ const Tic = () => {
         }
         if (a.element === b.element && b.element === c.element) {
           if (playerTurn !== 0) {
-            console.log('newGame test');
             setVictory(playerTurn);
             playerTurn === 1
               ? setRecord(handleUpdateRecord("player_one", record))
@@ -219,14 +217,15 @@ const Tic = () => {
       })
     );
     setVictory(0);
+    setSquareSelected(null);
     setGamePhase("play");
     setPlayerTurn(1);
   };
 
   const quitGame = () => {
     setGamePhase("setup");
-    console.log("squaraes", squares);
-    setGame(squares);
+    setGame([]);
+    setSquareSelected(null);
     setComputerPlayer(false);
     setPlayerTurn(0);
     setVictory(0);
