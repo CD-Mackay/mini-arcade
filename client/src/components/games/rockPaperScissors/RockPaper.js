@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ThrowSelect from "./atoms/ThrowSelect/ThrowSelect";
 import OpponentThrow from "./atoms/OpponentThrow/OpponentThrow";
 
@@ -9,8 +9,10 @@ import ScoreKeeper from "../../atoms/ScoreKeeper/ScoreKeeper";
 import OpponentNames from "../../../utilities/OpponentNames";
 import UpdateRecords from "../../../utilities/UpdateRecords";
 
+
 const RockPaper = () => {
   const [input, setInput] = useState("");
+
   const [countDown, setCountDown] = useState(0);
   const [error, setError] = useState("");
   const [winner, setWinner] = useState("");
