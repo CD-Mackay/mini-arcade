@@ -20,6 +20,7 @@ import StyledApp from "./StyledApp.js";
 import Hangman from "./src/components/games/hangman/Hangman.js";
 import RockPaper from "./src/components/games/rockPaperScissors/RockPaper.js";
 import { HangmanContextProvider } from "./src/contexts/hangman/HangmanContext.js";
+import { ConnectFourContextProvider } from "./src/contexts/connectfour/ConnectFourContext.js";
 
 const App = () => {
   return (
@@ -49,8 +50,10 @@ const App = () => {
               </RockPaperContextProvider>
             </Route>
             <Route exact path="/connectfour">
-              <ConnectFour />
-              <TutorialHeader game="connectfour" />
+              <ConnectFourContextProvider>
+                <ConnectFour />
+                <TutorialHeader game="connectfour" />
+              </ConnectFourContextProvider>
             </Route>
             <Route exact path="/snake">
               <Snake />
