@@ -2,9 +2,7 @@ import React, { createContext, useState } from "react";
 
 export const RockPaperContext = createContext({
   input: null,
-  setInput: function () {},
   winner: null,
-  setWinner: function () {},
   handleGame: function () {},
 });
 
@@ -25,7 +23,6 @@ export function RockPaperContextProvider(props) {
       (input === "scissors" && opponentsMove === "rock")
     ) {
       setWinner("computer");
-      // setRecord(handleUpdateRecord("player_two", record));
       return false;
     } else if (
       (input === "paper" && opponentsMove === "rock") ||
@@ -33,11 +30,9 @@ export function RockPaperContextProvider(props) {
       (input === "rock" && opponentsMove === "scissors")
     ) {
       setWinner("human");
-      // setRecord(handleUpdateRecord("player_one", record));
       return true;
     } else {
       setWinner("draw");
-      // setRecord(handleUpdateRecord("draw", record));
       return "draw";
     }
   };

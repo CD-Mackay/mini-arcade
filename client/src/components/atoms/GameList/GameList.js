@@ -53,7 +53,7 @@ const GameList = () => {
               name={element.name}
               description={element.description}
               icon={element.icon}
-              key={element.index}
+              key={index}
             />
           );
         })}
