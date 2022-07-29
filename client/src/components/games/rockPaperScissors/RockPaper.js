@@ -8,15 +8,20 @@ import RenderThrow from "./atoms/RenderThrow/RenderThrow";
 import ScoreKeeper from "../../atoms/ScoreKeeper/ScoreKeeper";
 import OpponentNames from "../../../utilities/OpponentNames";
 import UpdateRecords from "../../../utilities/UpdateRecords";
-
+import { RockPaperContext } from "../../../contexts/rockpaperscissors/RockPaperContext";
 
 const RockPaper = () => {
-  const [input, setInput] = useState("");
+  const {
+    input,
+    setInput,
+    winner,
+    opponentTurn,
+    countDown,
+    error,
+    setError,
+    handleRenderGamePlay
+  } = useContext(RockPaperContext);
 
-  const [countDown, setCountDown] = useState(0);
-  const [error, setError] = useState("");
-  const [winner, setWinner] = useState("");
-  const [opponentTurn, setOpponentTurn] = useState("");
   const [record, setRecord] = useState({
     player_one: 0,
     player_two: 0,
@@ -31,52 +36,15 @@ const RockPaper = () => {
     setOpponentName(pickRobotName(robitNames));
   }, []);
 
-  const handleRenderGamePlay = () => {
-    setOpponentTurn("");
-    setWinner("");
-    if (input === "") {
-      setError("No Move Selected");
-      return;
-    }
-    setCountDown(3);
-    setTimeout(() => {
-      setCountDown(2);
-    }, 1000);
-    setTimeout(() => {
-      setCountDown(1);
-    }, 2000);
-    setTimeout(() => {
-      setCountDown(0);
-      handleGame();
-    }, 3000);
-  };
-
-  const handleGame = () => {
-    const moves = ["rock", "paper", "scissors"];
-    const opponentsMove = moves[Math.floor(Math.random() * moves.length)];
-    setOpponentTurn(opponentsMove);
-    if (
-      (input === "rock" && opponentsMove === "paper") ||
-      (input === "paper" && opponentsMove === "scissors") ||
-      (input === "scissors" && opponentsMove === "rock")
-    ) {
-      setWinner("computer");
+  useEffect(() => {
+    if (winner === "computer") {
       setRecord(handleUpdateRecord("player_two", record));
-      return false;
-    } else if (
-      (input === "paper" && opponentsMove === "rock") ||
-      (input === "scissors" && opponentsMove === "paper") ||
-      (input === "rock" && opponentsMove === "scissors")
-    ) {
-      setWinner("human");
+    } else if (winner === "human") {
       setRecord(handleUpdateRecord("player_one", record));
-      return true;
-    } else {
-      setWinner("draw");
+    } else if (winner === "draw") {
       setRecord(handleUpdateRecord("draw", record));
-      return "draw";
     }
-  };
+  }, [winner]);
 
   return (
     <StyledRockPaper>
