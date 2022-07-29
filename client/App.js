@@ -19,49 +19,52 @@ import { GlobalStyle } from "./GlobalStyles.js";
 import StyledApp from "./StyledApp.js";
 import Hangman from "./src/components/games/hangman/Hangman.js";
 import RockPaper from "./src/components/games/rockPaperScissors/RockPaper.js";
+import { HangmanContextProvider } from "./src/contexts/hangman/HangmanContext.js";
 
 const App = () => {
   return (
-    <RockPaperContextProvider>
-      <Router>
-        <StyledApp>
-          <GlobalStyle />
-          <Header />
-          <Layout>
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/tictactoe">
-                <Tic />
-                <TutorialHeader game="tictactoe" />
-              </Route>
-              <Route exact path="/hangman">
+    <Router>
+      <StyledApp>
+        <GlobalStyle />
+        <Header />
+        <Layout>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/tictactoe">
+              <Tic />
+              <TutorialHeader game="tictactoe" />
+            </Route>
+            <Route exact path="/hangman">
+              <HangmanContextProvider>
                 <Hangman />
                 <TutorialHeader game="hangman" />
-              </Route>
-              <Route exact path="/rockpaperscissors">
+              </HangmanContextProvider>
+            </Route>
+            <Route exact path="/rockpaperscissors">
+              <RockPaperContextProvider>
                 <RockPaper />
                 <TutorialHeader game="rockpaperscissors" />
-              </Route>
-              <Route exact path="/connectfour">
-                <ConnectFour />
-                <TutorialHeader game="connectfour" />
-              </Route>
-              <Route exact path="/snake">
-                <Snake />
-                <TutorialHeader game="snake" />
-              </Route>
-              <Route path="/:game/tutorial">
-                <Tutorial />
-                <TutorialHeader />
-              </Route>
-            </Switch>
-          </Layout>
-          <Footer />
-        </StyledApp>
-      </Router>
-    </RockPaperContextProvider>
+              </RockPaperContextProvider>
+            </Route>
+            <Route exact path="/connectfour">
+              <ConnectFour />
+              <TutorialHeader game="connectfour" />
+            </Route>
+            <Route exact path="/snake">
+              <Snake />
+              <TutorialHeader game="snake" />
+            </Route>
+            <Route path="/:game/tutorial">
+              <Tutorial />
+              <TutorialHeader />
+            </Route>
+          </Switch>
+        </Layout>
+        <Footer />
+      </StyledApp>
+    </Router>
   );
 };
 

@@ -1,5 +1,5 @@
 // Library Imports
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 // Component Imports
 import StyledHangman from "./StyledHangman";
@@ -11,22 +11,12 @@ import Gallows from "./atoms/Gallows/Gallows";
 import { Link } from "react-router-dom";
 import CustomInput from "./atoms/CustomInput/CustomInput";
 import Alert from "../../atoms/Alert/Alert";
+import { HangmanContext } from "../../../contexts/hangman/HangmanContext";
 
 const Hangman = () => {
-  const strings = [
-    "ubiquitous",
-    "mendacious",
-    "polyglottal",
-    "grapefruit",
-    "donkey",
-    "swamp",
-    "indigenous",
-    "inexpensive",
-  ];
 
-  const [gameString, setGameString] = useState([]);
-  const [input, setInput] = useState("");
-  const [stringInput, setStringInput] = useState("");
+
+  const { strings, gameString, setGameString } = useContext(HangmanContext);
   const [gamePhase, setGamePhase] = useState("setup");
   const [failedGuesses, setFailedGuesses] = useState([]);
   const [alert, setAlert] = useState({
