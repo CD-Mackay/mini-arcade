@@ -21,6 +21,7 @@ import Hangman from "./src/components/games/hangman/Hangman.js";
 import RockPaper from "./src/components/games/rockPaperScissors/RockPaper.js";
 import { HangmanContextProvider } from "./src/contexts/hangman/HangmanContext.js";
 import { ConnectFourContextProvider } from "./src/contexts/connectfour/ConnectFourContext.js";
+import { TicContextProvider } from "./src/contexts/tictactoe/TicContext.js";
 
 const App = () => {
   return (
@@ -34,8 +35,10 @@ const App = () => {
               <Home />
             </Route>
             <Route exact path="/tictactoe">
-              <Tic />
-              <TutorialHeader game="tictactoe" />
+              <TicContextProvider>
+                <Tic />
+                <TutorialHeader game="tictactoe" />
+              </TicContextProvider>
             </Route>
             <Route exact path="/hangman">
               <HangmanContextProvider>

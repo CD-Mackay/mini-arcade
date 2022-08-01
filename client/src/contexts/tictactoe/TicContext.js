@@ -6,6 +6,7 @@ export const TicContext = createContext({});
 
 export function TicContextProvider(props) {
   const { robitNames, pickRobotName } = OpponentNames;
+  const { handleUpdateRecord } = UpdateRecords;
   const [gamePhase, setGamePhase] = useState("setup");
   const [squareSelected, setSquareSelected] = useState(null);
   const [opponentName, setOpponentName] = useState("");
@@ -284,7 +285,8 @@ export function TicContextProvider(props) {
     resetGame,
     quitGame,
     record,
-    setRecord
+    setRecord,
+    handleUpdateRecord
 
   }}>{props.children}</TicContext.Provider>;
 }
