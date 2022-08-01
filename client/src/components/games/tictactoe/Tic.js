@@ -11,43 +11,19 @@ import StyledTic from "./StyledTic";
 const Tic = () => {
   const {
     gamePhase,
-    setGamePhase,
     squareSelected,
     setSquareSelected,
     opponentName,
-    setOpponentName,
     gameDetails,
-    setGameDetails,
-    squares,
-    winConditions,
     startGame,
     startComputerGame,
-    clearSquareValues,
-    updateSquareValues,
-    selectComputerDefense,
-    selectComputerOffense,
-    handleComputerTurn,
-    checkForWin,
     updateBoard,
     handleTurn,
     resetGame,
     quitGame,
-    record,
-    setRecord,
-    handleUpdateRecord
+    record
   } = useContext(TicContext);
 
-
-
-
-
-  // useEffect(() => {
-  //   if (gameDetails) {
-  //     gameDetails.victory === 1
-  //       ? setRecord(handleUpdateRecord("player_one", record))
-  //       : setRecord(handleUpdateRecord("player_two", record));
-  //   }
-  // }, [gameDetails]);
 
   const gameBoard = () => {
     return gameDetails.game.map((element, index) => {

@@ -260,33 +260,24 @@ export function TicContextProvider(props) {
     setSquareSelected(null);
   };
 
-
-  return <TicContext.Provider value={{
-    gamePhase,
-    setGamePhase,
-    squareSelected,
-    setSquareSelected,
-    opponentName,
-    setOpponentName,
-    gameDetails,
-    setGameDetails,
-    squares,
-    winConditions,
-    startGame,
-    startComputerGame,
-    clearSquareValues,
-    updateBoard,
-    updateSquareValues,
-    selectComputerDefense,
-    selectComputerOffense,
-    handleComputerTurn,
-    checkForWin,
-    handleTurn,
-    resetGame,
-    quitGame,
-    record,
-    setRecord,
-    handleUpdateRecord
-
-  }}>{props.children}</TicContext.Provider>;
+  return (
+    <TicContext.Provider
+      value={{
+        gamePhase,
+        squareSelected,
+        setSquareSelected,
+        opponentName,
+        gameDetails,
+        startGame,
+        startComputerGame,
+        updateBoard,
+        handleTurn,
+        resetGame,
+        quitGame,
+        record,
+      }}
+    >
+      {props.children}
+    </TicContext.Provider>
+  );
 }
