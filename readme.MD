@@ -28,7 +28,16 @@
  - To play games, simply clone the repo to your local terminal 
  - Run 'npm install' to download dependencies and 'npm start' to open the application!
  
- ### Future Developments
+### Future Developments
 
  - Classic Snake!
  - Play ConnectFour against the computer
+
+
+#### Game List
+
+1: Tic-Tac-Toe (Computer Player available).
+2: Connect Four.
+3: Hangman (Computer Player Available).
+4: Rock Paper Scissors (Computer Player Only).
+5: Snake (Currently under Development).
