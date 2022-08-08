@@ -1,8 +1,8 @@
 ## Mini-Arcade
 
-# A practice application built by Connor Mackay
+## A practice application built by Connor Mackay
 
-# Intended to solidify knowledge of logic in different applications (video games)
+  - Built to solidifty my knowledge of ReactJs and practice using Javascript logic in a new medium (video games)
 
 ### Usage
 
@@ -29,6 +29,6 @@
  - Run 'npm install' to download dependencies and 'npm start' to open the application!
  
  ### Future Developments
- 
+
  - Classic Snake!
  - Play ConnectFour against the computer
