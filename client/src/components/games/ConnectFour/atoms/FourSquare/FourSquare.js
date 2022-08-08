@@ -14,7 +14,7 @@ const FourSquare = ({props, onSelect}) => {
     onClick={() => onSelect(props.indexArray[0], props.indexArray[1])} 
     available={props.available} 
     selected={props.selected} >
-      <div id="circle" />
+      <div id="circle" className={`${props.indexArray[0]}${props.indexArray[1]}`} />
     </StyledFourSquare>
   )
 };
