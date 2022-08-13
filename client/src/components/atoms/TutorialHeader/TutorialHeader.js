@@ -1,14 +1,14 @@
 /* Library Imports */
 import React from 'react';
-
-
-/* Component Imports */
 import { Link, useLocation } from 'react-router-dom';
 
+
 /* Asset Imports */
-import StyledTutorialHeader from './StyledTutorialHeader';
-import { FaQuestionCircle } from 'react-icons/fa';
 import TutorialText from '../../../utilities/TutorialText';
+
+// CSS Imports
+import StyledTutorialHeader from './StyledTutorialHeader';
+
 
 const TutorialHeader = ({game}) => {
 
@@ -23,6 +23,10 @@ const TutorialHeader = ({game}) => {
       {element.title}
     </Link>
   });
+
+  /**
+   * Component to allow user to switch between different tutorials
+   */
 
   return (
     <StyledTutorialHeader>

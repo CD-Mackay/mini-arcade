@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const StyledFooter = styled.div`
+bottom: 0;
 display: flex;
 justify-content: space-between;
-width: 99vw;
-position: fixed;
 left: 0;
-bottom: 0;
+position: fixed;
+width: 99vw;
 p {
   font-size: 24px;
   margin-left: 5px;

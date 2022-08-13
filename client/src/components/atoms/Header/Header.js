@@ -12,6 +12,10 @@ import Dropdown from "../Dropdown/Dropdown";
 const Header = () => {
   let location = useLocation();
 
+  /**
+   * Header Component
+   */
+  
   return (
     <StyledHeader location={location.pathname}>
       <div className="logo">

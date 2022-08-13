@@ -4,6 +4,7 @@ import React from "react";
 /* Component Imports */
 import TutorialText from "../../../utilities/TutorialText";
 import Button from "../Button/Button";
+
 /* Asset Imports */
 import StyledSidebar from "./StyledSidebar";
 import { Link, useLocation } from "react-router-dom";
@@ -13,6 +14,9 @@ const Sidebar = () => {
 
   const { text } = TutorialText;
 
+  /**
+   * Component to display other games available
+   */
   return (
     <StyledSidebar show={location.pathname}>
       {location.pathname !== "/" && <h4>Other Games</h4>}

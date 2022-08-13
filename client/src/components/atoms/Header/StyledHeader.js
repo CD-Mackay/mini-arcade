@@ -4,9 +4,9 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: ${(props) =>
     props.location === "/" ? "center" : "space-between"};
-  width: 100vw;
   margin: 0 auto;
   text-align: center;
+  width: 100vw;
   h1 {
     font-size: 42px;
     padding: 10px;

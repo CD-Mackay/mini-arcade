@@ -1,10 +1,10 @@
 /* Library Imports */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 /* Component Imports */
 import { AiFillGithub } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
 import { IoLogoLinkedin } from 'react-icons/io';
 
 
@@ -12,6 +12,10 @@ import { IoLogoLinkedin } from 'react-icons/io';
 import StyledFooter from './StyledFooter';
 
 const Footer = () => {
+
+  /**
+   * Footer Component
+   */
   return (
     <StyledFooter>
       <p>A Practice Application, built by Connor Mackay</p>

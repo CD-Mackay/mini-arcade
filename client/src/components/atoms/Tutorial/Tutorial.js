@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-/* Component Imports */
-
 /* Asset Imports */
 import StyledTutorial from './StyledTutorial';
 import TutorialText from '../../../utilities/TutorialText';
@@ -24,6 +22,10 @@ const Tutorial = () => {
       }
     }
   }, [game]);
+
+  /**
+   * Component to display tutorial information for selected Game
+   */
 
   return (
     <StyledTutorial>
