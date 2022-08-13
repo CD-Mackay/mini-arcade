@@ -17,6 +17,11 @@
   - [Game.module.css] - Contains the styling for each Game/Component
   - [GameContext.js] - Contains all Javascript logic for running the game.
 
+  - Imports are organized as follows:
+    - Framework Imports: React and other frameworks
+    - Component Imports
+    - CSS Imports: Styled components and other CSS Assets
+
 ### Features
 
  - Classic games such as Tic-Tac-Toe, Rock Paper Scissors, Hangman and Connect Four!
