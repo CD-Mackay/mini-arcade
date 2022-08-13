@@ -4,12 +4,8 @@ import { Router } from "react-router-dom";
 import Button from "../Button/Button";
 import { useHistory } from "react-router-dom";
 
-
-/* Component Imports */
-
-/* Asset Imports */
+/* CSS Imports */
 import StyledDropdown from "./StyledDropdown";
-import { Link } from "react-router-dom";
 
 const Dropdown = () => {
   const history = useHistory();

@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 const StyledDropdown = styled.div`
 .drop {
-  position: absolute;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  position: absolute;
 }
 
 `

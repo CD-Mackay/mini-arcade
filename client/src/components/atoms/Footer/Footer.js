@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { IoLogoLinkedin } from 'react-icons/io';
 
 
-/* Asset Imports */
+/* CSS Imports */
 import StyledFooter from './StyledFooter';
 
 const Footer = () => {
