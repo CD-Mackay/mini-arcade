@@ -35,7 +35,7 @@ import StyledExample from './StyledExample';
 const Example = () => {
   return (
     <StyledExample>
-    <p>I am Example</p>
+      <p>I am Example</p>
     </StyledExample>
   )
 };
