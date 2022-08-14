@@ -13,6 +13,29 @@ const Dropdown = () => {
 
   const [showOptions, setShowOptions] = useState(false);
 
+  const DATA = [
+    {
+      title: "Tic-Tac-Toe",
+      location: "tictactoe",
+    },
+    {
+      title: "Hangman",
+      location: "hangman",
+    },
+    {
+      title: "Connect Four",
+      location: "connectfour",
+    },
+    {
+      title: "Rock Paper Scissors",
+      location: "rockpaperscissors",
+    },
+    {
+      title: "Snake",
+      location: "snake",
+    },
+  ];
+
   const handleToggleShow = () => {
     showOptions ? setShowOptions(false) : setShowOptions(true);
   };
@@ -22,31 +45,26 @@ const Dropdown = () => {
     setShowOptions(false);
   };
 
+  const games = DATA.map((element, index) => {
+    return (
+      <Button
+        message={element.title}
+        onClick={() => handleSelectDrop(element.location)}
+        key={index}
+      />
+    );
+  });
+
   /**
    * Dropdown menu for transitioning between games
+   * * Styled Dropdown contains logic for selective rendering
    */
 
   return (
     <StyledDropdown show={showOptions}>
       <Button message="Games" onClick={handleToggleShow} />
       <div className="drop">
-        <Button message="snake" onClick={() => handleSelectDrop("/snake")} />
-          <Button
-            message="tictactoe"
-            onClick={() => handleSelectDrop("/tictactoe")}
-          />
-          <Button
-            message="Connect Four"
-            onClick={() => handleSelectDrop("connectfour")}
-          />
-          <Button
-            message="Hangman"
-            onClick={() => handleSelectDrop("hangman")}
-          />
-          <Button
-            message="Rock Paper Scissors"
-            onClick={() => handleSelectDrop("rockpaperscissors")}
-  />
+        {games}
       </div>
     </StyledDropdown>
   );
