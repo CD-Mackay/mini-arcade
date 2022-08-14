@@ -1,16 +1,24 @@
-/* Library Imports */
+// Library Imports
 import React from "react";
-
-/* Component Imports */
 import { Link, useLocation } from "react-router-dom";
-/* Asset Imports */
-import StyledHeader from "./StyledHeader";
+
+// Component Imports */
+import Dropdown from "../Dropdown/Dropdown";
+
+// Asset Imports
 import { BsHouseDoor } from "react-icons/bs";
 import { FaQuestion } from "react-icons/fa";
-import Dropdown from "../Dropdown/Dropdown";
+
+// CSS Imports
+import StyledHeader from "./StyledHeader";
+
 
 const Header = () => {
   let location = useLocation();
+
+  /**
+   * Header Component
+   */
 
   return (
     <StyledHeader location={location.pathname}>

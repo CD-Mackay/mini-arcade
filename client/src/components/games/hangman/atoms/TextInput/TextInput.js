@@ -2,8 +2,10 @@
 import React, { useState } from "react";
 
 // Component Imports
-import StyledTextInput from "./StyledTextInput";
 import Alert from "../../../../atoms/Alert/Alert";
+
+// CSS Imports
+import StyledTextInput from "./StyledTextInput";
 
 const TextInput = ({ setInput, input, onSubmit }) => {
   const [previousGuesses, setPreviousGuesses] = useState([]);
@@ -80,6 +82,11 @@ const TextInput = ({ setInput, input, onSubmit }) => {
     }
   };
 
+  /**
+   * Handles input of letter guesses in Hangman game
+   * * Validates to ensure guesses are not duplicated
+   * * Validates to ensure only letters are input
+   */
   return (
     <StyledTextInput error={error}>
       <form onSubmit={() => handleFormSubmit(event)}>

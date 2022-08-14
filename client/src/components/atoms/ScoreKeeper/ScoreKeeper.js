@@ -1,11 +1,8 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
 
 
-/* Component Imports */
-
-
-/* Asset Imports */
+// CSS Imports
 import StyledScoreKeeper from './StyledScoreKeeper';
 
 const ScoreKeeper = ({record, name}) => {
@@ -24,6 +21,9 @@ const ScoreKeeper = ({record, name}) => {
     }))
   };
 
+  /**
+   * Component to display win-loss-draw statistics for ongoing series
+   */
   return (
     <StyledScoreKeeper>
       <h4>Scoreboard</h4>

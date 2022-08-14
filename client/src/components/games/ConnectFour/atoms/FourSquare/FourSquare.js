@@ -1,14 +1,17 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
 
-
-/* Component Imports */
-
-/* Asset Imports */
+// Asset Imports
 import StyledFourSquare from './StyledFourSquare';
 
 const FourSquare = ({props, onSelect}) => {
 
+
+  /**
+   * Individual square on Connect Four Board
+   * * Props control selective CSS styling to display selected vs. unselected state.
+   * * Onclick handles player select
+   */
   return (
     <StyledFourSquare 
     onClick={() => onSelect(props.indexArray[0], props.indexArray[1])} 

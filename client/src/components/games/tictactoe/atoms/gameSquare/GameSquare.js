@@ -1,5 +1,7 @@
+// Library Imports
 import React, { useEffect, useState } from "react";
 
+// CSS Imports
 import StyledGameSquare from "./StyledGameSquare";
 
 const GameSquare = ({ index, setSquareSelected, value }) => {
@@ -16,6 +18,10 @@ const GameSquare = ({ index, setSquareSelected, value }) => {
       setOpacity(1);
     }
   }, [value]);
+
+  /**
+   * Controls display of individual Tic-Tac-Toe Squares
+   */
 
   return (
     <StyledGameSquare

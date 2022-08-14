@@ -1,28 +1,28 @@
 import styled from "styled-components";
 
 const StyledTic = styled.section`
-  margin: 0 auto;
-  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
+  text-align: center;
   width: 80vw;
   #setup-box {
     display: flex;
     h4 {
-      padding: 10px;
       font-size: 32px;
+      padding: 10px;
     }
     #button-wrapper {
-      width: 60%;
-      margin: 0 auto;
       display: flex;
-      justify-content: space-around;
       flex-direction: column;
+      justify-content: space-around;
+      margin: 0 auto;
+      width: 60%;
       button {
-        width: 150px;
-        padding: 2px;
         margin: 5px;
+        padding: 2px;
+        width: 150px;
       }
     }
   }

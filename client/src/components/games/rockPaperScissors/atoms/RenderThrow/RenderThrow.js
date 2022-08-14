@@ -1,11 +1,19 @@
+// Library Imports
 import React from "react";
+
+// Asset Imports
 import { GiMailedFist, GiPalm } from "react-icons/gi";
 import { FaRegHandScissors } from "react-icons/fa";
 
+// CSS Imports
 import StyledRenderThrow from "./StyledRenderThrow";
 
 const RenderThrow = ({ move }) => {
 
+
+  /**
+   * Displays move selected by human player in Rock Paper Scissors
+   */
   return (
     <StyledRenderThrow move={move}>
       <h1>Your Selection:</h1>

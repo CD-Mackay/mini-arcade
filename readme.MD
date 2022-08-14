@@ -20,22 +20,23 @@
   - Imports are organized as follows:
     - Framework Imports: React and other frameworks
     - Component Imports
+    - Asset Imports: Icons and imported data
     - CSS Imports: Styled components and other CSS Assets
 
  #### Example of Component
 
  ```
- /* Library Imports */
+ // Library Imports
 import React from 'react';
 
 
-/* CSS Imports */
+// CSS Imports
 import StyledExample from './StyledExample';
 
 const Example = () => {
   return (
     <StyledExample>
-    <p>I am Example</p>
+      <p>I am Example</p>
     </StyledExample>
   )
 };

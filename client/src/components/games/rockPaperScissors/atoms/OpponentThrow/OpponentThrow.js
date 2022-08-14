@@ -1,7 +1,11 @@
+// Library Imports
 import React, { useEffect, useState } from "react";
+
+// Asset Imports
 import { GiMailedFist, GiPalm } from "react-icons/gi";
 import { FaRegHandScissors } from "react-icons/fa";
 
+// CSS Imports
 import StyledOpponentThrow from "./StyledOpponentThrow";
 
 const OpponentThrow = ({ timer, winner, display }) => {

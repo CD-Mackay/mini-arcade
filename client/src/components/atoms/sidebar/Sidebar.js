@@ -1,18 +1,24 @@
-/* Library Imports */
+// Library Imports
 import React from "react";
-
-/* Component Imports */
-import TutorialText from "../../../utilities/TutorialText";
-import Button from "../Button/Button";
-/* Asset Imports */
-import StyledSidebar from "./StyledSidebar";
 import { Link, useLocation } from "react-router-dom";
+
+// Component Imports */
+import Button from "../Button/Button";
+
+// Asset Imports
+import TutorialText from "../../../utilities/TutorialText";
+
+// CSS Imports
+import StyledSidebar from "./StyledSidebar";
 
 const Sidebar = () => {
   const location = useLocation();
 
   const { text } = TutorialText;
 
+  /**
+   * Component to display other games available
+   */
   return (
     <StyledSidebar show={location.pathname}>
       {location.pathname !== "/" && <h4>Other Games</h4>}

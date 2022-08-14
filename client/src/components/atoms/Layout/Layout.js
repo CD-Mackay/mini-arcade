@@ -1,17 +1,15 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
 
 
-/* Component Imports */
-
-
-/* Asset Imports */
+// Asset Imports
 import StyledLayout from './StyledLayout';
 
 const Layout = (props) => {
 
-
-
+  /**
+   * Layout Component to control Global layout
+   */
   return (
     <StyledLayout>
       {props.children}

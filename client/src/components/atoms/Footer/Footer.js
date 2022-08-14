@@ -1,17 +1,21 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
-
-
-/* Component Imports */
-import { AiFillGithub } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+
+
+// Asset Imports
+import { AiFillGithub } from 'react-icons/ai';
 import { IoLogoLinkedin } from 'react-icons/io';
 
 
-/* CSS Imports */
+// CSS Imports
 import StyledFooter from './StyledFooter';
 
 const Footer = () => {
+
+  /**
+   * Footer Component
+   */
   return (
     <StyledFooter>
       <p>A Practice Application, built by Connor Mackay</p>

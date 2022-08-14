@@ -1,4 +1,7 @@
+// Library Imports
 import React, { createContext, useState } from "react";
+
+// Asset Imports
 import OpponentNames from "../../utilities/OpponentNames";
 import UpdateRecords from "../../utilities/UpdateRecords";
 
@@ -259,6 +262,10 @@ export function TicContextProvider(props) {
     });
     setSquareSelected(null);
   };
+
+    /**
+   * Context Component to handle Tic-Tac-Toe Game Logic
+   */
 
   return (
     <TicContext.Provider

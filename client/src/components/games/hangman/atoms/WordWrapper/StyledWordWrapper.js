@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const StyledWordWrapper = styled.div`
-width: 90vw;
 margin-bottom: 10px;
+width: 90vw;
 p {
   text-align: center;
 }

@@ -1,11 +1,13 @@
-import React, { useEffect, useState, useContext } from "react";
+// Library Imports
+import React, { useEffect, useContext } from "react";
+
+// Component Imports
 import GameSquare from "./atoms/gameSquare/GameSquare";
 import Button from "../../atoms/Button/Button";
 import ScoreKeeper from "../../atoms/ScoreKeeper/ScoreKeeper";
-import OpponentNames from "../../../utilities/OpponentNames";
-import UpdateRecords from "../../../utilities/UpdateRecords";
 import { TicContext } from "../../../contexts/tictactoe/TicContext";
 
+// CSS Imports
 import StyledTic from "./StyledTic";
 
 const Tic = () => {
@@ -45,6 +47,10 @@ const Tic = () => {
     }
   }, [squareSelected, gamePhase]);
 
+  /**
+   * Holds components for Tic-Tac-Toe, imports game logic from <TicContext />
+   * * Lifecycle controls gameplay
+   */
   return (
     <StyledTic>
       {gamePhase === "setup" && (

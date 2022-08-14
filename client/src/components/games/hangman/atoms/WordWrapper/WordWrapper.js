@@ -1,9 +1,11 @@
 // Library Imports
-import React, { useEffect } from "react";
+import React from "react";
 
 // Component Imports
-import StyledWordWrapper from "./StyledWordWrapper";
 import LetterWrapper from "../LetterWrapper/LetterWrapper";
+
+// CSS Imports
+import StyledWordWrapper from "./StyledWordWrapper";
 
 const WordWrapper = ({ string }) => {
   const renderString = (string) => {
@@ -20,6 +22,10 @@ const WordWrapper = ({ string }) => {
       });
     }
   };
+
+  /**
+   * Component to display mystery word in Hangmang game
+   */
 
   return (
     <StyledWordWrapper>

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const StyledRockPaper = styled.section`
-width: 80vw;
-margin: 0 auto;
+align-items: center;
 display: flex;
 flex-direction: column;
+margin: 0 auto;
 padding: 10px;
-align-items: center;
+width: 80vw;
 
 #input-wrapper {
   margin-bottom: 10px;

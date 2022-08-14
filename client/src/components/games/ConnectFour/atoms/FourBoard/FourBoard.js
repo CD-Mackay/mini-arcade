@@ -1,11 +1,11 @@
-/* Library Imports */
-import React, { useEffect } from 'react';
+// Library Imports
+import React from 'react';
 
 
-/* Component Imports */
+// Component Imports */
 import FourSquare from '../FourSquare/FourSquare';
 
-/* Asset Imports */
+// Asset Imports
 import StyledFourBoard from './StyledFourBoard';
 
 const FourBoard = ({board, onSelect, winner}) => {
@@ -19,6 +19,9 @@ const FourBoard = ({board, onSelect, winner}) => {
     })
   };
 
+  /**
+   * Renders and displays Connect Four Board
+   */
   return (
     <StyledFourBoard>
       {renderBoard(board)}

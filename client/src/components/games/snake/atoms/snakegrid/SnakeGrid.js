@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
+// Library Imports
+import React, { useState } from "react";
+
+// Component Imports
 import SnakeSquare from "../SnakeSquare/SnakeSquare";
 
+// CSS Imports
 import StyledSnakeGrid from "./StyledSnakeGrid";
 
 const SnakeGrid = () => {
@@ -107,6 +111,10 @@ const SnakeGrid = () => {
 
   document.addEventListener("keydown", control);
 
+  /**
+   * Handles Game Logic for Snake
+   * * Game Logic will be abstracted to Context on completion of development
+   */
   return (
     <StyledSnakeGrid>
       {buildBoard()}

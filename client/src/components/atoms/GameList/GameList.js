@@ -1,14 +1,16 @@
-/* Library Imports */
+// Library Imports
 import React from "react";
 
-/* Component Imports */
+// Component Imports */
 import GameListItem from "../GameListItem/GameListItem";
 
-/* Asset Imports */
-import StyledGameList from "./StyledGameList";
+// Asset Imports
 import { GiTicTacToe, GiDoubleFaceMask, GiTriforce } from "react-icons/gi";
 import { MdConstruction } from "react-icons/md";
 import { BiCategory } from "react-icons/bi";
+
+// CSS Imports
+import StyledGameList from "./StyledGameList";
 
 const GameList = () => {
   const GAMES = [
@@ -43,6 +45,10 @@ const GameList = () => {
       icon: <MdConstruction color={"#00FFFF"} fontSize="48px" />,
     },
   ];
+
+  /**
+   * Component to display list of available games
+   */
   return (
     <StyledGameList>
       <div className="game-wrapper">

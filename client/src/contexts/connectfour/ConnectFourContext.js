@@ -1,3 +1,4 @@
+// Library Imports
 import React, { createContext, useState } from "react";
 
 export const ConnectFourContext = createContext({});
@@ -185,6 +186,10 @@ export function ConnectFourContextProvider(props) {
       }
     }
   };
+
+  /**
+   * Context Component to handle Connect Four Game Logic
+   */
 
   return (
     <ConnectFourContext.Provider

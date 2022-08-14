@@ -1,17 +1,17 @@
 
-/* Library Imports */
+// Library Imports
 import React, { useState } from 'react';
 
 
-/* Component Imports */
+// Component Imports */
 import Button from '../../../../atoms/Button/Button';
 
-/* Asset Imports */
+// Asset Imports
 import StyledCustomInput from './StyledCustomInput';
 
 const CustomInput = ({string, setString, onSubmit}) => {
 
-  let regex = /[a-zA-Z]/;
+  const regex = /[a-zA-Z]/;
 
   const [error, setError ] = useState(false);
 
@@ -41,6 +41,11 @@ const CustomInput = ({string, setString, onSubmit}) => {
       setError(true)
     }
   };
+
+  /**
+   * Custom Input allows the user to enter their word when playing Hangman against another person
+   * Prevents users from entering anything other than letters (e.g. No numbers/special characters)
+   */
 
   return (
     <StyledCustomInput>

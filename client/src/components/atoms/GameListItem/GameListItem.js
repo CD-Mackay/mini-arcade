@@ -1,13 +1,16 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-/* Component Imports */
-
-/* Asset Imports */
+// Asset Imports
 import StyledGameListItem from './StyledGameListItem';
 
 const GameListItem = ({game, name, description, icon}) => {
+
+  /**
+   * Component to display individual game
+   * * Child component of <GameList />
+   */
   return (
     <StyledGameListItem>
       <Link to={`/${game}`}>

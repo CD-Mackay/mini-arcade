@@ -1,8 +1,8 @@
-/* Library Imports */
+// Library Imports
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-/* Component Imports */
+// Component Imports */
 import Home from "pages/Home/Home";
 import Tic from "./src/components/games/tictactoe/Tic.js";
 import Header from "./src/components/atoms/Header/Header.js";
@@ -14,7 +14,7 @@ import Layout from "./src/components/atoms/Layout/Layout.js";
 import Snake from "./src/components/games/snake/Snake.js";
 import { RockPaperContextProvider } from "./src/contexts/rockpaperscissors/RockPaperContext.js";
 
-/* Asset Imports */
+// Asset Imports
 import { GlobalStyle } from "./GlobalStyles.js";
 import StyledApp from "./StyledApp.js";
 import Hangman from "./src/components/games/hangman/Hangman.js";

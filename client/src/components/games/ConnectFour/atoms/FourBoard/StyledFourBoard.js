@@ -4,9 +4,9 @@ const StyledFourBoard = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 grid-gap: 0px;
-width: 320px;
 margin: 0 auto;
 margin-bottom: 10px;
+width: 320px;
 
 @media (min-width: 576px) {
   width: 496px;

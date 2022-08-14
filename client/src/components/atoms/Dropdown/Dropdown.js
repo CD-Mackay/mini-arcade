@@ -1,38 +1,71 @@
-/* Library Imports */
+// Library Imports
 import React, { useState } from "react";
-import { Router } from "react-router-dom";
-import Button from "../Button/Button";
 import { useHistory } from "react-router-dom";
 
-/* CSS Imports */
+// Component Imports
+import Button from "../Button/Button";
+
+// CSS Imports
 import StyledDropdown from "./StyledDropdown";
 
 const Dropdown = () => {
   const history = useHistory();
 
-
   const [showOptions, setShowOptions] = useState(false);
+
+  const DATA = [
+    {
+      title: "Tic-Tac-Toe",
+      location: "tictactoe",
+    },
+    {
+      title: "Hangman",
+      location: "hangman",
+    },
+    {
+      title: "Connect Four",
+      location: "connectfour",
+    },
+    {
+      title: "Rock Paper Scissors",
+      location: "rockpaperscissors",
+    },
+    {
+      title: "Snake",
+      location: "snake",
+    },
+  ];
 
   const handleToggleShow = () => {
     showOptions ? setShowOptions(false) : setShowOptions(true);
-  }
+  };
 
   const handleSelectDrop = (input) => {
     history.replace(input);
     setShowOptions(false);
-  }
+  };
+
+  const games = DATA.map((element, index) => {
+    return (
+      <Button
+        message={element.title}
+        onClick={() => handleSelectDrop(element.location)}
+        key={index}
+      />
+    );
+  });
+
+  /**
+   * Dropdown menu for transitioning between games
+   * * Styled Dropdown contains logic for selective rendering
+   */
 
   return (
-    <StyledDropdown>
-      <Button message="Games" onClick={handleToggleShow}/>
-      {showOptions && <div className="drop">
-        <Button message="snake" onClick={() => handleSelectDrop("/snake")} />
-        <Button message="tictactoe" onClick={() => handleSelectDrop("/tictactoe")} />
-        <Button message="Connect Four"  onClick={() => handleSelectDrop("connectfour")} />
-        <Button message="Hangman" onClick={() => handleSelectDrop("hangman")} />
-        <Button message="Rock Paper Scissors" onClick={() => handleSelectDrop("rockpaperscissors")} />
-
-      </div>}
+    <StyledDropdown show={showOptions}>
+      <Button message="Games" onClick={handleToggleShow} />
+      <div className="drop">
+        {games}
+      </div>
     </StyledDropdown>
   );
 };

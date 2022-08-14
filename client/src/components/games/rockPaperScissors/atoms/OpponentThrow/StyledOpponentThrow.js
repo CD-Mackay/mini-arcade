@@ -9,10 +9,10 @@ div {
   }
 }
 p {
-  opacity: ${props => props.opacity === 0 ? 0 : 1};
-  transition: opacity 0.2s ease-out;
-  padding: 10px;
   font-size: 18px;
+  opacity: ${props => props.opacity === 0 ? 0 : 1};
+  padding: 10px;
+  transition: opacity 0.2s ease-out;
 }
 
 .throw {

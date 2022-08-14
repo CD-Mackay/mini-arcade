@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 const StyledScoreKeeper = styled.div`
   border: 1px solid #00ffff;
+  max-height: 200px;
   max-width: 300px;
   min-width: 250px;
-  max-height: 200px;
   h4 {
     font-size: 28px;
     margin: 5px;
