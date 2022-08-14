@@ -1,17 +1,19 @@
 // Library Imports
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 
 // Component Imports
-import StyledHangman from "./StyledHangman";
+import Alert from "../../atoms/Alert/Alert";
 import Button from "../../atoms/Button/Button";
+import DisplayWrong from "./atoms/DisplayWrong/DisplayWrong";
 import TextInput from "./atoms/TextInput/TextInput";
 import WordWrapper from "./atoms/WordWrapper/WordWrapper";
-import DisplayWrong from "./atoms/DisplayWrong/DisplayWrong";
 import Gallows from "./atoms/Gallows/Gallows";
-import { Link } from "react-router-dom";
 import CustomInput from "./atoms/CustomInput/CustomInput";
-import Alert from "../../atoms/Alert/Alert";
 import { HangmanContext } from "../../../contexts/hangman/HangmanContext";
+
+// CSS Imports
+import StyledHangman from "./StyledHangman";
 
 const Hangman = () => {
   const {

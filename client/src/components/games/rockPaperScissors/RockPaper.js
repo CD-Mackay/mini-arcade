@@ -1,14 +1,19 @@
+// Library Imports
 import React, { useEffect, useState, useContext } from "react";
+
+// Component Imports
 import ThrowSelect from "./atoms/ThrowSelect/ThrowSelect";
 import OpponentThrow from "./atoms/OpponentThrow/OpponentThrow";
-
-import StyledRockPaper from "./StyledRockPaper";
 import Button from "../../atoms/Button/Button";
 import RenderThrow from "./atoms/RenderThrow/RenderThrow";
 import ScoreKeeper from "../../atoms/ScoreKeeper/ScoreKeeper";
 import OpponentNames from "../../../utilities/OpponentNames";
 import UpdateRecords from "../../../utilities/UpdateRecords";
 import { RockPaperContext } from "../../../contexts/rockpaperscissors/RockPaperContext";
+
+// CSS Imports
+import StyledRockPaper from "./StyledRockPaper";
+
 
 const RockPaper = () => {
   const {
@@ -46,6 +51,10 @@ const RockPaper = () => {
     }
   }, [winner]);
 
+  /**
+   * Holds Components for Rock Paper Scissors Game
+   * * Imports game logic from <RockPaperContext />
+   */
   return (
     <StyledRockPaper>
       <div id="input-wrapper">
