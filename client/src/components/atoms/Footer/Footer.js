@@ -1,14 +1,14 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-/* Component Imports */
+// Asset Imports
 import { AiFillGithub } from 'react-icons/ai';
 import { IoLogoLinkedin } from 'react-icons/io';
 
 
-/* CSS Imports */
+// CSS Imports
 import StyledFooter from './StyledFooter';
 
 const Footer = () => {

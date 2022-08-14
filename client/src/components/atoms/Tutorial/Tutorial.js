@@ -1,9 +1,9 @@
-/* Library Imports */
+// Library Imports
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-/* Asset Imports */
+// Asset Imports
 import StyledTutorial from './StyledTutorial';
 import TutorialText from '../../../utilities/TutorialText';
 

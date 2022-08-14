@@ -1,8 +1,8 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
 
 
-/* Asset Imports */
+// Asset Imports
 import StyledLayout from './StyledLayout';
 
 const Layout = (props) => {

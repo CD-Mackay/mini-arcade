@@ -1,13 +1,15 @@
-/* Library Imports */
+// Library Imports
 import React from "react";
 
-/* Component Imports */
+// Component Imports */
 import GameListItem from "../GameListItem/GameListItem";
+
+// Asset Imports
 import { GiTicTacToe, GiDoubleFaceMask, GiTriforce } from "react-icons/gi";
 import { MdConstruction } from "react-icons/md";
 import { BiCategory } from "react-icons/bi";
 
-/* CSS Imports */
+// CSS Imports
 import StyledGameList from "./StyledGameList";
 
 const GameList = () => {

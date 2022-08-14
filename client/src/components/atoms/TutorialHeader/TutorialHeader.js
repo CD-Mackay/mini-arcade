@@ -1,9 +1,9 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 
-/* Asset Imports */
+// Asset Imports
 import TutorialText from '../../../utilities/TutorialText';
 
 // CSS Imports

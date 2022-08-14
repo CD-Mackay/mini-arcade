@@ -1,13 +1,13 @@
-/* Library Imports */
+// Library Imports
 import React, { useState, useEffect, useContext } from "react";
 
-/* Component Imports */
+// Component Imports */
 import FourBoard from "./atoms/FourBoard/FourBoard";
 import ScoreKeeper from "../../atoms/ScoreKeeper/ScoreKeeper";
 import Button from "../../atoms/Button/Button";
 import { ConnectFourContext } from "../../../contexts/connectfour/ConnectFourContext";
 
-/* Asset Imports */
+// Asset Imports
 import StyledConnectFour from "./StyledConnectFour";
 import UpdateRecords from "../../../utilities/UpdateRecords";
 import Alert from "../../atoms/Alert/Alert";

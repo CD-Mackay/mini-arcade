@@ -1,12 +1,12 @@
 
-/* Library Imports */
+// Library Imports
 import React, { useState } from 'react';
 
 
-/* Component Imports */
+// Component Imports */
 import Button from '../../../../atoms/Button/Button';
 
-/* Asset Imports */
+// Asset Imports
 import StyledCustomInput from './StyledCustomInput';
 
 const CustomInput = ({string, setString, onSubmit}) => {

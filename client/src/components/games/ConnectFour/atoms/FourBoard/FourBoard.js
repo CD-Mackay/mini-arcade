@@ -1,11 +1,11 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
 
 
-/* Component Imports */
+// Component Imports */
 import FourSquare from '../FourSquare/FourSquare';
 
-/* Asset Imports */
+// Asset Imports
 import StyledFourBoard from './StyledFourBoard';
 
 const FourBoard = ({board, onSelect, winner}) => {

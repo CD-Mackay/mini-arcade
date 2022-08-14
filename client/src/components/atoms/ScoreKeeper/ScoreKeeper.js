@@ -1,8 +1,8 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
 
 
-/* CSS Imports */
+// CSS Imports
 import StyledScoreKeeper from './StyledScoreKeeper';
 
 const ScoreKeeper = ({record, name}) => {

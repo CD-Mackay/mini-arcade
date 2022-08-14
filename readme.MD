@@ -25,11 +25,11 @@
  #### Example of Component
 
  ```
- /* Library Imports */
+ // Library Imports
 import React from 'react';
 
 
-/* CSS Imports */
+// CSS Imports
 import StyledExample from './StyledExample';
 
 const Example = () => {

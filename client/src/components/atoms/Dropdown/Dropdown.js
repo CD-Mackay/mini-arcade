@@ -1,11 +1,11 @@
-/* Library Imports */
+// Library Imports
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 // Component Imports
 import Button from "../Button/Button";
 
-/* CSS Imports */
+// CSS Imports
 import StyledDropdown from "./StyledDropdown";
 
 const Dropdown = () => {

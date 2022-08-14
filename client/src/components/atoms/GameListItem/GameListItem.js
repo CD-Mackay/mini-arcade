@@ -1,8 +1,8 @@
-/* Library Imports */
+// Library Imports
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-/* Asset Imports */
+// Asset Imports
 import StyledGameListItem from './StyledGameListItem';
 
 const GameListItem = ({game, name, description, icon}) => {

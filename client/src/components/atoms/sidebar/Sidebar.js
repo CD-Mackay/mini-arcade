@@ -1,11 +1,11 @@
-/* Library Imports */
+// Library Imports
 import React from "react";
 
-/* Component Imports */
+// Component Imports */
 import TutorialText from "../../../utilities/TutorialText";
 import Button from "../Button/Button";
 
-/* Asset Imports */
+// Asset Imports
 import StyledSidebar from "./StyledSidebar";
 import { Link, useLocation } from "react-router-dom";
 
