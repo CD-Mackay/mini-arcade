@@ -2,21 +2,22 @@ import styled from 'styled-components';
 
 const StyledFourSquare = styled.div`
 border: 1px solid #00FFFF;
-width: 40px;
-height: 40px;
 display: flex;
 flex-direction: column;
+height: 40px;
 justify-content: center;
+width: 40px;
+
 :hover {
   background: ${props => props.available === true ? "green" : "gray"}
 }
 #circle {
-  height: 50%;
-  width: 50%;
-  border: 1px solid ${props => props.selected === 0 ? "#00FFFF" : props.selected === 1 ? "red" : "yellow"};
   background: ${props => props.selected === 0 ? "#24282f" : props.selected === 1 ? "red" : "yellow"};
-  margin: 0 auto;
+  border: 1px solid ${props => props.selected === 0 ? "#00FFFF" : props.selected === 1 ? "red" : "yellow"};
   border-radius: 50%;
+  height: 50%;
+  margin: 0 auto;
+  width: 50%;
 }
 
 @media (min-width: 576px) {

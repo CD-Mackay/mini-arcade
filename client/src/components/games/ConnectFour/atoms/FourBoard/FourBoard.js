@@ -1,5 +1,5 @@
 /* Library Imports */
-import React, { useEffect } from 'react';
+import React from 'react';
 
 
 /* Component Imports */
@@ -19,6 +19,9 @@ const FourBoard = ({board, onSelect, winner}) => {
     })
   };
 
+  /**
+   * Renders and displays Connect Four Board
+   */
   return (
     <StyledFourBoard>
       {renderBoard(board)}

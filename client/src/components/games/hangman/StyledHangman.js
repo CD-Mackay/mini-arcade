@@ -4,9 +4,9 @@ const StyledHangman = styled.section`
 display: flex;
 flex-direction: column;
 #game-wrapper {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   #game-information {
     display: flex;
     flex-direction: column;

@@ -78,6 +78,11 @@ const ConnectFour = () => {
     }
   }, [winner]);
 
+
+  /**
+   * Holds Components neccessary for playing Connect Four Game
+   * * Imports game logic from ConnectFourContext, lifecycle handles gameplay
+   */
   return (
     <StyledConnectFour>
       <div />

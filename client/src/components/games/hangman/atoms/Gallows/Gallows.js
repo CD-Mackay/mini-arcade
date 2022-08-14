@@ -1,8 +1,14 @@
+// Library Imports
 import React from 'react';
 
+// CSS Imports
 import StyledGallows from './StyledGallows';
 
 const Gallows = ({failed}) => {
+
+  /**
+   * Simple Component to display "man" in Hangman
+   */
   return (
     <StyledGallows display={failed.length}>
       <div id="head" />

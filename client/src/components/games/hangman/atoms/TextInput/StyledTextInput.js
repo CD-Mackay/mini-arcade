@@ -6,20 +6,20 @@ form {
   display: flex;
   flex-direction: column;
   input {
-    border: 1px solid #00FFFF;
     background: #24282f;
-    padding: 5px;
+    border: 1px solid #00FFFF;
     border-radius: 5px;
-    font-size: 20px;
     color: #00FFFF;
+    font-size: 20px;
+    padding: 5px;
   }
   div {
     text-align: center;
     p {
-      opacity: ${props => props.error ? 1 : 0};
-      transition: opacity 0.3s ease-out;
-      padding: 5px;
       font-size: 24px;
+      opacity: ${props => props.error ? 1 : 0};
+      padding: 5px;
+      transition: opacity 0.3s ease-out;
     }
   }
   Button {

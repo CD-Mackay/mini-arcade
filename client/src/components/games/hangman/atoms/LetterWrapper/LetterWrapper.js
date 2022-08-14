@@ -1,7 +1,7 @@
 // Library Imports
 import React, { useEffect, useState } from 'react';
 
-// Component Imports
+// CSS Imports
 import StyledLetterWrapper from './StyledLetterWrapper';
 
 const LetterWrapper = ({letter, selected, length}) => {
@@ -12,6 +12,9 @@ const LetterWrapper = ({letter, selected, length}) => {
     setDisplayLetter(selected);
   }, [selected]);
 
+  /**
+   * Component to display correctly guessed letters in Hangman mytery word
+   */
   return (
     <StyledLetterWrapper length={length} display={displayLetter.toString()}>
       <span>

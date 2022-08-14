@@ -30,6 +30,11 @@ const Hangman = () => {
     handleTurn,
   } = useContext(HangmanContext);
 
+  /**
+   * Holds Components neccessary for playing Hangman Game
+   * * Imports game logic from HangmanContext
+   */
+
   return (
     <StyledHangman phase={gamePhase}>
       {gamePhase == "play" && (
