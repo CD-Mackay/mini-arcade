@@ -1,13 +1,15 @@
 // Library Imports
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 // Component Imports */
-import TutorialText from "../../../utilities/TutorialText";
 import Button from "../Button/Button";
 
 // Asset Imports
+import TutorialText from "../../../utilities/TutorialText";
+
+// CSS Imports
 import StyledSidebar from "./StyledSidebar";
-import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const location = useLocation();

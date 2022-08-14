@@ -7,9 +7,11 @@ import OpponentThrow from "./atoms/OpponentThrow/OpponentThrow";
 import Button from "../../atoms/Button/Button";
 import RenderThrow from "./atoms/RenderThrow/RenderThrow";
 import ScoreKeeper from "../../atoms/ScoreKeeper/ScoreKeeper";
+import { RockPaperContext } from "../../../contexts/rockpaperscissors/RockPaperContext";
+
+// Asset Imports
 import OpponentNames from "../../../utilities/OpponentNames";
 import UpdateRecords from "../../../utilities/UpdateRecords";
-import { RockPaperContext } from "../../../contexts/rockpaperscissors/RockPaperContext";
 
 // CSS Imports
 import StyledRockPaper from "./StyledRockPaper";

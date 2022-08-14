@@ -20,6 +20,7 @@
   - Imports are organized as follows:
     - Framework Imports: React and other frameworks
     - Component Imports
+    - Asset Imports: Icons and imported data
     - CSS Imports: Styled components and other CSS Assets
 
  #### Example of Component

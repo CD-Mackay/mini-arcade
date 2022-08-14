@@ -1,4 +1,7 @@
+// Library Imports
 import React, { createContext, useState } from "react";
+
+// Asset Imports
 import OpponentNames from "../../utilities/OpponentNames";
 import UpdateRecords from "../../utilities/UpdateRecords";
 
