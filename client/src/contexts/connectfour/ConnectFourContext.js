@@ -187,6 +187,10 @@ export function ConnectFourContextProvider(props) {
     }
   };
 
+  /**
+   * Context Component to handle Connect Four Game Logic
+   */
+
   return (
     <ConnectFourContext.Provider
       value={{

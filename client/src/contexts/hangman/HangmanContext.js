@@ -1,3 +1,4 @@
+// Library Imports
 import React, { createContext, useState } from "react";
 
 export const HangmanContext = createContext({
@@ -120,7 +121,9 @@ export function HangmanContextProvider(props) {
     }
   };
 
-
+  /**
+   * Context Component to handle Hangman Game Logic
+   */
 
   return (
     <HangmanContext.Provider

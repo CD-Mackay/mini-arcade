@@ -263,6 +263,10 @@ export function TicContextProvider(props) {
     setSquareSelected(null);
   };
 
+    /**
+   * Context Component to handle Tic-Tac-Toe Game Logic
+   */
+
   return (
     <TicContext.Provider
       value={{

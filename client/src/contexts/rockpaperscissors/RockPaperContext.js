@@ -1,3 +1,4 @@
+// Library Imports
 import React, { createContext, useState } from "react";
 
 export const RockPaperContext = createContext({
@@ -57,6 +58,10 @@ export function RockPaperContextProvider(props) {
       handleGame();
     }, 3000);
   };
+
+    /**
+   * Context Component to handle Rock Paper Scissors Game Logic
+   */
 
   return (
     <RockPaperContext.Provider
