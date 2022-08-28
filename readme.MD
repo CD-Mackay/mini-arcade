@@ -70,3 +70,6 @@ export default Example;
 3: Hangman (Computer Player Available).
 4: Rock Paper Scissors (Computer Player Only).
 5: Snake (Currently under Development).
+
+#### Screenshot
+![App Homepage](/client/src/public/images/mini_arcade_screen.png "Optional Title")
