@@ -8,7 +8,6 @@ describe('Tic-Tac-Toe Test', () => {
     cy.contains('currently Player')
     cy.contains('0').click()
     cy.contains('o')
-    cy.get('[data-test-id="game-square"]').should('have.length', 9)
   })
 
   it('Resets the board when a user hits Reset Game', () => {
@@ -21,5 +20,27 @@ describe('Tic-Tac-Toe Test', () => {
     cy.contains('Reset Game').click()
 
     cy.get('.game-grid')
+  })
+
+  it('Correctly shows which player won', () => {
+    cy.visit('http://localhost:3001/tictactoe')
+    cy.contains('Human').click()
+    cy.get(`[data-test-id="game-square-0"]`).click()
+    cy.get(`[data-test-id="game-square-4"]`).click()
+
+    cy.get(`[data-test-id="game-square-6"]`).click()
+    cy.get(`[data-test-id="game-square-3"]`).click()
+
+    cy.get(`[data-test-id="game-square-5"]`).click()
+    cy.get(`[data-test-id="game-square-7"]`).click()
+
+    cy.get(`[data-test-id="game-square-8"]`).click()
+    cy.get(`[data-test-id="game-square-1"]`).click()
+
+    cy.contains('Player 1 is victorious')
+
+
+
+    
   })
 })
