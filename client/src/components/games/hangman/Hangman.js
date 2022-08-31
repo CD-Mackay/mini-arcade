@@ -86,7 +86,7 @@ const Hangman = () => {
         </div>
       )}
       {gamePhase == "win" && <h4>Congratulations! You were not hanged</h4>}
-      {gamePhase === "loss" && <h4>You are hung, and not in the good way</h4>}
+      {gamePhase === "loss" && <h4>You have been hanged</h4>}
     </StyledHangman>
   );
 };

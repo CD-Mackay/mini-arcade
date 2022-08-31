@@ -28,7 +28,7 @@ const GameSquare = ({ index, setSquareSelected, value }) => {
       id={`game-square-${index}`}
       onClick={handleSquareSelect}
       opacity={opacity}
-      data-test-id="game-square"
+      data-test-id={`game-square-${index}`}
     >
       {value && <p>{value === 1 ? "x" : "o"}</p>}
       <span>{index}</span>
