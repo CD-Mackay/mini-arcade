@@ -44,7 +44,7 @@ export function TicContextProvider(props) {
       return { element: element, score: 0, index };
     });
     setGameDetails((prevGameDetails) => {
-      return { ...prevGameDetails, game: gamePiece, playerTurn: 1 };
+      return { ...prevGameDetails, game: gamePiece, playerTurn: 2 };
     });
   };
 

@@ -31,7 +31,7 @@ const GameSquare = ({ index, setSquareSelected, value }) => {
       data-test-id={`game-square-${index}`}
     >
       {value && <p>{value === 1 ? "x" : "o"}</p>}
-      <span>{index}</span>
+      {/* <span>{index}</span> */}
     </StyledGameSquare>
   );
 };
